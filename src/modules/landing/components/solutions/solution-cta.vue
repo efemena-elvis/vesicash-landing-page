@@ -26,8 +26,10 @@
           >View documentation</a
         >
 
-        <a href="#" class="btn btn-primary btn-md mgr-16 roobert-500"
-          >Contact Us</a
+        <router-link
+          to="/contact"
+          class="btn btn-primary btn-md mgr-16 roobert-500"
+          >Contact Us</router-link
         >
       </div>
     </div>

@@ -63,10 +63,16 @@
               <router-link to="/about" class="nav-item nav-item-link"
                 >About Us</router-link
               >
-              <router-link to="#" class="nav-item nav-item-link"
-                >Blog</router-link
+              <a
+                href="https://blog.vesicash.com"
+                target="_blank"
+                class="nav-item nav-item-link"
+                >Blog</a
               >
-              <a href="#" class="nav-item nav-item-link">Contact</a>
+
+              <router-link to="/contact" class="nav-item nav-item-link"
+                >Contact</router-link
+              >
             </div>
 
             <div class="col-12 col-sm-3 mb-5 mb-sm-0">
@@ -77,10 +83,13 @@
               >
               <a
                 href="https://docs.vesicash.com/"
+                target="_blank"
                 class="nav-item nav-item-link"
                 >Documentation</a
               >
-              <a href="#" class="nav-item nav-item-link">Service Status</a>
+              <router-link to="/coming-soon" class="nav-item nav-item-link"
+                >Service Status</router-link
+              >
             </div>
 
             <div class="col-12 col-sm-3">

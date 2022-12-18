@@ -48,6 +48,18 @@ const landingRoutes = [
       },
 
       // ===============================
+      // VESICASH CONTACT ROUTE
+      // ===============================
+      {
+        path: "/contact",
+        name: "VesicashContact",
+        component: () =>
+          import(
+            /* webpackChunkName: "landing-module" */ "@/modules/landing/pages/contact"
+          ),
+      },
+
+      // ===============================
       // VESICASH BLOG ROUTE
       // ===============================
       {
@@ -104,6 +116,18 @@ const landingRoutes = [
         component: () =>
           import(
             /* webpackChunkName: "landing-module" */ "@/modules/landing/pages/privacy"
+          ),
+      },
+
+      // =======================================
+      // VESICASH COMING SOON ROUTE
+      // =======================================
+      {
+        path: "/coming-soon",
+        name: "VesicashComingSoon",
+        component: () =>
+          import(
+            /* webpackChunkName: "landing-module" */ "@/modules/landing/pages/coming-soon"
           ),
       },
     ],
