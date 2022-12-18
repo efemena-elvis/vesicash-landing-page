@@ -10,6 +10,9 @@
     <!-- SOLUTION PAYOUT -->
     <SolutionPayout />
 
+    <!-- SOLUTION PAY OPTIONS -->
+    <SolutionPayOptions />
+
     <!-- SOLUTION DEVELOPERS -->
     <SolutionDevelopers />
 
@@ -44,6 +47,10 @@ export default {
     SolutionDevelopers: () =>
       import(
         /* webpackChunkName: "landing-module" */ "@/modules/landing/components/solutions/solution-developers"
+      ),
+    SolutionPayOptions: () =>
+      import(
+        /* webpackChunkName: "landing-module" */ "@/modules/landing/components/solutions/solution-pay-options"
       ),
     SolutionCTA: () =>
       import(

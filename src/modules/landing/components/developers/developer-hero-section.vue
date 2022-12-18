@@ -15,8 +15,10 @@
 
           <!-- BUTTON ROW -->
           <div class="btn-row">
-            <a href="#" class="btn btn-primary btn-lg mgr-16 roobert-500"
-              >Get Started</a
+            <router-link
+              to="/coming-soon"
+              class="btn btn-primary btn-lg mgr-16 roobert-500"
+              >Get Started</router-link
             >
 
             <a

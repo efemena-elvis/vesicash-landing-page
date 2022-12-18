@@ -24,8 +24,10 @@
             </div>
 
             <div class="btn-row">
-              <a href="#" class="btn btn-secondary btn-lg mgr-16 roobert-500"
-                >Launch playground</a
+              <router-link
+                to="/coming-soon"
+                class="btn btn-secondary btn-lg mgr-16 roobert-500"
+                >Launch playground</router-link
               >
             </div>
           </div>
@@ -39,8 +41,10 @@
             </div>
 
             <div class="btn-row">
-              <a href="#" class="btn btn-secondary btn-lg mgr-16 roobert-500"
-                >View wordpress doc</a
+              <router-link
+                to="/coming-soon"
+                class="btn btn-secondary btn-lg mgr-16 roobert-500"
+                >View wordpress doc</router-link
               >
             </div>
           </div>

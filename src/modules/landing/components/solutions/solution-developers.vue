@@ -43,13 +43,13 @@ export default {
         description:
           "Interract with the Vesicash system and est out various use cases via our playground.",
         cta: "Launch Playground",
-        link: "https://vesicash-playground.herokuapp.com/",
+        link: "/coming-soon",
       },
       {
         title: "Wordpress Plugin",
         description: "Integrate Vesicash directly into your woocommerce store.",
         cta: "Get Plugin",
-        link: "#",
+        link: "/coming-soon",
       },
       {
         title: "API Documentation",

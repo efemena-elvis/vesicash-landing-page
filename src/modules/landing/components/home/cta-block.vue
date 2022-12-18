@@ -19,8 +19,10 @@
 
       <!-- BUTTON ROW -->
       <div class="button-row">
-        <a href="#" class="btn btn-secondary btn-md mgr-16 roobert-500"
-          >Contact Us</a
+        <router-link
+          to="/contact"
+          class="btn btn-secondary btn-md mgr-16 roobert-500"
+          >Contact Us</router-link
         >
 
         <a
