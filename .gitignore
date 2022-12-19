@@ -10,6 +10,13 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# local env files
+.env.local
+.env.*.local
+
+/src/env.js
+/src/env.prod.js
+
 # Editor directories and files
 .idea
 .vscode
