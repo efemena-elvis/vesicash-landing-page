@@ -14,8 +14,8 @@ pnpm-debug.log*
 .env.local
 .env.*.local
 
-/src/env.js
-/src/env.prod.js
+# /src/env.js
+# /src/env.prod.js
 
 # Editor directories and files
 .idea

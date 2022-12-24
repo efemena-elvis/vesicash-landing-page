@@ -15,10 +15,10 @@
 
           <!-- BUTTON ROW -->
           <div class="btn-row">
-            <router-link
-              to="/coming-soon"
+            <a
+              :href="`${$app_url}/register-lander`"
               class="btn btn-primary btn-lg mgr-16 roobert-500"
-              >Get Started</router-link
+              >Get Started</a
             >
 
             <a

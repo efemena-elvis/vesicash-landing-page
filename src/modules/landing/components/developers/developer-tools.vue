@@ -17,15 +17,24 @@
       <div class="row">
         <div class="col-12 col-md-6">
           <div class="developer-card">
-            <div class="title">Playground</div>
+            <div class="title">
+              Playground
+
+              <!-- COMING SOON INDICATOR -->
+              <span class="coming-soon-indicator">
+                <span class="indicator"></span>
+                Coming Soon</span
+              >
+            </div>
+
             <div class="description">
-              Interract with the Vesicash system and est out various use cases
+              Interract with the Vesicash system and test out various use cases
               via our playground.
             </div>
 
             <div class="btn-row">
               <router-link
-                to="/coming-soon"
+                to=""
                 class="btn btn-secondary btn-lg mgr-16 roobert-500"
                 >Launch playground</router-link
               >
@@ -35,14 +44,21 @@
 
         <div class="col-12 col-md-6">
           <div class="developer-card">
-            <div class="title">Wordpress Plugin</div>
+            <div class="title">
+              Wordpress Plugin
+              <!-- COMING SOON INDICATOR -->
+              <span class="coming-soon-indicator">
+                <span class="indicator"></span>
+                Coming Soon</span
+              >
+            </div>
             <div class="description">
               Integrate Vesicash directly into your woocommerce store.
             </div>
 
             <div class="btn-row">
               <router-link
-                to="/coming-soon"
+                to=""
                 class="btn btn-secondary btn-lg mgr-16 roobert-500"
                 >View wordpress doc</router-link
               >
@@ -154,6 +170,25 @@ export default {
 
       @include breakpoint-down(md) {
         @include generate-font-type("h5");
+      }
+
+      .coming-soon-indicator {
+        position: relative;
+        top: toRem(-6);
+        left: toRem(12);
+        border-radius: toRem(24);
+        padding: toRem(8) toRem(12) toRem(8) toRem(20);
+        background: getColor("yellow-50");
+        color: getColor("yellow-600");
+        @include generate-font-type("label-1");
+
+        .indicator {
+          @include center-placement("y-axis");
+          left: toRem(8);
+          @include draw-shape(6);
+          background: getColor("yellow-600");
+          border-radius: 50%;
+        }
       }
     }
 

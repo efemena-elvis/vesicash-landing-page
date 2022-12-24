@@ -27,7 +27,7 @@
       <div class="email-reminder-row rounded-8 border-grey-300 mx-auto">
         <input
           type="email"
-          class="form-control border-0 p-0"
+          class="form-control"
           placeholder="Enter email address"
         />
         <button class="btn btn-lg btn-primary text-nowrap">Notify me</button>
@@ -112,11 +112,24 @@ export default {
       width: 100%;
     }
 
+    @include breakpoint-down(xs) {
+      @include flex-column-start-start;
+      border: 0;
+    }
+
     input {
       font-size: toRem(15);
+      padding: 0;
+      border-width: 0;
 
       @include breakpoint-down(sm) {
         font-size: toRem(14.5);
+      }
+
+      @include breakpoint-down(xs) {
+        border: toRem(1) solid getColor("grey-300");
+        @include generate-font-type("tertiary-2");
+        padding: toRem(12) toRem(16);
       }
 
       &::placeholder {
@@ -124,6 +137,10 @@ export default {
 
         @include breakpoint-down(sm) {
           font-size: toRem(14.5);
+        }
+
+        @include breakpoint-down(xs) {
+          @include generate-font-type("tertiary-2");
         }
       }
     }
@@ -134,6 +151,10 @@ export default {
       @include breakpoint-down(sm) {
         padding: toRem(12) toRem(26);
         font-size: toRem(14);
+      }
+
+      @include breakpoint-down(xs) {
+        width: 100%;
       }
     }
   }
