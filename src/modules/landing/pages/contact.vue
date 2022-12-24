@@ -32,7 +32,9 @@
               <div class="description">
                 For partnership requests please send an email to
 
-                <a href="mailto:info@vesicash.com">info@vesicash.com</a>
+                <a href="mailto:partnership@vesicash.com"
+                  >partnership@vesicash.com</a
+                >
               </div>
             </div>
 
@@ -94,7 +96,7 @@
               class="
                 contact-wrapper
                 rounded-16
-                green-10-bg
+                neutral-10-bg
                 border-grey-200
                 mgt-32
               "

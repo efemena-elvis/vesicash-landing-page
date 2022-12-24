@@ -87,9 +87,26 @@
                 class="nav-item nav-item-link"
                 >Documentation</a
               >
-              <router-link to="/coming-soon" class="nav-item nav-item-link"
-                >Service Status</router-link
-              >
+              <router-link to="" class="nav-item nav-item-link"
+                >Service Status
+                <span class="icon icon-info yellow-500"></span>
+
+                <!-- COMING SOON INDICATOR -->
+                <div
+                  class="
+                    coming-soon-indicator
+                    rounded-8
+                    border-grey-100
+                    grey-50-bg
+                    text-no-wrap
+                    roobert-400
+                    smooth-animation
+                    grey-700
+                  "
+                >
+                  Coming Soon
+                </div>
+              </router-link>
             </div>
 
             <div class="col-12 col-sm-3">
@@ -212,6 +229,7 @@ export default {
       @include generate-font-type("primary-1");
       font-family: "Roobert-Bold", sans-serif;
       color: getColor("teal-900");
+      position: relative;
 
       &:last-of-type {
         margin-bottom: 0;
@@ -227,6 +245,25 @@ export default {
 
         &:hover {
           color: getColor("green-600");
+        }
+      }
+
+      .coming-soon-indicator {
+        @include generate-font-type("tertiary-1");
+        position: absolute;
+        padding: toRem(16);
+        top: toRem(-54);
+        left: toRem(55);
+        display: none;
+      }
+
+      .icon {
+        position: relative;
+        left: toRem(4);
+        top: toRem(1.35);
+
+        &:hover ~ .coming-soon-indicator {
+          display: unset;
         }
       }
     }
