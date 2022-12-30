@@ -101,138 +101,149 @@
                 mgt-32
               "
             >
-              <div class="row">
-                <div class="col-12 col-md-6 mgb-24">
-                  <!-- FIRSTNAME INPUT FIELD -->
-                  <BasicInput
-                    label_title="First name"
-                    label_id="firstName"
-                    :input_value="form.firstname"
-                    is_required
-                    placeholder="Your first name"
-                    @getInputState="updateFormState($event, 'firstname')"
-                    :error_handler="{
-                      type: 'single',
-                      message:
-                        'First name should contain at least 2 characters',
-                    }"
-                  />
-                </div>
+              <form @submit.prevent="submitContactForm">
+                <div class="row">
+                  <div class="col-12 col-md-6 mgb-24">
+                    <!-- FIRSTNAME INPUT FIELD -->
+                    <BasicInput
+                      label_title="First name"
+                      label_id="firstName"
+                      :input_value="form.first_name"
+                      is_required
+                      placeholder="Your first name"
+                      @getInputState="updateFormState($event, 'first_name')"
+                      :error_handler="{
+                        type: 'single',
+                        message:
+                          'First name should contain at least 2 characters',
+                      }"
+                    />
+                  </div>
 
-                <!-- LASTNAME INPUT FIELD -->
-                <div class="col-12 col-md-6 mgb-24">
-                  <BasicInput
-                    label_title="Last name"
-                    label_id="lastName"
-                    :input_value="form.lastname"
-                    is_required
-                    placeholder="Your last name"
-                    @getInputState="updateFormState($event, 'lastname')"
-                    :error_handler="{
-                      type: 'single',
-                      message: 'Last name should contain at least 2 characters',
-                    }"
-                  />
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-12 col-md-6 mgb-24">
-                  <!-- EMAIL INPUT FIELD -->
-                  <BasicInput
-                    label_title="Email address"
-                    label_id="emailAddress"
-                    input_type="email"
-                    :input_value="form.email_address"
-                    is_required
-                    placeholder="Enter email address"
-                    @getInputState="updateFormState($event, 'email_address')"
-                    :error_handler="{
-                      type: 'email',
-                      message: 'Email address is not valid',
-                    }"
-                  />
-                </div>
-
-                <!-- WEBSITE INPUT FIELD -->
-                <div class="col-12 col-md-6 mgb-24">
-                  <BasicInput
-                    label_title="Website URL"
-                    label_id="websiteURL"
-                    :input_value="form.website_url"
-                    is_required
-                    placeholder="website url"
-                    @getInputState="updateFormState($event, 'website_url')"
-                    :error_handler="{
-                      type: 'single',
-                      message:
-                        'Website url should contain at least 2 characters',
-                    }"
-                  />
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-12 col-md-6 mgb-24">
-                  <!-- BUSINESS TYPE INPUT FIELD -->
-                  <BasicInput
-                    label_title="Business type"
-                    label_id="businessType"
-                    :input_value="form.business_type"
-                    is_required
-                    placeholder="Enter business type"
-                    @getInputState="updateFormState($event, 'business_type')"
-                    :error_handler="{
-                      type: 'single',
-                      message:
-                        'Business type should contain at least 2 characters',
-                    }"
-                  />
-                </div>
-
-                <!-- COUNTRY INPUT FIELD -->
-                <div class="col-12 col-md-6 mgb-24">
-                  <BasicInput
-                    label_title="Country"
-                    label_id="country"
-                    :input_value="form.country"
-                    is_required
-                    placeholder="Enter country"
-                    @getInputState="updateFormState($event, 'country')"
-                    :error_handler="{
-                      type: 'single',
-                      message: 'Country should contain at least 2 characters',
-                    }"
-                  />
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-12">
-                  <div class="form-group mgb-24">
-                    <label for="message" class="form-label">Message</label>
-                    <textarea
-                      id="message"
-                      class="form-control"
-                      rows="5"
-                      placeholder="Enter message here..."
-                    ></textarea>
+                  <!-- LASTNAME INPUT FIELD -->
+                  <div class="col-12 col-md-6 mgb-24">
+                    <BasicInput
+                      label_title="Last name"
+                      label_id="lastName"
+                      :input_value="form.last_name"
+                      is_required
+                      placeholder="Your last name"
+                      @getInputState="updateFormState($event, 'last_name')"
+                      :error_handler="{
+                        type: 'single',
+                        message:
+                          'Last name should contain at least 2 characters',
+                      }"
+                    />
                   </div>
                 </div>
-              </div>
 
-              <div class="row">
-                <div class="message-info roobert-400 grey-600 h7-text mgb-40">
-                  This site is protected by reCAPTCHA and the Google
-                  <router-link to="/privacy-policy">Privacy Policy</router-link>
-                  and <router-link to="/terms">Terms</router-link> of Service
-                  apply.
+                <div class="row">
+                  <div class="col-12 col-md-6 mgb-24">
+                    <!-- EMAIL INPUT FIELD -->
+                    <BasicInput
+                      label_title="Email address"
+                      label_id="emailAddress"
+                      input_type="email"
+                      :input_value="form.email"
+                      is_required
+                      placeholder="Enter email address"
+                      @getInputState="updateFormState($event, 'email')"
+                      :error_handler="{
+                        type: 'email',
+                        message: 'Email address is not valid',
+                      }"
+                    />
+                  </div>
+
+                  <!-- WEBSITE INPUT FIELD -->
+                  <div class="col-12 col-md-6 mgb-24">
+                    <BasicInput
+                      label_title="Website URL"
+                      label_id="websiteURL"
+                      input_type="url"
+                      :input_value="form.website_url"
+                      is_required
+                      placeholder="website url"
+                      @getInputState="updateFormState($event, 'website_url')"
+                      :error_handler="{
+                        type: 'single',
+                        message:
+                          'Website url should contain at least 2 characters',
+                      }"
+                    />
+                  </div>
                 </div>
 
-                <button class="btn btn-primary btn-lg wt-100">
-                  Send Message
-                </button>
-              </div>
+                <div class="row">
+                  <div class="col-12 col-md-6 mgb-24">
+                    <!-- BUSINESS TYPE INPUT FIELD -->
+                    <BasicInput
+                      label_title="Business type"
+                      label_id="businessType"
+                      :input_value="form.business_type"
+                      is_required
+                      placeholder="Enter business type"
+                      @getInputState="updateFormState($event, 'business_type')"
+                      :error_handler="{
+                        type: 'single',
+                        message:
+                          'Business type should contain at least 2 characters',
+                      }"
+                    />
+                  </div>
+
+                  <!-- COUNTRY INPUT FIELD -->
+                  <div class="col-12 col-md-6 mgb-24">
+                    <BasicInput
+                      label_title="Country"
+                      label_id="country"
+                      :input_value="form.country"
+                      is_required
+                      placeholder="Enter country"
+                      @getInputState="updateFormState($event, 'country')"
+                      :error_handler="{
+                        type: 'single',
+                        message: 'Country should contain at least 2 characters',
+                      }"
+                    />
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-group mgb-24">
+                      <label for="message" class="form-label">Message</label>
+                      <textarea
+                        v-model="form.message"
+                        id="message"
+                        class="form-control"
+                        rows="5"
+                        placeholder="Enter message here..."
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="message-info roobert-400 grey-600 h7-text mgb-40">
+                    This site is protected by reCAPTCHA and the Google
+                    <router-link to="/privacy-policy"
+                      >Privacy Policy</router-link
+                    >
+                    and <router-link to="/terms">Terms</router-link> of Service
+                    apply.
+                  </div>
+
+                  <button
+                    class="btn btn-primary btn-lg wt-100"
+                    ref="contactBtn"
+                    :disabled="isValidState"
+                  >
+                    Send Message
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
@@ -242,6 +253,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import BasicInput from "@/shared/components/form-comps/basic-input";
 
 export default {
@@ -251,12 +263,22 @@ export default {
     BasicInput,
   },
 
+  computed: {
+    // CHECK FORM BUTTON VALIDITY STATE
+    isValidState() {
+      return Object.values(this.validity).every((valid) => !valid) &&
+        this.form.message
+        ? false
+        : true;
+    },
+  },
+
   data() {
     return {
       form: {
-        firstname: "",
-        lastname: "",
-        email_address: "",
+        first_name: "",
+        last_name: "",
+        email: "",
         website_url: "",
         business_type: "",
         country: "",
@@ -264,15 +286,46 @@ export default {
       },
 
       validity: {
-        firstname: true,
-        lastname: true,
-        email_address: true,
+        first_name: true,
+        last_name: true,
+        email: true,
         website_url: true,
         business_type: true,
-        country: false,
-        message: true,
+        country: true,
       },
     };
+  },
+
+  methods: {
+    ...mapActions({ handleContactUs: "general/handleContactUs" }),
+
+    submitContactForm() {
+      this.handleClick("contactBtn");
+
+      this.handleContactUs(this.form)
+        .then((response) => {
+          if (response.code === 200) {
+            this.pushToast("Message has been sent!", "success");
+            this.handleClick("contactBtn", "Send Message", false);
+
+            Object.keys(this.form).map((key) => (this.form[key] = ""));
+          }
+
+          // HANDLE NON 200 RESPONSE
+          else this.handleContactError(response.message);
+        })
+        .catch(() => {
+          this.handleContactError("Unable to send message!");
+        });
+    },
+
+    // ============================
+    // HANDLE USER CONTACT ERROR
+    // ============================
+    handleContactError(message) {
+      this.pushToast(message, "error");
+      this.handleClick("contactBtn", "Send Message", false);
+    },
   },
 };
 </script>
