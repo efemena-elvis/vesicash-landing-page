@@ -38,10 +38,10 @@ class serviceApi {
   // ========================================
   // GET API REQUEST FROM A CUSTOM BASE_URL
   // ========================================
-  async fetchRaw(url) {
+  async fetchRaw(url, option = { resolve: true, payload: null }) {
     try {
       const response = await axios.get(url);
-      return response?.data;
+      return option.resolve ? response.data : response;
     } catch (err) {
       return this.handleErrors(err);
     }

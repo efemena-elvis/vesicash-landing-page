@@ -390,7 +390,6 @@ export default {
 
   metaInfo: {
     title: "Terms and Conditions",
-    titleTemplate: "%s - Vesicash | Escrow payment service, Nigeria, Africa",
   },
 };
 </script>

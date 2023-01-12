@@ -19,7 +19,6 @@ export default {
 
   metaInfo: {
     title: "Frequently asked question",
-    titleTemplate: "%s - Vesicash | Escrow payment service, Nigeria, Africa",
   },
 
   components: {

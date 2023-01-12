@@ -259,6 +259,10 @@ import BasicInput from "@/shared/components/form-comps/basic-input";
 export default {
   name: "ContactPage",
 
+  metaInfo: {
+    title: "Contact Us",
+  },
+
   components: {
     BasicInput,
   },
