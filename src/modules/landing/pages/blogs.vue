@@ -14,6 +14,10 @@ import BlogHeroSection from "@/modules/landing/components/blogs/blog-hero-sectio
 export default {
   name: "Blogs",
 
+  metaInfo: {
+    title: "Blog",
+  },
+
   components: {
     BlogHeroSection,
     BlogListSection: () =>

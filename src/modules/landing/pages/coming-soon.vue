@@ -39,6 +39,10 @@
 <script>
 export default {
   name: "ComingSoon",
+
+  metaInfo: {
+    title: "Coming Soon",
+  },
 };
 </script>
 

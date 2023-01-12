@@ -700,7 +700,6 @@ export default {
 
   metaInfo: {
     title: "Privacy policy",
-    titleTemplate: "%s - Vesicash | Escrow payment service, Nigeria, Africa",
   },
 };
 </script>

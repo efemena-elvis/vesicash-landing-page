@@ -20,7 +20,6 @@ export default {
 
   metaInfo: {
     title: "About Us",
-    titleTemplate: "%s - Vesicash | Escrow payment service, Nigeria, Africa",
   },
 
   components: {
