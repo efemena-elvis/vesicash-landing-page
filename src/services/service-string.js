@@ -87,6 +87,10 @@ class serviceString {
     else if (items === 0) return false;
     else return items % 2 ? true : false;
   }
+
+  sortArray(array) {
+    return array.sort(() => Math.random() - 0.5);
+  }
 }
 
 export const $serviceString = new serviceString();

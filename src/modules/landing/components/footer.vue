@@ -63,11 +63,8 @@
               <router-link to="/about" class="nav-item nav-item-link"
                 >About Us</router-link
               >
-              <a
-                href="https://blog.vesicash.com"
-                target="_blank"
-                class="nav-item nav-item-link"
-                >Blog</a
+              <router-link to="/blog" class="nav-item nav-item-link"
+                >Blog</router-link
               >
 
               <router-link to="/contact" class="nav-item nav-item-link"
@@ -87,25 +84,19 @@
                 class="nav-item nav-item-link"
                 >Documentation</a
               >
-              <router-link to="" class="nav-item nav-item-link"
-                >Service Status
-                <span class="icon icon-info yellow-500"></span>
-
-                <!-- COMING SOON INDICATOR -->
-                <div
+              <router-link to="" class="nav-item nav-item-link">
+                <span class="grey-400 disabled" style="cursor: not-allowed"
+                  >Service Status</span
+                >
+                <span
                   class="
                     coming-soon-indicator
-                    rounded-8
-                    border-grey-100
-                    grey-50-bg
                     text-no-wrap
                     roobert-400
-                    smooth-animation
-                    grey-700
+                    yellow-600
                   "
+                  >Coming Soon</span
                 >
-                  Coming Soon
-                </div>
               </router-link>
             </div>
 
@@ -249,23 +240,21 @@ export default {
       }
 
       .coming-soon-indicator {
-        @include generate-font-type("tertiary-1");
+        font-size: toRem(12);
         position: absolute;
-        padding: toRem(16);
-        top: toRem(-54);
-        left: toRem(55);
-        display: none;
+        top: toRem(-16);
+        right: toRem(-15);
       }
 
-      .icon {
-        position: relative;
-        left: toRem(4);
-        top: toRem(1.35);
+      // .icon {
+      //   position: relative;
+      //   left: toRem(4);
+      //   top: toRem(1.35);
 
-        &:hover ~ .coming-soon-indicator {
-          display: unset;
-        }
-      }
+      //   &:hover ~ .coming-soon-indicator {
+      //     display: unset;
+      //   }
+      // }
     }
 
     .product-display {

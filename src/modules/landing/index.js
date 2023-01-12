@@ -72,6 +72,18 @@ const landingRoutes = [
       },
 
       // ===============================
+      // VESICASH BLOG DETAIL ROUTE
+      // ===============================
+      {
+        path: "/blog-detail/:id",
+        name: "VesicashBlogDetail",
+        component: () =>
+          import(
+            /* webpackChunkName: "landing-module" */ "@/modules/landing/pages/blog-detail"
+          ),
+      },
+
+      // ===============================
       // VESICASH DEVELOPERS ROUTE
       // ===============================
       {

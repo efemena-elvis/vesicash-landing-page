@@ -29,8 +29,9 @@ export default {
   name: "Solutions",
 
   metaInfo: {
-    title: "What we do",
-    titleTemplate: "%s - Vesicash | Escrow payment service, Nigeria, Africa",
+    title: "Vesicash",
+    titleTemplate:
+      "%s | Secure Escrow payments and payouts for African Businesses.",
   },
 
   components: {

@@ -5,7 +5,11 @@
     </transition>
 
     <!-- ALERT BANNER -->
-    <AlertBanner v-if="show_alert" :message="alert.message" :status="alert.status" />
+    <AlertBanner
+      v-if="show_alert"
+      :message="alert.message"
+      :status="alert.status"
+    />
 
     <!-- FEATHER PAGE LOADER -->
     <transition name="fade" v-if="show_feather_loader">
@@ -22,12 +26,27 @@ export default {
   name: "App",
 
   metaInfo: {
-    title: "Escrow Payment service Nigeria Africa",
-    titleTemplate: "Vesicash | %s",
+    title: "Vesicash",
+    titleTemplate: "%s | Secure Escrow, Remittances for African Businesses",
+
     htmlAttrs: {
-      lang: "en",
-      amp: true,
+      lang: "en-US",
     },
+
+    meta: [
+      { charset: "utf-8" },
+      {
+        name: "description",
+        content:
+          "Nigeria & Africa’s trusted digital escrow service provider for ensuring safe and secure digital commerce transactions. Access via our Escrow API. Securely manage your business payments transparently. Global settlements and payouts.",
+      },
+      {
+        name: "keywords",
+        content:
+          "escrow services, escrow in nigeria, nigerian escrow service, Escrow, nigerian escrow, online escrow, escrow service, safe online transaction, online transactions, nigeria, africa, online, escrow system in nigeria, escrow platforms in nigeria, escrow for africa, african escrow",
+      },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+    ],
   },
 
   components: {

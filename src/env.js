@@ -6,7 +6,7 @@
 // export const VESICASH_PUBLIC_KEY =
 //   "v_sandbox_rXzegXqN6x6tDknVwf2cVjqlIzkM14i1yrH3RNXoDGQHDEh8Mt";
 
-export const VESICASH_APP_BASE_URL = "business.vesicash.com";
+export const VESICASH_APP_BASE_URL = window.location.href;
 export const VESICASH_API_BASE_URL = "https://api.vesicash.com";
 export const VESICASH_API_VERSION = "v1";
 export const VESICASH_PRIVATE_KEY =
