@@ -63,9 +63,7 @@
               <router-link to="/about" class="nav-item nav-item-link"
                 >About Us</router-link
               >
-              <router-link to="/blog" class="nav-item nav-item-link"
-                >Blog</router-link
-              >
+              <a :href="$blog_url" class="nav-item nav-item-link">Blog</a>
 
               <router-link to="/contact" class="nav-item nav-item-link"
                 >Contact</router-link
