@@ -38,12 +38,12 @@ export default {
       {
         name: "description",
         content:
-          "Nigeria & Africa’s trusted digital escrow service provider for ensuring safe and secure digital commerce transactions. Access via our Escrow API. Securely manage your business payments transparently. Global settlements and payouts.",
+          "Nigeria & Africa’s trusted digital escrow service for ensuring safe and secure digital commerce transactions. Global settlements and payouts via API.",
       },
       {
         name: "keywords",
         content:
-          "escrow services, escrow in nigeria, nigerian escrow service, Escrow, nigerian escrow, online escrow, escrow service, safe online transaction, online transactions, nigeria, africa, online, escrow system in nigeria, escrow platforms in nigeria, escrow for africa, african escrow",
+          "escrow services, escrow in nigeria, nigerian escrow service, Escrow, nigerian escrow, online escrow, escrow service, safe online transaction, online transactions, nigeria, africa, online, escrow system in nigeria, escrow platforms in nigeria, escrow for africa, african escrow, milestone, split payments",
       },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
     ],
