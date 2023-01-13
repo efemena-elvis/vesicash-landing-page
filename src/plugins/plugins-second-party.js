@@ -1,5 +1,5 @@
 import Vue from "vue";
-import { APP_BASE_DOMAIN, OLD_APP_BASE_DOMAIN } from "@/utilities/constant";
+import { VESICASH_APP_URL, VESICASH_BLOG_URL } from "@/utilities/constant";
 
 // ===========================
 // APPLICATION MIXINS
@@ -35,5 +35,5 @@ Vue.mixin({
 // SETUP APPLICATION EVENT BUS AND URL CONSTANTS
 // ===============================================
 Vue.prototype.$bus = new Vue();
-Vue.prototype.$app_url = APP_BASE_DOMAIN;
-Vue.prototype.$old_app_url = OLD_APP_BASE_DOMAIN;
+Vue.prototype.$app_url = VESICASH_APP_URL;
+Vue.prototype.$blog_url = VESICASH_BLOG_URL;
