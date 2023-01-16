@@ -27,7 +27,7 @@ export default {
 
   metaInfo: {
     title: "Vesicash",
-    titleTemplate: "%s | Secure Escrow, Remittances for African Businesses",
+    titleTemplate: "%s | Escrow, Remittances and MoR for Businesses",
 
     htmlAttrs: {
       lang: "en-US",
