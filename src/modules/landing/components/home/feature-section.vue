@@ -15,9 +15,9 @@
       <div class="col-12 col-md-6">
         <FeatureCard
           :feature="{
-            title: 'Global payouts and settlements',
+            title: 'Merchant of Records',
             description:
-              'We offer a range of global payout solutions that allow our clients to receive payments around the world — all within one system. You can choose from our universal payment solution, or customise your own with highly competitive rates and service levels. Obtain and exchange currencies, relevant to your business needs.',
+              'With Vesicash\'s Merchant of Records services, you don\'t have to worry about setting up a separate payment infrastructure for each payment channel or market: all your payments costs are handled in one set of costs.  Our comprehensive suite of features can help you unlock new opportunities for growth. You can now expand into new markets, launch new products quickly, and much more.',
             image: 'feature-two.png',
           }"
         />
