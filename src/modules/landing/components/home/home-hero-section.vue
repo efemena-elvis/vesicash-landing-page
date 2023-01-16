@@ -4,14 +4,15 @@
       <!-- HEADER TEXT -->
       <div class="header-text text-center mgb-32 roobert-700 fw-700 green-200">
         Digital Escrow and <br />
-        Global Remittances
-        <span class="teal-200">for African Businesses</span>
+        Merchant of Record
+        <span class="teal-200">Services for Businesses</span>
       </div>
 
       <!-- DESCRIPTION TEXT -->
       <div class="description-text neutral-10 h6-text roobert-400 text-center">
-        Enabling businesses effectively manage their local and cross-border B2B
-        payments, with an additional security layer.
+        Along with its proprietary digital escrow technology, Vesicash provides
+        Merchant of Records services to help businesses scale and grow with the
+        most secure, reliable, and cost-effective payments infrastructure.
       </div>
 
       <!-- HERO IMAGE -->

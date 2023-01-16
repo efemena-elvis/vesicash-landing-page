@@ -64,12 +64,12 @@ export default {
   data() {
     return {
       business_areas: [
-        "International Fund Settlement",
-        "Business procurements & International Trade",
         "Fund Management",
-        "Aviation",
-        "Real estate",
         "M & A",
+        "Real Estate",
+        "Aviation",
+        "Business procurements & International Trade",
+        "International Fund Settlement",
       ],
     };
   },
