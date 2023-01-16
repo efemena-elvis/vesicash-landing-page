@@ -134,7 +134,7 @@
             roobert-400
           "
         >
-          Copyright 2022. Vesicash Innovative Technologies.
+          Copyright {{ current_year }}. Vesicash Innovative Technologies.
         </div>
       </div>
     </div>
@@ -149,6 +149,15 @@ export default {
 
   components: {
     VesicashBrandLogo,
+  },
+
+  data: () => ({
+    current_year: "",
+  }),
+
+  mounted() {
+    let date = new Date();
+    this.current_year = date.getFullYear();
   },
 };
 </script>
