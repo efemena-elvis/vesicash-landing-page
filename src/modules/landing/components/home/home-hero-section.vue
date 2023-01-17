@@ -5,7 +5,7 @@
       <div class="header-text text-center mgb-32 roobert-700 green-200">
         Secure Escrow & <br />
         Merchant of Records Technology
-        <span class="teal-200">for Global for Businesses</span>
+        <span class="teal-200">for Global Businesses</span>
       </div>
 
       <!-- DESCRIPTION TEXT -->
