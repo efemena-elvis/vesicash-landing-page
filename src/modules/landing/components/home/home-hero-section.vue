@@ -2,15 +2,15 @@
   <div class="home-hero-section teal-900-bg">
     <div class="vesicash-container">
       <!-- HEADER TEXT -->
-      <div class="header-text text-center mgb-32 roobert-700 fw-700 green-200">
-        Secure Escrow Remittances <br />
-        & Merchant of Records Technology
+      <div class="header-text text-center mgb-32 roobert-700 green-200">
+        Secure Escrow & <br />
+        Merchant of Records Technology
         <span class="teal-200">for Global for Businesses</span>
       </div>
 
       <!-- DESCRIPTION TEXT -->
       <div class="description-text neutral-10 h6-text roobert-400 text-center">
-        Along with its proprietary digital escrow technology, Vesicash provides
+        Along with our proprietary digital escrow technology, Vesicash provides
         Merchant of Records services to help businesses scale and grow with the
         most secure, reliable, and cost-effective payments infrastructure.
       </div>
