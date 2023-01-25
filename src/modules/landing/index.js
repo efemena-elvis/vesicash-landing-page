@@ -144,6 +144,18 @@ const landingRoutes = [
       },
     ],
   },
+
+  // ===============================
+  // VESICASH STATUS ROUTE
+  // ===============================
+  {
+    path: "/status",
+    name: "VesicashStatus",
+    component: () =>
+      import(
+        /* webpackChunkName: "landing-module" */ "@/modules/landing/pages/status"
+      ),
+  },
 ];
 
 export default landingRoutes;

@@ -8,6 +8,7 @@ Vue.use(VueRouter);
 // IMPORTED ROUTES FROM RESPECTIVE APPLICATION MODULES
 // =======================================================
 import landingRoutes from "@/modules/landing";
+import playGroundRoutes from "@/modules/transactions";
 
 // =======================================================
 // SETTING UP A ROUTES ARRAY TO HOLD ALL ROUTE MODULES
@@ -15,6 +16,7 @@ import landingRoutes from "@/modules/landing";
 // =======================================================
 const routes = [
   ...landingRoutes,
+  ...playGroundRoutes,
   {
     path: "/*",
     name: "NotFoundError",
