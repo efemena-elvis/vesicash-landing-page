@@ -38,9 +38,7 @@
         class="btn btn-primary btn-md"
         :disabled="isValidState"
         @click="handleAddUser"
-      >
-        Add User
-      </button>
+      >Add User</button>
     </div>
   </div>
 </template>
@@ -59,6 +57,32 @@ export default {
 
   components: {
     BasicInput,
+  },
+
+  props: {
+    random_user: {
+      type: Object,
+      default: () => ({}),
+    },
+  },
+
+  watch: {
+    random_user: {
+      handler({ email_address, phone_number }) {
+        if (email_address && phone_number) {
+          this.form = {
+            ...this.form,
+            email_address,
+            phone_number,
+          };
+          this.validity = {
+            ...this.validity,
+            email_address: false,
+            phone_number: false,
+          };
+        }
+      },
+    },
   },
 
   computed: {

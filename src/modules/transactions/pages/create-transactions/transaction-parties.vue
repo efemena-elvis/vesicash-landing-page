@@ -1,11 +1,15 @@
 <template>
   <div class="fund-beneficiaries">
-    <div class="disbursement-title h4-text grey-900 mgb-32">Invite Parties</div>
+    <div class="title-row">
+      <div class="disbursement-title h4-text grey-900">Invite Parties</div>
+      <button
+        class="btn btn-primary btn-md"
+        @click="getTransactionParty === 'single' ? generateRandomUser() : generateRandomCustomUser(getActiveRole)"
+      >Auto fill fields</button>
+    </div>
 
     <!-- INSTRUCTION TEXT -->
-    <div class="instruction-text grey-900 primary-2-text mgb-12">
-      {{ showInstructionMessage }}
-    </div>
+    <div class="instruction-text grey-900 primary-2-text mgb-12">{{ showInstructionMessage }}</div>
 
     <!-- FUND USERS TABLE -->
     <div class="wrapper mgb-24">
@@ -18,15 +22,16 @@
 
     <!-- ADD BENEFICIARY BLOCK -->
     <div class="wrapper mgb-40">
-      <AddBeneficiarySingleBlock v-if="getTransactionParty === 'single'" />
-      <AddBeneficiaryMultiBlock v-else />
+      <AddBeneficiarySingleBlock
+        :random_user="random_user"
+        v-if="getTransactionParty === 'single'"
+      />
+      <AddBeneficiaryMultiBlock v-else :random_user="random_custom_user" />
     </div>
 
     <!-- CTA ACTION ROW -->
     <div class="action-row mgt-14">
-      <button class="btn btn-primary btn-md" @click="nextProgressFlow">
-        Continue
-      </button>
+      <button class="btn btn-primary btn-md" @click="nextProgressFlow">Continue</button>
     </div>
   </div>
 </template>
@@ -39,6 +44,7 @@ import {
   MULTIPLE_ROLE_OPTIONS,
   USER_ACCESS_OPTIONS,
   USER_PAYOUT_OPTIONS,
+  RANDOM_USERS,
 } from "@/modules/transactions/constants";
 
 export default {
@@ -63,6 +69,24 @@ export default {
     ...mapGetters({
       getTransactionBeneficiaries: "transactions/getTransactionBeneficiaries",
     }),
+
+    getActiveRole() {
+      const has_buyer = this.getTransactionBeneficiaries.some(
+        (data) => data.role.name === "Buyer"
+      );
+      const has_seller = this.getTransactionBeneficiaries.some(
+        (data) => data.role.name === "Seller"
+      );
+
+      if (!has_buyer && !has_seller)
+        return ["BUYER", "SELLER"][this.generateRandomNumber(2)];
+      if (!has_buyer) return "BUYER";
+      if (!has_seller) return "SELLER";
+      if (has_buyer && has_seller)
+        return ["BROKER", "SUB_BROKER"][this.generateRandomNumber(2)];
+
+      return "BROKER";
+    },
 
     // =============================================
     // HANDLE TABLE INSTRUCTION PAGE DESCRIPTION
@@ -97,6 +121,18 @@ export default {
         email: "elvis@vesicash.com",
         phone: "09131100002",
       },
+
+      random_user: {
+        email_address: "",
+        phone_number: "",
+      },
+
+      random_custom_user: {
+        email_address: "",
+        phone_number: "",
+        access: 0,
+        role: 0,
+      },
     };
   },
 
@@ -111,6 +147,63 @@ export default {
       UPDATE_TRANSACTION_BENEFICIARIES:
         "transactions/UPDATE_TRANSACTION_BENEFICIARIES",
     }),
+
+    generateRandomNumber(range) {
+      return Math.floor(Math.random() * range);
+    },
+
+    generateRandomAccess(role) {
+      // randomly choose user access based on their role
+      //BUYER can view or approve
+      //SELLER can mark-as-done or view
+      //BROKER can do anything
+      switch (role) {
+        case "BUYER":
+          return [USER_ACCESS_OPTIONS[0], USER_ACCESS_OPTIONS[2]][
+            this.generateRandomNumber(2)
+          ];
+        case "SELLER":
+          return [USER_ACCESS_OPTIONS[1], USER_ACCESS_OPTIONS[2]][
+            this.generateRandomNumber(2)
+          ];
+        case "BROKER":
+          return USER_ACCESS_OPTIONS[this.generateRandomNumber(3)];
+        default:
+          return USER_ACCESS_OPTIONS[2];
+      }
+    },
+
+    generateRandomUser() {
+      const range = RANDOM_USERS?.length;
+      const { email_address, phone_number } =
+        RANDOM_USERS[this.generateRandomNumber(range)];
+
+      this.random_user = {
+        email_address,
+        phone_number,
+      };
+    },
+
+    generateRandomCustomUser(role) {
+      const range = RANDOM_USERS?.length;
+
+      const { email_address, phone_number } =
+        RANDOM_USERS[this.generateRandomNumber(range)];
+
+      const access = this.generateRandomAccess(role);
+
+      let user_role = MULTIPLE_ROLE_OPTIONS[0];
+      if (role === "SELLER") user_role = MULTIPLE_ROLE_OPTIONS[1];
+      if (role === "BROKER") user_role = MULTIPLE_ROLE_OPTIONS[2];
+      if (role === "SUB_BROKER") user_role = MULTIPLE_ROLE_OPTIONS[3];
+
+      this.random_custom_user = {
+        email_address,
+        phone_number,
+        role: user_role,
+        access,
+      };
+    },
 
     nextProgressFlow() {
       if (this.checkValidPartyState())
@@ -258,5 +351,14 @@ export default {
       }
     }
   }
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 800px;
+  max-width: 100%;
+  margin-bottom: toRem(32);
 }
 </style>

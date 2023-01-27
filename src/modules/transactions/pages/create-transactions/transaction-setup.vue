@@ -1,7 +1,9 @@
 <template>
   <div class="fund-details">
-    <div class="disbursement-title h4-text grey-900 mgb-32">
-      Add Transaction Details
+    <div class="title-row">
+      <div class="disbursement-title h4-text grey-900">Add Transaction Details</div>
+
+      <button class="btn btn-primary btn-md" @click="autoFillForms">Auto fill fields</button>
     </div>
 
     <!-- TRANSACTION NAME -->
@@ -13,7 +15,7 @@
             label_id="transactionName"
             is_required
             placeholder="Please give this transaction a name"
-            :input_value="getTransactionSetup.name || form.transaction_name"
+            :input_value="form.transaction_name || getTransactionSetup.name"
             @getInputState="updateFormState($event, 'transaction_name')"
             :error_handler="{
               type: 'required',
@@ -25,9 +27,9 @@
     </div>
 
     <!-- DISBURSEMENT TYPE TITLE -->
-    <div class="disbursement-type-title grey-900 primary-1-text mgb-10">
-      How many people are transacting?
-    </div>
+    <div
+      class="disbursement-type-title grey-900 primary-1-text mgb-10"
+    >How many people are transacting?</div>
 
     <!-- TRANSACTING PARTY SELECTIONS -->
     <div class="disbursement-type-selections row mgb-8">
@@ -46,9 +48,9 @@
     </div>
 
     <!-- DISBURSEMENT TYPE TITLE -->
-    <div class="disbursement-type-title grey-900 primary-1-text mgb-10">
-      How will this payment be disbursed?
-    </div>
+    <div
+      class="disbursement-type-title grey-900 primary-1-text mgb-10"
+    >How will this payment be disbursed?</div>
 
     <!-- DISBURSEMENT TYPE SELECTIONS -->
     <div class="disbursement-type-selections row mgb-12">
@@ -67,9 +69,9 @@
 
     <!-- DISPUTE POLICY -->
     <template>
-      <div class="disbursement-type-title grey-900 primary-1-text mgb-10">
-        Attach a contract or document (Optional)
-      </div>
+      <div
+        class="disbursement-type-title grey-900 primary-1-text mgb-10"
+      >Attach a contract or document (Optional)</div>
 
       <div class="col-12 col-lg-10 col-xl-8 mgb-40">
         <ContractUploadCard />
@@ -82,9 +84,7 @@
         class="btn btn-primary btn-md"
         :disabled="isDisabled"
         @click="nextProgressFlow"
-      >
-        Continue
-      </button>
+      >Continue</button>
     </div>
   </div>
 </template>
@@ -92,6 +92,7 @@
 <script>
 import { mapMutations, mapGetters } from "vuex";
 import BasicInput from "@/shared/components/form-comps/basic-input";
+import { RANDOM_TRANSACTION_NAMES } from "@/modules/transactions/constants";
 
 export default {
   name: "TransactionSetup",
@@ -227,6 +228,37 @@ export default {
         this.form.transaction_party = this.transacting_party[data.index].slug;
       }
     },
+
+    generateRandomNumber(range) {
+      return Math.floor(Math.random() * range);
+    },
+
+    autoFillForms() {
+      this.fillTransactionName();
+      this.fillTransactionType();
+      this.fillTransactionParties();
+    },
+
+    fillTransactionName() {
+      const range = RANDOM_TRANSACTION_NAMES?.length;
+      const name = RANDOM_TRANSACTION_NAMES[this.generateRandomNumber(range)];
+      this.form.transaction_name = name;
+      this.validity.transaction_name = false;
+    },
+
+    fillTransactionParties() {
+      const index = this.generateRandomNumber(2);
+      const { type } = this.transacting_party[index];
+      const update = { index, type };
+      this.updateUserSelection(update);
+    },
+
+    fillTransactionType() {
+      const index = this.generateRandomNumber(2);
+      const { type } = this.disbursement_types[index];
+      const update = { index, type };
+      this.updateUserSelection(update);
+    },
   },
 };
 </script>
@@ -276,5 +308,14 @@ export default {
       width: 100%;
     }
   }
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 800px;
+  max-width: 100%;
+  margin-bottom: toRem(32);
 }
 </style>

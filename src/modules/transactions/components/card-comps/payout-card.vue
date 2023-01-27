@@ -4,9 +4,7 @@
     <div
       class="card-title primary-2-text grey-900 mgb-24"
       v-if="getTransactionType === 'milestone'"
-    >
-      {{ getMilestoneName }}
-    </div>
+    >{{ getMilestoneName }}</div>
 
     <!-- PAYOUT INPUTS -->
     <div class="payout-inputs">
@@ -14,7 +12,7 @@
         <!-- PAYMENT CURRENCY -->
         <div class="col-12 col-sm-6" v-if="index === 0">
           <div class="form-group">
-            <label class="form-label"> Select payment currency </label>
+            <label class="form-label">Select payment currency</label>
             <DropSelectInput
               :pre_select="currency"
               @selectedOption="
@@ -27,10 +25,7 @@
         </div>
 
         <!-- MILESTONE NAME -->
-        <div
-          class="col-12 col-sm-6"
-          :class="getTransactionType === 'oneoff' && 'invisible'"
-        >
+        <div class="col-12 col-sm-6" :class="getTransactionType === 'oneoff' && 'invisible'">
           <div class="form-group">
             <BasicInput
               label_title="Milestone name"
@@ -43,10 +38,7 @@
         </div>
 
         <!-- HOLDING INVISIBLE SPACE -->
-        <div
-          class="col-12 col-sm-6"
-          :class="index > 0 ? 'invisible' : 'd-none'"
-        ></div>
+        <div class="col-12 col-sm-6" :class="index > 0 ? 'invisible' : 'd-none'"></div>
 
         <!-- RECIPIENTS DATA -->
         <template v-for="(user, user_index) in loadCurrentMilestoneRecipients">
@@ -105,7 +97,7 @@
 
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label class="form-label"> Inspection period (Days) </label>
+            <label class="form-label">Inspection period (Days)</label>
             <DropSelectInput
               :pre_select="milestone.inspection_period"
               @selectedOption="
