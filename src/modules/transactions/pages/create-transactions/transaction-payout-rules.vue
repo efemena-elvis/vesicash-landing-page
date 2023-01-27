@@ -4,27 +4,27 @@
 
     <div class="instruction-wrapper col-xl-8 mgb-12">
       <!-- INSTRUCTION TEXT -->
-      <div class="instruction-text grey-900 primary-2-text mgr-5">
-        Provide details for the Payout
-      </div>
+      <div class="instruction-text grey-900 primary-2-text mgr-5">Provide details for the Payout</div>
 
-      <button
-        class="btn btn-secondary btn-md"
-        v-if="getTransactionType === 'milestone'"
-        @click="addNewMilestone"
-      >
-        <div class="icon icon-plus"></div>
-        <div class="text">Add new milestone</div>
-      </button>
+      <div class="button-row">
+        <button class="btn btn-primary btn-md mgr-15" @click="autoFillFields">
+          <div class="text">Auto fill fields</div>
+        </button>
+
+        <button
+          class="btn btn-secondary btn-md"
+          v-if="getTransactionType === 'milestone'"
+          @click="addNewMilestone"
+        >
+          <div class="icon icon-plus"></div>
+          <div class="text">Add new milestone</div>
+        </button>
+      </div>
     </div>
 
     <!-- PAYOUT CARDS -->
     <div class="wrapper row">
-      <div
-        class="col-xl-8"
-        v-for="(milestone, index) in getTransactionMilestones"
-        :key="index"
-      >
+      <div class="col-xl-8" v-for="(milestone, index) in getTransactionMilestones" :key="index">
         <PayoutCard
           :milestone="milestone"
           :currency="getTransactionAmount.currency"
@@ -34,9 +34,7 @@
     </div>
 
     <!-- INSTRUCTION TEXT -->
-    <div class="instruction-text grey-900 primary-2-text mgb-12">
-      How May Any Dispute Be Handled?
-    </div>
+    <div class="instruction-text grey-900 primary-2-text mgb-12">How May Any Dispute Be Handled?</div>
 
     <div class="wrapper row mgb-32">
       <div class="col-xl-8">
@@ -76,24 +74,25 @@
     <!-- SUMMATION TOTAL -->
     <div class="wrapper mgb-40">
       <div class="col-xl-8">
-        <SummationCard
-          :milestones="getTransactionMilestones"
-          :amount_data="getTransactionAmount"
-        />
+        <SummationCard :milestones="getTransactionMilestones" :amount_data="getTransactionAmount" />
       </div>
     </div>
 
     <!-- CTA ACTION ROW -->
     <div class="action-row mgt-14">
-      <button class="btn btn-primary btn-md" @click="nextProgressFlow">
-        Continue
-      </button>
+      <button class="btn btn-primary btn-md" @click="nextProgressFlow">Continue</button>
     </div>
   </div>
 </template>
 
 <script>
 import { mapMutations, mapGetters } from "vuex";
+import {
+  INSPECTION_OPTIONS,
+  CURRENCY_OPTIONS,
+  RANDOM_MILESTONE_NAMES,
+  RANDOM_TRANSACTION_AMOUNTS,
+} from "@/modules/transactions/constants";
 
 export default {
   name: "FundPayoutRules",
@@ -150,9 +149,134 @@ export default {
     ...mapMutations({
       UPDATE_TRANSACTION_MILESTONE: "transactions/UPDATE_TRANSACTION_MILESTONE",
       UPDATE_MILESTONE_RECIPIENT: "transactions/UPDATE_MILESTONE_RECIPIENT",
+      UPDATE_RECIPIENT_AMOUNT: "transactions/UPDATE_RECIPIENT_AMOUNT",
       UPDATE_TRANSACTION_DISPUTE_MGT:
         "transactions/UPDATE_TRANSACTION_DISPUTE_MGT",
+      UPDATE_MILESTONE_DATA: "transactions/UPDATE_MILESTONE_DATA",
     }),
+
+    generateRandomNumber(range) {
+      return Math.floor(Math.random() * range);
+    },
+
+    generateRandomDate() {
+      //use current year
+      const year = new Date().getFullYear();
+
+      // choose random month
+      let month = Math.floor(Math.random() * 12) + 1;
+
+      let day = 1;
+
+      // choose day based on month (30 has sept, april june & nov....)
+      if (month === 2) day = Math.floor(Math.random() * 28) + 1;
+      else if ([9, 4, 6, 11].includes(month))
+        day = Math.floor(Math.random() * 30) + 1;
+      else day = Math.floor(Math.random() * 31) + 1;
+
+      // allow only today or future day
+      if (day < new Date().getDate()) day = new Date().getDate();
+
+      // allow current month or future month
+      if (month < new Date().getMonth() + 1) month = new Date().getMonth() + 1;
+
+      if (month < 10) month = `0${month}`;
+
+      if (day < 10) day = `0${day}`;
+
+      return `${year}-${month}-${day}`;
+    },
+
+    generateRandomPayoutDetails() {
+      const due_date = this.generateRandomDate();
+      const inspection_period =
+        INSPECTION_OPTIONS[
+          this.generateRandomNumber(INSPECTION_OPTIONS.length)
+        ];
+      const milestone_name =
+        RANDOM_MILESTONE_NAMES[
+          this.generateRandomNumber(RANDOM_MILESTONE_NAMES.length)
+        ];
+      const amount =
+        RANDOM_TRANSACTION_AMOUNTS[
+          this.generateRandomNumber(RANDOM_TRANSACTION_AMOUNTS.length)
+        ];
+      const currency =
+        CURRENCY_OPTIONS[this.generateRandomNumber(CURRENCY_OPTIONS.length)];
+
+      return {
+        due_date,
+        inspection_period,
+        milestone_name,
+        amount,
+        escrow_fee: amount * 0.05,
+        currency,
+      };
+    },
+
+    autoFillFields() {
+      let payment_amount = 0;
+      let milestone_amounts = [];
+
+      const random_milestones_data = [...this.getTransactionMilestones].map(
+        (milestone, index) => {
+          const { due_date, inspection_period, amount } =
+            this.generateRandomPayoutDetails();
+          payment_amount += amount;
+          milestone_amounts.push(amount);
+
+          //update recipeints accordingly
+          [...this.getMilestoneRecipients].map((recipient, index) => {
+            let recipient_index = this.getMilestoneRecipients.findIndex(
+              (user) => user.update_id == recipient.update_id
+            );
+
+            let recipient_payload = {
+              ...this.getMilestoneRecipients[recipient_index],
+            };
+            recipient_payload.amount = milestone_amounts[index];
+
+            this.UPDATE_RECIPIENT_AMOUNT({
+              recipient_payload,
+              recipient_index,
+            });
+          });
+
+          return {
+            ...milestone,
+            due_date,
+            inspection_period,
+            name: `Milestone Level ${index + 1}`,
+          };
+        }
+      );
+
+      this.UPDATE_TRANSACTION_MILESTONE(random_milestones_data);
+
+      const { currency } = this.generateRandomPayoutDetails();
+
+      const amount_data = {
+        currency,
+        escrow_fee: payment_amount * 0.05,
+        milestone_amounts,
+        payment_amount,
+        total_fee: payment_amount + payment_amount * 0.05,
+      };
+
+      Object.entries(amount_data).map(([type, selected]) => {
+        this.UPDATE_MILESTONE_DATA({
+          outer_data: {
+            type,
+            selected,
+          },
+        });
+      });
+
+      const dispute_handler = ["vesicash", "arbitration"][
+        this.generateRandomNumber(2)
+      ];
+      this.UPDATE_TRANSACTION_DISPUTE_MGT(dispute_handler);
+    },
 
     nextProgressFlow() {
       this.checkValidState();
@@ -385,6 +509,7 @@ export default {
 
   .instruction-wrapper {
     @include flex-row-between-wrap;
+    gap: toRem(20) 0;
 
     .btn {
       padding: toRem(8) toRem(24) toRem(8) toRem(18);
@@ -419,6 +544,11 @@ export default {
         width: 100%;
       }
     }
+  }
+
+  .button-row {
+    display: flex;
+    align-items: center;
   }
 }
 </style>
