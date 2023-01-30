@@ -18,7 +18,7 @@
           v-for="(data, index) in getPaymentOptions"
           :key="index"
           :payment="data"
-          @payTypeClicked="handleModalClick(index)"
+          @payTypeClicked="handleModalClick"
         />
       </div>
     </template>
@@ -92,7 +92,7 @@ export default {
           title: transfer_title,
           description: transfer_description,
           action_type: "modal",
-          action: "toggleWireTransferModal",
+          action: "SuccessfulPayment",
         },
         {
           id: 3,
@@ -101,7 +101,7 @@ export default {
           description:
             "Make a transfer from your flutterwave business account.",
           action_type: "modal",
-          action: "toggleFWBizModal",
+          action: "SuccessfulPayment",
         },
         {
           id: 4,
@@ -109,7 +109,7 @@ export default {
           title: "Pay from your wallet",
           description: wallet_description,
           action_type: "modal",
-          action: "toggleWireTransferModal",
+          action: "SuccessfulPayment",
         },
       ];
     },
@@ -145,22 +145,8 @@ export default {
   }),
 
   methods: {
-    handleModalClick(index) {
-      if (index === 0) this.$emit("initiateCardPayment");
-      if (index === 1) this.toggleWireTransferModal();
-      // if (index === 2) this.toggleFWBizModal();
-      if (index === 3) this.$emit("initiateWalletTransfer");
-      //this will updated later when flutterwave business api is ready
-    },
-
-    toggleWireTransferModal() {
-      const currency = this.paymentDetails?.currency?.slug;
-      this.$emit("initiateWireTransfer", currency);
-    },
-
-    toggleFWBizModal() {
-      const currency = this.paymentDetails?.currency?.slug;
-      this.$emit("initiateFWBizPayment", currency);
+    handleModalClick() {
+      this.$emit("openSuccess");
     },
   },
 };

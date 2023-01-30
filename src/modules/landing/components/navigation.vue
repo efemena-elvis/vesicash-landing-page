@@ -33,12 +33,14 @@
           <div class="nav-buttons">
             <a
               :href="`${$app_url}/login`"
+              target="_blank"
               class="btn btn-tertiary btn-md roobert-500 mgr-16"
               >Sign In</a
             >
 
             <a
               :href="`${$app_url}/register-lander`"
+              target="_blank"
               class="btn btn-primary btn-md roobert-500"
               >Create an account</a
             >
@@ -74,7 +76,7 @@ export default {
 
   mounted() {
     window.onscroll = () => {
-      this.$refs.navbar.classList.toggle("scrolling-up", window.scrollY > 20);
+      this.$refs.navbar?.classList.toggle("scrolling-up", window.scrollY > 20);
     };
   },
 

@@ -22,21 +22,6 @@
           {{ payment.description }}
         </div>
       </div>
-
-      <!-- v-if="payment.id===3" -->
-      <template v-if="false">
-        <div class="coming-soon-wrapper">
-          <div class="icon icon-question-circle teal-300"></div>
-        </div>
-
-        <!-- BOTTOM TOOLTIP -->
-        <div class="tooltip-wrapper wt-100 position-absolute">
-          <div class="tooltip-data wt-100 grey-10-bg rounded-8 grey-900">
-            This feature is still under development and will be added as part of
-            the payment options soon
-          </div>
-        </div>
-      </template>
     </div>
 
     <!-- RIGHT SECTION -->
@@ -79,9 +64,7 @@ export default {
 
   methods: {
     handleCardSelection() {
-      if (this.payment.action_type === "route") {
-        this.$router.push({ name: this.payment.action });
-      } else this.$emit("payTypeClicked");
+      this.$emit("payTypeClicked");
     },
   },
 };

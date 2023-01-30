@@ -14,7 +14,11 @@
             :info="{
               icon: 'SuccessIcon',
               title: 'Payment made successfully',
-              description: `Your payment of <b>${$route.query.fee}</b> has been made sucessfully, Please check your escrow account on your dashboard for the payment.`,
+              description: `Your payment of <b>${$money.getSign(
+                $route.query.currency
+              )}${$money.addComma(
+                $route.query.fee
+              )}</b> has been made sucessfully, Please check your escrow account on your dashboard for the payment.`,
             }"
           />
 
@@ -33,18 +37,19 @@
 
         <!-- BUTTON AREA -->
         <div class="btn-area mgt-30 mgb-10">
-          <!-- <div class="btn btn-secondary btn-md mgb-24">Download Receipt</div> -->
-
           <a
-            class="btn btn-primary btn-md"
-            :href="$route.query.redirect"
-            v-if="$route.query.redirect"
-            >Continue transaction</a
+            :href="`${$app_url}/register-lander`"
+            target="_blank"
+            class="btn btn-primary btn-md mgb-24"
+            >Create an account</a
           >
 
-          <router-link v-else to="/dashboard" class="btn btn-primary btn-md"
-            >Go to Dashboard</router-link
+          <button
+            @click="resetTransaction"
+            class="btn btn-secondary btn-md w-100"
           >
+            Try another scenerio
+          </button>
         </div>
       </div>
     </AuthWrapper>
@@ -59,7 +64,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapMutations } from "vuex";
 import AuthWrapper from "@/modules/transactions/components/auth-wrapper";
 import FailedPaymentModal from "@/modules/transactions/modals/failed-payment-modal";
 
@@ -71,62 +76,20 @@ export default {
     titleTemplate: "%s - Vesicash",
   },
 
-  mounted() {
-    if (this.$route.query.reference) this.confirmPayment();
-    else this.payment_confirmed = true;
-  },
-
   data() {
     return {
       show_failed_modal: false,
-      payment_confirmed: false,
+      payment_confirmed: true,
       retried: false,
     };
   },
 
   methods: {
-    ...mapActions({
-      confirmPaymentStatus: "transactions/confirmPaymentStatus",
-    }),
+    ...mapMutations({ RESET_TRANSACTION: "transactions/RESET_TRANSACTION" }),
 
-    async retryConfirmation() {
-      await this.confirmPayment();
-      this.retried = true;
-    },
-
-    async confirmPayment() {
-      this.showPageLoader("Confirming payment");
-
-      try {
-        const response = await this.confirmPaymentStatus({
-          reference: this.$route.query.reference,
-          fund_wallet: true,
-          headless: true,
-        });
-
-        this.hidePageLoader();
-
-        if (response.code === 200) this.payment_confirmed = true;
-        else {
-          // this.pushToast(response.message || "Payment failed", "error");
-
-          this.retried
-            ? (this.show_failed_modal = true)
-            : this.retryConfirmation();
-        }
-      } catch (error) {
-        this.hidePageLoader();
-        this.retried
-          ? (this.show_failed_modal = true)
-          : this.retryConfirmation();
-        console.log("FAILED TO CONFIRM PAYMENT", error);
-        // this.show_failed_modal = true;
-
-        // this.pushToast(
-        //   "Failed to verify payment. Reload to try again",
-        //   "error"
-        // );
-      }
+    resetTransaction() {
+      this.RESET_TRANSACTION();
+      this.$router.push({ name: "TransactionSetup" });
     },
 
     showSuccessState() {

@@ -43,6 +43,7 @@
         <PaymentsModal
           :paymentDetails="getTransactionAmount"
           @closeTriggered="togglePaymentOptionModal"
+          @openSuccess="closeFundDetailsAndOpenSuccess"
         />
       </transition>
     </portal>
