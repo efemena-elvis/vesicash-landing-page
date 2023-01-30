@@ -220,27 +220,34 @@ export default {
 
       const random_milestones_data = [...this.getTransactionMilestones].map(
         (milestone, index) => {
-          const { due_date, inspection_period, amount } =
+          const { due_date, inspection_period } =
             this.generateRandomPayoutDetails();
+
+          let amount = 0;
+          //update recipeints accordingly
+          [...this.getMilestoneRecipients]
+            .filter((rec) => rec.milestone_id === milestone.id)
+            .map((recipient) => {
+              const { amount: randomAmount } =
+                this.generateRandomPayoutDetails();
+              amount += randomAmount;
+              let recipient_index = this.getMilestoneRecipients.findIndex(
+                (user) => user.update_id == recipient.update_id
+              );
+
+              let recipient_payload = {
+                ...this.getMilestoneRecipients[recipient_index],
+              };
+              recipient_payload.amount = randomAmount;
+
+              this.UPDATE_RECIPIENT_AMOUNT({
+                recipient_payload,
+                recipient_index,
+              });
+            });
+
           payment_amount += amount;
           milestone_amounts.push(amount);
-
-          //update recipeints accordingly
-          [...this.getMilestoneRecipients].map((recipient, index) => {
-            let recipient_index = this.getMilestoneRecipients.findIndex(
-              (user) => user.update_id == recipient.update_id
-            );
-
-            let recipient_payload = {
-              ...this.getMilestoneRecipients[recipient_index],
-            };
-            recipient_payload.amount = milestone_amounts[index];
-
-            this.UPDATE_RECIPIENT_AMOUNT({
-              recipient_payload,
-              recipient_index,
-            });
-          });
 
           return {
             ...milestone,
@@ -254,6 +261,8 @@ export default {
       this.UPDATE_TRANSACTION_MILESTONE(random_milestones_data);
 
       const { currency } = this.generateRandomPayoutDetails();
+
+      console.log("PAYMENTS ARE", milestone_amounts, payment_amount);
 
       const amount_data = {
         currency,
