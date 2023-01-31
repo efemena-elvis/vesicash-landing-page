@@ -6,4 +6,13 @@ export default () => ({
     total_pages: 1,
     total_post: 0,
   },
+
+  file: {
+    name: "",
+    size: "",
+    progress: 0,
+    uploading: false,
+  },
+
+  all_files: [],
 });

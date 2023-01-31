@@ -21,7 +21,7 @@
               Playground
 
               <!-- COMING SOON INDICATOR -->
-              <span class="coming-soon-indicator">
+              <span class="coming-soon-indicator" v-if="false">
                 <span class="indicator"></span>
                 Coming Soon</span
               >
@@ -34,7 +34,7 @@
 
             <div class="btn-row">
               <router-link
-                to=""
+                :to="{ name: 'TransactionSetup' }"
                 class="btn btn-secondary btn-lg mgr-16 roobert-500"
                 >Launch playground</router-link
               >
