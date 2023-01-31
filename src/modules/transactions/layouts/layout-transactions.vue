@@ -4,7 +4,9 @@
       <div class="row">
         <div class="col-12">
           <!-- BACK BUTTON -->
-          <PageBackBtn history_mode />
+          <PageBackBtn v-if="$route.name==='TransactionSetup'" back_link="/" />
+
+          <PageBackBtn history_mode v-else />
 
           <!-- FUND DISBURSMENT FLOW -->
           <ProgressFlowCard :flows="getComputedPageFlow" />
