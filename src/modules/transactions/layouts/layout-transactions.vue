@@ -4,7 +4,11 @@
       <div class="row">
         <div class="col-12">
           <!-- BACK BUTTON -->
-          <PageBackBtn v-if="$route.name==='TransactionSetup'" back_link="/" />
+          <PageBackBtn
+            v-if="$route.name === 'TransactionSetup'"
+            back_link="/developers"
+            btn_text="Exit"
+          />
 
           <PageBackBtn history_mode v-else />
 
