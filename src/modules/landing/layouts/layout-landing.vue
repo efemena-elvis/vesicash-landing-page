@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from "vuex";
 import Navigation from "@/modules/landing/components/navigation";
 import Footer from "@/modules/landing/components/footer";
 
@@ -25,8 +26,23 @@ export default {
     Footer,
   },
 
+  computed: {
+    ...mapGetters({ getTransactions: "transactions/getTransactions" }),
+  },
+
   mounted() {
     this.$color.setPageBackgroundColor("#ffffff");
+    this.resetTransaction();
+  },
+
+  methods: {
+    ...mapMutations({ RESET_TRANSACTION: "transactions/RESET_TRANSACTION" }),
+
+    resetTransaction() {
+      if (this.getTransactions?.name?.length) {
+        this.RESET_TRANSACTION();
+      }
+    },
   },
 };
 </script>
