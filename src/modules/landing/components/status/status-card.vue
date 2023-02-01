@@ -4,7 +4,10 @@
       {{ status.title }}
     </div>
 
-    <div class="status-text roobert-400 tertiary-2-text green-500">
+    <div
+      class="status-text roobert-400 tertiary-2-text"
+      :class="status.status === 'Operational' ? 'green-500' : 'red-500'"
+    >
       {{ status.status }}
     </div>
   </div>

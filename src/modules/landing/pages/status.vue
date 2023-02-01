@@ -24,6 +24,7 @@
               text-center
               tertiary-1-text
             "
+            v-if="servers_up"
           >
             All of our services are online. {{ getCurrentDateTime }}
           </div>
@@ -62,24 +63,30 @@ export default {
 
   computed: {
     getCurrentDateTime() {
-      let date = new Date();
-
-      let current_day = `${date.getFullYear()}-${
-        date.getMonth() + 1
-      }-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
-
       let { d3, m3, y1, h01, b2, a0 } = this.$date
-        .formatDate(current_day)
+        .formatDate(this.setupDateTime())
         .getAll();
 
-      console.log(current_day);
+      return `${m3} ${d3} ${y1}, ${h01}:${b2} ${a0.toUpperCase()}`;
+    },
+  },
 
-      return `${m3} ${d3} ${y1}, ${h01}:${b2}${a0}`;
+  watch: {
+    status_list: {
+      handler(value) {
+        this.servers_up = value.every(
+          (status) => status.status === "Operational"
+        );
+      },
+      immediate: true,
+      deep: true,
     },
   },
 
   data() {
     return {
+      servers_up: false,
+
       status_list: [
         {
           title: "Auth",
@@ -129,12 +136,25 @@ export default {
   methods: {
     ...mapActions({ getServiceStatus: "general/getServiceStatus" }),
 
+    setupDateTime() {
+      let date = new Date();
+      let year = date.getFullYear(),
+        month =
+          date.getMonth() + 1 > 9
+            ? date.getMonth() + 1
+            : `0${date.getMonth() + 1}`,
+        day = date.getDate() > 9 ? date.getDate() : `0${date.getDate()}`,
+        hours = date.getHours() > 9 ? date.getHours() : `0${date.getHours()}`,
+        minutes =
+          date.getMinutes() > 9 ? date.getMinutes() : `0${date.getMinutes()}`;
+
+      return `${year}-${month}-${day}T${hours}:${minutes}:00Z`;
+    },
+
     fetchServiceState() {
       this.status_list.map((status, index) => {
         this.getServiceStatus(status.title.toLowerCase())
           .then((response) => {
-            // console.log(status.title, response.message);
-
             this.status_list[index].status =
               response.message === "Server is up" ? "Operational" : "Down";
           })

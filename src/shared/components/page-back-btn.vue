@@ -7,7 +7,7 @@
       </div>
 
       <!-- BUTTON TEXT -->
-      <div class="text">Back</div>
+      <div class="text">{{ btn_text }}</div>
     </button>
   </div>
 </template>
@@ -30,6 +30,11 @@ export default {
     custom_mode: {
       type: Boolean,
       default: false,
+    },
+
+    btn_text: {
+      type: String,
+      default: "Back",
     },
   },
 
