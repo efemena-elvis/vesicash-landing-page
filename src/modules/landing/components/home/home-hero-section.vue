@@ -4,7 +4,7 @@
       <!-- HEADER TEXT -->
       <div class="header-text text-center mgb-32 roobert-700 green-200">
         Digital Escrow and <br />
-        Merchant of Records Technology
+        Merchant of Record Technology
         <span class="teal-200">for Businesses</span>
       </div>
 
