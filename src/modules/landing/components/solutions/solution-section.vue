@@ -2,7 +2,11 @@
   <div class="solution-section">
     <div class="vesicash-container">
       <div class="row">
-        <div class="col-12 col-md-6 col-lg-4" v-for="(solution, index) in solutions" :key="index">
+        <div
+          class="col-12 col-md-6 col-lg-4"
+          v-for="(solution, index) in solutions"
+          :key="index"
+        >
           <SolutionCard :solution="solution" />
         </div>
       </div>
@@ -37,21 +41,21 @@ export default {
       },
       {
         icon: "exchange-icon.png",
-        title: "Foreign Exchange",
+        title: "Local Currency Support",
         description:
-          "Access foreign exchange for your business, easily, and at unbeatable rates from our partners.",
+          "Offer your customers the payment options for the currencies they preferm according to their location.",
       },
       {
         icon: "money-icon.png",
-        title: "Liquidity Provisioning",
+        title: "Seamless Reconciliation",
         description:
-          "Vesicash provides liquidity management solutions to promote cash flow by optimising surplus liquidity in one currency into another currency or asset class, thereby reducing risk and improving liquidity duration.",
+          "Enjoy seamsless reconciliation of your customers' payments across multiple payment methods and currencies.",
       },
       {
         icon: "bank-icon.png",
-        title: "Treasury Management",
+        title: "24/7 Support",
         description:
-          "Vesicash provides treasury management services for corporates who want to manage their foreign exchange exposure.",
+          "Customer success is key to us. We provide unrivalled reponse time to inquiries and offer support for techncical or service inquiries around the clock.",
       },
     ],
   }),
