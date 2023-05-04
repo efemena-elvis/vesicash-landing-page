@@ -43,19 +43,19 @@ export default {
         icon: "exchange-icon.png",
         title: "Local Currency Support",
         description:
-          "Offer your customers the payment options for the currencies they preferm according to their location.",
+          "Offer your customers the payment options for the currencies they prefer, according to their location.",
       },
       {
         icon: "money-icon.png",
         title: "Seamless Reconciliation",
         description:
-          "Enjoy seamsless reconciliation of your customers' payments across multiple payment methods and currencies.",
+          "Enjoy seamless reconciliation of your customers' payments across multiple payment methods and currencies.",
       },
       {
         icon: "bank-icon.png",
         title: "24/7 Support",
         description:
-          "Customer success is key to us. We provide unrivalled reponse time to inquiries and offer support for techncical or service inquiries around the clock.",
+          "Customer success is key to us. We provide unrivalled response times to inquiries and offer support for technical or service inquiries, around the clock.",
       },
     ],
   }),
