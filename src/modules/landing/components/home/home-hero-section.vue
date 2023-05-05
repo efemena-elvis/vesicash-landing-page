@@ -4,14 +4,14 @@
       <!-- HEADER TEXT -->
       <div class="header-text text-center mgb-32 roobert-700 green-200">
         Digital Escrow and <br />
-        Merchant of Records Technology
+        Merchant of Record Technology
         <span class="teal-200">for Businesses</span>
       </div>
 
       <!-- DESCRIPTION TEXT -->
       <div class="description-text neutral-10 h6-text roobert-400 text-center">
         Along with proprietary digital escrow, Vesicash provides Merchant of
-        Records technology to help businesses scale and grow with the most
+        Record technology to help businesses scale and grow with the most
         secure, reliable, and cost-effective payments infrastructure.
       </div>
 
