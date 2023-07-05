@@ -4,13 +4,13 @@
       <div class="row">
         <!-- COPY SECTION -->
         <div class="copy-section col-12 col-md-6 mb-5 mb-md-0">
-          <div class="title-text h2-text roobert-700 grey-900 mgb-16">
+          <h2 class="title-text h2-text roobert-700 grey-900 mgb-16">
             Your Transactions, Your Way
-          </div>
+          </h2>
 
-          <div class="description-text h7-text roobert-400 grey-600 mgb-36">
+          <h5 class="description-text h7-text roobert-400 grey-600 mgb-36">
             Experience our functionality On Platform Or via API
-          </div>
+          </h5>
 
           <!-- DOC LINK -->
           <a href="https://docs.vesicash.com/" class="doc-link">
@@ -29,7 +29,7 @@
           <div class="image-section position-relative w-100">
             <img
               v-lazy="loadImage('api-code-img.png', 'landing')"
-              alt="API code"
+              alt="API-code"
               class="wt-100"
             />
           </div>

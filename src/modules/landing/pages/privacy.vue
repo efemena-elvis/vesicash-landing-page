@@ -3,9 +3,9 @@
     <div class="vesicash-container">
       <div class="section-wrapper">
         <!-- HEADER TEXT -->
-        <div class="header-text roobert-700 teal-900 text-center">
+        <h1 class="header-text roobert-700 teal-900 text-center">
           Privacy Policy
-        </div>
+        </h1>
 
         <div class="content-text sub-header-text">
           This Privacy Policy describes your privacy rights regarding Vesicash

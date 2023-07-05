@@ -2,21 +2,21 @@
   <div class="about-hero-section">
     <div class="vesicash-container">
       <!-- HEADER TEXT -->
-      <div class="header-text mgb-32 roobert-700 teal-900 slide-right">
+      <h1 class="header-text mgb-32 roobert-700 teal-900 slide-right">
         <span class="teal-900">We build bridges between</span>
         <br />
         <span class="green-500">companies and customers.</span>
-      </div>
+      </h1>
 
       <!-- DESCRIPTION TEXT -->
       <div class="description-text grey-700 h6-text roobert-400 slide-left">
-        <div class="text-content">
+        <p class="text-content">
           Vesicash Innovative Technologies was founded in 2018 with a mission to
           catalyze the African digital economy by enabling African businesses to
           make and receive secure digital payments in a seamless, customized and
           bespoke. Our patented,digital escrow technology has helped over 5,000
           businesses grow and scale.
-        </div>
+        </p>
       </div>
     </div>
   </div>

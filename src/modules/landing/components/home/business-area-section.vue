@@ -5,9 +5,9 @@
         <!-- COPY SECTION -->
         <div class="copy-section col-12 col-md-6">
           <!-- TITLE TEXT -->
-          <div class="title-text h2-text roobert-700 neutral-10 mgb-18">
+          <h2 class="title-text h2-text roobert-700 neutral-10 mgb-18">
             Take your business to the next level
-          </div>
+          </h2>
 
           <!-- DESCRIPTION TEXT -->
           <div class="description-text h7-text roobert-400 neutral-10 mgb-40">
