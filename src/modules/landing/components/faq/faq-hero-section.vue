@@ -3,11 +3,9 @@
     <div class="vesicash-container">
       <div class="section-wrapper W-100">
         <!-- HEADER TEXT -->
-        <div
-          class="header-text mgb-24 roobert-700 teal-900 text-center mx-auto"
-        >
+        <h1 class="header-text mgb-24 roobert-700 teal-900 text-center mx-auto">
           Frequently Asked Questions
-        </div>
+        </h1>
 
         <!-- DESCRIPTION TEXT -->
         <div class="description-text grey-700 h6-text roobert-400 text-center">

@@ -2,15 +2,15 @@
   <div class="blog-hero-section teal-900-bg">
     <div class="vesicash-container">
       <!-- HEADER TEXT -->
-      <div class="header-text text-center mgb-32 roobert-700 neutral-10">
+      <h1 class="header-text text-center mgb-32 roobert-700 neutral-10">
         Vesicash Blog
-      </div>
+      </h1>
 
       <!-- DESCRIPTION TEXT -->
-      <div class="description-text neutral-10 h6-text roobert-400 text-center">
+      <p class="description-text neutral-10 h6-text roobert-400 text-center">
         Finance, escrow, e-commerce and other information that keeps you on the
         edge of technology
-      </div>
+      </p>
     </div>
   </div>
 </template>

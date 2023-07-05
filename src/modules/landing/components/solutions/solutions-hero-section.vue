@@ -2,13 +2,13 @@
   <div class="solution-hero-section">
     <div class="vesicash-container">
       <!-- HEADER TEXT -->
-      <div class="header-text mgb-32 roobert-700 teal-900">What we do</div>
+      <h1 class="header-text mgb-32 roobert-700 teal-900">What we do</h1>
 
       <!-- DESCRIPTION TEXT -->
-      <div class="description-text grey-700 h6-text roobert-400">
+      <p class="description-text grey-700 h6-text roobert-400">
         Vesicash Innovative Technologies is a digital escrow company with a
         mission to catalyze the African digital economy.
-      </div>
+      </p>
     </div>
   </div>
 </template>

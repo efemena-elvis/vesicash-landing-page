@@ -3,9 +3,9 @@
     <div class="vesicash-container">
       <div class="section-wrapper">
         <!-- HEADER TEXT -->
-        <div class="header-text roobert-700 teal-900 text-center">
+        <h1 class="header-text roobert-700 teal-900 text-center">
           Terms and Conditions
-        </div>
+        </h1>
 
         <div class="content-text sub-header-text">
           These Website Terms and Conditions (“Terms”) contained herein on this

@@ -2,24 +2,24 @@
   <div class="home-hero-section teal-900-bg">
     <div class="vesicash-container">
       <!-- HEADER TEXT -->
-      <div class="header-text text-center mgb-32 roobert-700 green-200">
+      <h1 class="header-text text-center mgb-32 roobert-700 green-200">
         Digital Escrow and <br />
         Merchant of Record Technology
         <span class="teal-200">for Businesses</span>
-      </div>
+      </h1>
 
       <!-- DESCRIPTION TEXT -->
-      <div class="description-text neutral-10 h6-text roobert-400 text-center">
+      <p class="description-text neutral-10 h6-text roobert-400 text-center">
         Along with proprietary digital escrow, Vesicash provides Merchant of
         Record technology to help businesses scale and grow with the most
         secure, reliable, and cost-effective payments infrastructure.
-      </div>
+      </p>
 
       <!-- HERO IMAGE -->
       <div class="hero-img-container mx-auto">
         <img
           v-lazy="loadImage('home-hero-img.png', 'landing')"
-          alt="Vesicash dashboard"
+          alt="vesicash-escrow-dashboard"
           class="mx-auto"
         />
       </div>

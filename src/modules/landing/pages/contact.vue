@@ -3,9 +3,9 @@
     <div class="vesicash-container">
       <div class="section-wrapper">
         <!-- HEADER TEXT -->
-        <div class="header-text roobert-700 teal-900 text-center">
+        <h1 class="header-text roobert-700 teal-900 text-center">
           We’d love to help you
-        </div>
+        </h1>
 
         <!-- CONTACT DETAILS SECTION -->
         <div class="contact-details-section row mb-5">
@@ -93,13 +93,7 @@
             </div>
 
             <div
-              class="
-                contact-wrapper
-                rounded-16
-                neutral-10-bg
-                border-grey-200
-                mgt-32
-              "
+              class="contact-wrapper rounded-16 neutral-10-bg border-grey-200 mgt-32"
             >
               <form @submit.prevent="submitContactForm">
                 <div class="row">
