@@ -2,20 +2,18 @@
   <div class="cta-block teal-900-bg">
     <div class="vesicash-container">
       <!-- HEADER TEXT -->
-      <div
-        class="header-text text-center h1-text roobert-700 neutral-10 mgb-32"
-      >
+      <h1 class="header-text text-center h1-text roobert-700 neutral-10 mgb-32">
         Ready to grow your
         <br />business to the next level
-      </div>
+      </h1>
 
       <!-- DESCRIPTION TEXT -->
-      <div
+      <p
         class="description-text text-center h6-text roobert-400 grey-200 mgb-50"
       >
         Let’s help you with all the tools you need to take your business to the
         next level
-      </div>
+      </p>
 
       <!-- BUTTON ROW -->
       <div class="button-row">

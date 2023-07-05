@@ -2,18 +2,22 @@
   <div class="tool-card">
     <!-- IMAGE BLOCK -->
     <div class="image-block position-relative w-100 mgb-32">
-      <img v-lazy="loadImage(tool.image, 'landing')" alt="" class="w-100" />
+      <img
+        v-lazy="loadImage(tool.image, 'landing')"
+        :alt="tool.title"
+        class="w-100"
+      />
     </div>
 
     <!-- TITLE TEXT -->
-    <div class="title-text grey-900 h3-text roobert-700 mgb-8">
+    <h2 class="title-text grey-900 h3-text roobert-700 mgb-8">
       {{ tool.title }}
-    </div>
+    </h2>
 
     <!-- DESCRIPTION TEXT -->
-    <div class="description-text grey-600 h7-text roobert-400">
+    <p class="description-text grey-600 h7-text roobert-400">
       {{ tool.description }}
-    </div>
+    </p>
   </div>
 </template>
 

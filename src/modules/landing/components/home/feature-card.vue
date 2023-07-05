@@ -2,9 +2,9 @@
   <div class="feature-card">
     <div class="content-top">
       <!-- TITLE TEXT -->
-      <div class="title-text grey-900 h2-text roobert-700 mgb-16">
+      <h2 class="title-text grey-900 h2-text roobert-700 mgb-16">
         {{ feature.title }}
-      </div>
+      </h2>
 
       <!-- DESCRIPTION TEXT -->
       <div class="description-text grey-600 h7-text roobert-400 mgb-32">

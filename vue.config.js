@@ -1,10 +1,14 @@
+const SitemapPlugin = require("sitemap-webpack-plugin").default;
+const paths = require("./site-map-paths.js");
+
 module.exports = {
   lintOnSave: false,
   productionSourceMap: false,
 
   css: {
     loaderOptions: {
-      sass: {
+      scss: {
+        implementation: require("sass"),
         prependData: `@import "./public/scss/global-scss/_colors.scss"; @import "./public/scss/global-scss/_breakpoints.scss"; @import "./public/scss/global-scss/_mixins.scss"; @import "./public/scss/global-scss/_typography.scss";`,
       },
     },
@@ -32,6 +36,18 @@ module.exports = {
         chunks: "all",
       },
     },
+    plugins: [
+      new SitemapPlugin({
+        base: "https://vesicash.com",
+        paths,
+        options: {
+          filename: "sitemap.xml",
+          lastmod: true,
+          changefreq: "hourly",
+          priority: 0.8,
+        },
+      }),
+    ],
   },
 
   pwa: {
