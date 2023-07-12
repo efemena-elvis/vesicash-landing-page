@@ -14,7 +14,7 @@
             With Vesicash, you can explore new possibilities to power your
             business - without worrying about the risks. Our suite of products
             are designed to give you the power to control your cash flow and
-            grow your business. Use cases include:
+            grow your business in Africa. Use cases include:
           </div>
 
           <!-- BUSINESS AREAS -->
