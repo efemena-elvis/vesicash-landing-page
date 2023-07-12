@@ -17,7 +17,7 @@
           :feature="{
             title: 'Merchant of Record',
             description:
-              'With Vesicash\'s Merchant of Record (MoR) technology, you don\'t have to worry about setting up a separate payment infrastructure for each payment channel or market: all your payments costs are handled in one set of costs. Our comprehensive suite of features can help you unlock new opportunities for growth. You can now expand into new markets, launch new products quickly, and much more.',
+              'With Vesicash\'s Merchant of Record technology (MoR), you don\'t have to worry about setting up a separate payment infrastructure for each payment channel or market: all your payments costs are handled in one set of costs. Our comprehensive suite of features can help you unlock new opportunities for growth. You can now expand into new markets, launch new products quickly, and much more.',
             image: 'feature-two.png',
           }"
         />
