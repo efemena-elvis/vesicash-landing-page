@@ -55,7 +55,7 @@ export default {
         icon: "bank-icon.png",
         title: "24/7 Support",
         description:
-          "Customer success is key to us. We provide unrivalled response times to inquiries and offer support for technical or service inquiries, around the clock.",
+          "Customer success is key to us. We provide unrivalled response time to inquiries and offer support for technical or service inquiries, around the clock.",
       },
     ],
   }),

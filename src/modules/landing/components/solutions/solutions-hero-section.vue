@@ -6,8 +6,9 @@
 
       <!-- DESCRIPTION TEXT -->
       <p class="description-text grey-700 h6-text roobert-400">
-        Vesicash Innovative Technologies is a digital escrow company with a
-        mission to catalyze the African digital economy.
+        Vesicash Innovative Technologies is a digital escrow and merchant of
+        record (MoR) technology company with a mission to catalyze the African
+        digital economy.
       </p>
     </div>
   </div>
