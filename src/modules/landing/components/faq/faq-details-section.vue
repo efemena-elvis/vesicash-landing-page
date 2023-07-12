@@ -5,10 +5,17 @@
         <!-- FAQ SELECTION ROW -->
         <div class="faq-selection-row" ref="selectionRow">
           <router-link
-            to="#about"
+            to="#aboutEscrow"
             class="faq-btn"
-            :class="active_hash === 'about' && 'active'"
-            >About vesicash</router-link
+            :class="active_hash === 'aboutEscrow' && 'active'"
+            >About Escrow</router-link
+          >
+
+          <router-link
+            to="#aboutMoR"
+            class="faq-btn"
+            :class="active_hash === 'aboutMoR' && 'active'"
+            >About MoR</router-link
           >
 
           <router-link
@@ -29,12 +36,25 @@
         <!-- FAQ DETAILS -->
         <div class="faq-details">
           <!-- ACCORDION WRAPPER -->
-          <div class="accordion-wrapper" id="about">
-            <div class="title-text">About vesicash</div>
+          <div class="accordion-wrapper" id="aboutEscrow">
+            <div class="title-text">About Escrow</div>
 
             <template>
               <FAQCard
-                v-for="(faq, index) in faqs.about"
+                v-for="(faq, index) in faqs.about_escrow"
+                :key="index"
+                :faq="faq"
+              />
+            </template>
+          </div>
+
+          <!-- ACCORDION WRAPPER -->
+          <div class="accordion-wrapper" id="aboutMoR">
+            <div class="title-text">About Merchant of Records (MoR)</div>
+
+            <template>
+              <FAQCard
+                v-for="(faq, index) in faqs.about_mor"
                 :key="index"
                 :faq="faq"
               />
@@ -99,61 +119,46 @@ export default {
     active_hash: "",
 
     faqs: {
-      about: [
+      about_escrow: [
+        // {
+        //   question: "What is Vesicash?",
+        //   answer:
+        //     "Vesicash is an Instant digital escrow system that ensures payment security for parties involved in a transaction by providing a transparent and accountable transaction process.",
+        // },
+        // {
+        //   question: "What is Instant Escrow?",
+        //   answer:
+        //     "<div>Instant escrow is the quickest way to create an escrow transaction. By visiting <a href='https://instant.vesicash.com' class='anchor'>https://instant.vesicash.com</a>, you can pay securely into a transactional escrow account created specifically for your transaction in as little as a minute. <a href='https://instant.vesicash.com' class='anchor'>Get started</a></div>",
+        // },
+        // {
+        //   question: "Who can use Instant Escrow?",
+        //   answer:
+        //     "Instant Escrow is ideal for securing your time-sensitive trade deals, ranging from automobile purchases to domain transfer or even that gadget you saw online... It’s really up to you!",
+        // },
         {
-          question: "What is Vesicash?",
-          answer:
-            "Vesicash is an Instant digital escrow system that ensures payment security for parties involved in a transaction by providing a transparent and accountable transaction process.",
-        },
-        {
-          question: "What is Instant Escrow?",
-          answer:
-            "<div>Instant escrow is the quickest way to create an escrow transaction. By visiting <a href='https://instant.vesicash.com' class='anchor'>https://instant.vesicash.com</a>, you can pay securely into a transactional escrow account created specifically for your transaction in as little as a minute. <a href='https://instant.vesicash.com' class='anchor'>Get started</a></div>",
-        },
-        {
-          question: "Who can use Instant Escrow?",
-          answer:
-            "Instant Escrow is ideal for securing your time-sensitive trade deals, ranging from automobile purchases to domain transfer or even that gadget you saw online... It’s really up to you!",
-        },
-        {
-          question: "What is escrow?",
+          question: "What is Escrow?",
           answer:
             "In an escrow transaction, a trusted third party serves as an intermediary and holds funds securely until the terms of the transaction are met and both transacting parties are satisfied before the funds are released to the seller/service provider.",
         },
         {
-          question: "Why use escrow?",
+          question: "Why use Escrow?",
           answer:
             "Vesicash escrow is needed to provide payment security for the transacting parties and ensure that both parties are protected at all stages of a transaction.",
         },
         {
-          question: "Who holds the money?",
+          question: "When can use Escrow?",
           answer:
-            "For each transaction created on Vesicash, a dedicated unique escrow account is generated. The provisioned trust account is tied to the transacting parties and the transaction, and the funds are held securely in this account until the transaction is completed, after which the account is closed.",
+            "Escrow can be used by businesses that need payment security for their transactions. Businesses like Marketplace platforms who cater to two sets of users (Buyers and Sellers) can also use Escrow to facilitate trust between transacting parties on their platform.",
         },
         {
-          question: "When can I use Vesicash?",
+          question: "How can I use Escrow?",
           answer:
-            "Vesicash is designed to give peace of mind whenever you are in doubt or are doing business with  someone you don’t know. Vesicash uses Two-factor authorisation to validate that transaction terms have been met before payment is released.",
+            "Escrow can be used in different ways, depending on your need. Individuals can sign up and use Vesicash for their peer-peer transactions while businesses can choose from a number of options to have <a href='https://vesicash.com/developers' class='anchor'>Vesicash integrated</a> on their platform.",
         },
         {
-          question: "Who can use Vesicash?",
+          question: "Who is a buyer and seller?",
           answer:
-            "Vesicash can be used by individuals and businesses that need payment security for their transactions. Businesses like Marketplace platforms who cater to two sets of users (Buyers and Sellers) can also use Vesicash to facilitate trust between transacting parties on their platform.",
-        },
-        {
-          question: "How can I use Vesicash?",
-          answer:
-            "Vesicash can be used in different ways, depending on your need. Individuals can sign up and use Vesicash for  their peer-peer transactions while businesses can choose from a number of options to have Vesicash integrated (insert link to developer’s page) on their platform.",
-        },
-        {
-          question: "How are transaction disputes resolved?",
-          answer:
-            "When creating a transaction, users are asked to choose which of the available dispute resolution options (Mutual resolution or Third-party resolution) they would prefer. Should a dispute arise over the course of a transaction, they will need to come to a resolution depending on the option they selected. While a transaction is in dispute, the funds remain in escrow and are not released until a mutual resolution has been reached",
-        },
-        {
-          question: "When are funds released from escrow?",
-          answer:
-            "<div>When creating a transaction, users are asked to choose which of the available dispute resolution options (Mutual resolution or Third-party resolution) they would prefer. Should a dispute arise over the course of a transaction, they will need to come to a resolution depending on the option they selected. While a transaction is in dispute, the funds remain in escrow and are not released until a mutual resolution has been reached</div> <div class='mgt-24'>Funds being held in escrow are subject to a two-factor authorisation before release from escrow.  Funds are  not released until both Buyer and Seller indicate that the terms of the transaction have been met.</div> ",
+            "<div>A buyer is the recipient of a goods and service that is offered by a counterparty in this case referred to as the seller. A buyer is the person that pays for a transaction. The payment is securely held by Vesicash during the transaction period. </div> <div class='mgt-24'>A seller is the person selling goods or offering service to another party and requires the payment to be held in Vesicash pending the time the delivery or completion of the service is done. A seller is the person that receives payment after the transaction is marked completed and payment is authorized by the buyer.</div><div class='mgt-24'>A Broker is a third party that can be invited to the created escrow transaction.  A broker can also create a transaction and invite a seller and a buyer. The broker makes sure selling goods or offering service to another party is achieved as the payment is held in Vesicash pending the time the delivery or completion of the service is done. Additionally, another broker referred to as a sub-broker can be added. The broker may also receive a commision (pre-defined percentage) from the funds being held in escrow.</div>",
         },
         {
           question: "Who can create a transaction?",
@@ -166,9 +171,52 @@ export default {
             "When creating a transaction, the option to select who will make the payment for the transaction is available. Either the recipient of the transaction or the sender may be selected as the paying party.",
         },
         {
-          question: "Who is a buyer and seller?",
+          question: "How are transaction disputes resolved?",
           answer:
-            "<div>A buyer is the recipient of a goods and service that is offered by a counterparty in this case referred to as the seller. A buyer is the person that pays for a transaction. The payment is securely held in Vesicash during the transaction period. </div> <div class='mgt-24'>A seller is the person selling goods or offering service to another party and requires the payment to be held in Vesicash pending the time the delivery or completion of the service is done. A seller is the person that receives payment after the transaction is marked completed and payment is authorized by the buyer.</div>",
+            "When creating a transaction, users are asked to choose which of the available dispute resolution options (Mutual resolution or Third-party resolution) they would prefer. Should a dispute arise over the course of a transaction, they will need to come to a resolution depending on the option they selected. While a transaction is in dispute, the funds remain in escrow and are not released until a mutual resolution has been reached",
+        },
+        {
+          question: "Who holds the money?",
+          answer:
+            "For each transaction created on Vesicash, a dedicated unique escrow account is generated. The provisioned trust account is tied to the transacting parties and the transaction, and the funds are held securely in this account until the transaction is completed, after which the account is closed.",
+        },
+        {
+          question: "When are funds released from escrow?",
+          answer:
+            "<div>When creating a transaction, users are asked to choose which of the available dispute resolution options (Mutual resolution or Third-party resolution) they would prefer. Should a dispute arise over the course of a transaction, they will need to come to a resolution depending on the option they selected. While a transaction is in dispute, the funds remain in escrow and are not released until a mutual resolution has been reached</div> <div class='mgt-24'>Funds being held in escrow are subject to a two-factor authorisation before release from escrow.  Funds are  not released until both Buyer and Seller indicate that the terms of the transaction have been met.</div> ",
+        },
+      ],
+
+      about_mor: [
+        {
+          question: "What is MoR?",
+          answer:
+            "MoR stands for Merchant of Record, which refers to the entity responsible for processing payments and acting as the legal seller of goods or services in a transaction. The role of a Merchant of Record is crucial in payment processing, particularly in e-commerce and online transactions.",
+        },
+        {
+          question: "Who use MoR?",
+          answer:
+            "In order to ensure your business expands seamlessly into other markets in Africa you need a MoR partener to settle you in.",
+        },
+        {
+          question: "Who can use MoR?",
+          answer:
+            "MoR can be used by businesses that need to process payment in a new market (country). Businesses like e-commerce who want to focus more on their product offering instead of the rigor of setting up in a new country in terms of legal, compliance, and taxes resolution.",
+        },
+        {
+          question: "How can I use MoR?",
+          answer:
+            "MoR can be used in different ways, depending on your need. Businesses will have <a href='https://vesicash.com/developers' class='anchor'>Vesicash integrated</a> documentation  on their platform.",
+        },
+        {
+          question: "How is the transaction recorded?",
+          answer:
+            "Once the transaction is recorded, businesses will have access to bulk transaction details on their dashboard.",
+        },
+        {
+          question: "How is withdrawal made?",
+          answer:
+            "A withdrawal request can be made from the dashboard and disbursement happens within 3 working days.",
         },
       ],
 
@@ -194,7 +242,7 @@ export default {
         {
           question: "How many parties are involved in an Escrow transaction?",
           answer:
-            "Users have the option of creating transactions as a One-one transaction or a Multi-party transactions. Multi-Party transactions are not limited to any number of participants.",
+            "Users have the option of creating transactions as a One-to-one transaction or a Multi-party transactions. Multi-Party transactions are not limited to any number of participants.",
         },
       ],
     },
