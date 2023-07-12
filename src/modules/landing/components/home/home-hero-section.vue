@@ -10,7 +10,7 @@
       <!-- DESCRIPTION TEXT -->
       <p class="description-text neutral-10 h6-text roobert-400 text-center">
         Along with proprietary digital escrow, Vesicash provides Merchant of
-        Record (MoR) Technology to help businesses scale and grow with the most
+        Record Technology (MoR) to help businesses scale and grow with the most
         secure, reliable, and cost-effective payments infrastructure.
       </p>
 
