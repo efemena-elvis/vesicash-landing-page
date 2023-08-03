@@ -25,11 +25,10 @@
 
           <div class="content-text margin-24">
             This Vesicash Payment Services Terms set out the agreement between
-            us (Vesicash Innovative Technologies Limited (16 Mudashiru Eletu
-            Way, Osapa Estate, Lekki, Lagos, Nigeria), Registered Company Number
-            1535307 and you, the person who has completed the on-line
-            application process on our secure customer website (the Vesicash
-            platform).
+            us Vesicash Innovative Technologies Limited, Lagos, Nigeria, and its
+            subsidiaries across Africa, US, and UK, and you, the person who has
+            completed the on-line application process on our secure customer
+            website (the Vesicash platform).
           </div>
 
           <div class="content-text margin-32">
