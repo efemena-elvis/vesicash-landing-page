@@ -23,7 +23,9 @@
               <div class="title">Technical</div>
               <div class="description">
                 For technical support please send an email to
-                <a href="mailto:info@vesicash.com">techsupport@vesicash.com</a>
+                <a href="mailto:support@vesicash.co.uk"
+                  >support@vesicash.co.uk</a
+                >
               </div>
             </div>
 
@@ -38,18 +40,21 @@
               </div>
             </div>
 
-            <div class="contact-block">
+            <!-- <div class="contact-block">
               <div class="title">Hotline</div>
               <div class="description">
                 <a href="tel:+2347039914767">+234 703 991 4767</a>
               </div>
-            </div>
+            </div> -->
 
             <div class="contact-block">
               <div class="title">Address</div>
               <div class="description">
                 16 Alhaji Mudashiru Eletu Way, Osapa Estate, Lekki, Lagos,
                 Nigeria
+              </div>
+              <div class="description mgt-15">
+                2 Minster Court, London, United Kingdom
               </div>
             </div>
 
