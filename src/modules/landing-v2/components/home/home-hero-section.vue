@@ -34,8 +34,9 @@ export default {
 .hero-container {
   background: getColor("neutral-10");
   padding-top: toRem(80);
+  padding-bottom: toRem(100);
 
-  @include breakpoint-custom-down(800) {
+  @include breakpoint-down(md) {
     padding-top: toRem(50);
   }
 
@@ -45,7 +46,7 @@ export default {
     align-items: center;
     gap: toRem(100);
 
-    @include breakpoint-custom-down(800) {
+    @include breakpoint-down(md) {
       grid-template-columns: 100%;
     }
   }
@@ -65,7 +66,7 @@ export default {
       width: toRem(350);
     }
 
-    @include breakpoint-custom-down(800) {
+    @include breakpoint-down(md) {
       width: 100%;
     }
 
