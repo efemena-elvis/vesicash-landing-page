@@ -23,6 +23,8 @@
               <div class="title">Technical</div>
               <div class="description">
                 For technical support please send an email to
+                <a href="mailto:support@vesicash.com">support@vesicash.com</a>
+                or
                 <a href="mailto:support@vesicash.co.uk"
                   >support@vesicash.co.uk</a
                 >

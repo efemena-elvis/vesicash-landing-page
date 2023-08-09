@@ -11,7 +11,7 @@
             >info@vesicash.com</a
           >
 
-          <a href="tel:+2347039914767" class="info-text">+234 703 991 4767</a>
+          <!-- <a href="tel:+2347039914767" class="info-text">+234 703 991 4767</a> -->
 
           <!-- SOCIAL ICONS -->
           <div class="social-icons mgt-32">
@@ -87,12 +87,7 @@
                   >Service Status</span
                 >
                 <span
-                  class="
-                    coming-soon-indicator
-                    text-no-wrap
-                    roobert-400
-                    yellow-600
-                  "
+                  class="coming-soon-indicator text-no-wrap roobert-400 yellow-600"
                   >Coming Soon</span
                 >
               </router-link>
@@ -125,14 +120,7 @@
       <!-- COPYRIGHT TEXT -->
       <div class="row copyright-row">
         <div
-          class="
-            copyright-text
-            col-12
-            grey-900
-            text-center
-            tertiary-1-text
-            roobert-400
-          "
+          class="copyright-text col-12 grey-900 text-center tertiary-1-text roobert-400"
         >
           Copyright {{ current_year }}. Vesicash Innovative Technologies.
         </div>
