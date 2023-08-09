@@ -8,6 +8,7 @@ Vue.use(VueRouter);
 // IMPORTED ROUTES FROM RESPECTIVE APPLICATION MODULES
 // =======================================================
 import landingRoutes from "@/modules/landing";
+import landingRoutesV2 from "@/modules/landing-v2";
 import playGroundRoutes from "@/modules/transactions";
 
 // =======================================================
@@ -15,6 +16,7 @@ import playGroundRoutes from "@/modules/transactions";
 // INCLUDING A FALLBACK ERROR (404) PAGE
 // =======================================================
 const routes = [
+  ...landingRoutesV2,
   ...landingRoutes,
   ...playGroundRoutes,
   {
