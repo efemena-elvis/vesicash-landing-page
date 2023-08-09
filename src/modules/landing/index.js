@@ -3,11 +3,12 @@
 // ================================
 const landingRoutes = [
   {
-    path: "/",
-    alias: "/home",
+    path: "/homepage",
+    // alias: "/home",
     component: () =>
       import(
-        /* webpackChunkName: "landing-layout" */ "@/modules/landing/layouts/layout-landing"
+        /* webpackChunkName: "landing-layout" */
+        "@/modules/landing/layouts/layout-landing"
       ),
 
     children: [
@@ -19,7 +20,8 @@ const landingRoutes = [
         name: "VesicashHome",
         component: () =>
           import(
-            /* webpackChunkName: "landing-module" */ "@/modules/landing/pages/home"
+            /* webpackChunkName: "landing-module" */
+            "@/modules/landing/pages/home"
           ),
       },
 
@@ -31,7 +33,8 @@ const landingRoutes = [
         name: "VesicashSolutions",
         component: () =>
           import(
-            /* webpackChunkName: "landing-module" */ "@/modules/landing/pages/solutions"
+            /* webpackChunkName: "landing-module" */
+            "@/modules/landing/pages/solutions"
           ),
       },
 
@@ -43,7 +46,8 @@ const landingRoutes = [
         name: "VesicashAbout",
         component: () =>
           import(
-            /* webpackChunkName: "landing-module" */ "@/modules/landing/pages/about"
+            /* webpackChunkName: "landing-module" */
+            "@/modules/landing/pages/about"
           ),
       },
 
@@ -55,7 +59,8 @@ const landingRoutes = [
         name: "VesicashContact",
         component: () =>
           import(
-            /* webpackChunkName: "landing-module" */ "@/modules/landing/pages/contact"
+            /* webpackChunkName: "landing-module" */
+            "@/modules/landing/pages/contact"
           ),
       },
 
@@ -91,7 +96,8 @@ const landingRoutes = [
         name: "VesicashDeveloper",
         component: () =>
           import(
-            /* webpackChunkName: "landing-module" */ "@/modules/landing/pages/developers"
+            /* webpackChunkName: "landing-module" */
+            "@/modules/landing/pages/developers"
           ),
       },
 
@@ -103,7 +109,8 @@ const landingRoutes = [
         name: "VesicashFAQ",
         component: () =>
           import(
-            /* webpackChunkName: "landing-module" */ "@/modules/landing/pages/faq"
+            /* webpackChunkName: "landing-module" */
+            "@/modules/landing/pages/faq"
           ),
       },
 
@@ -115,7 +122,8 @@ const landingRoutes = [
         name: "VesicashTerms",
         component: () =>
           import(
-            /* webpackChunkName: "landing-module" */ "@/modules/landing/pages/terms"
+            /* webpackChunkName: "landing-module" */
+            "@/modules/landing/pages/terms"
           ),
       },
 
@@ -127,7 +135,8 @@ const landingRoutes = [
         name: "VesicashPrivacy",
         component: () =>
           import(
-            /* webpackChunkName: "landing-module" */ "@/modules/landing/pages/privacy"
+            /* webpackChunkName: "landing-module" */
+            "@/modules/landing/pages/privacy"
           ),
       },
 
@@ -139,7 +148,8 @@ const landingRoutes = [
         name: "VesicashComingSoon",
         component: () =>
           import(
-            /* webpackChunkName: "landing-module" */ "@/modules/landing/pages/coming-soon"
+            /* webpackChunkName: "landing-module" */
+            "@/modules/landing/pages/coming-soon"
           ),
       },
     ],
@@ -153,7 +163,8 @@ const landingRoutes = [
     name: "VesicashStatus",
     component: () =>
       import(
-        /* webpackChunkName: "landing-module" */ "@/modules/landing/pages/status"
+        /* webpackChunkName: "landing-module" */
+        "@/modules/landing/pages/status"
       ),
   },
 ];
