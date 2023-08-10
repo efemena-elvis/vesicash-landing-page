@@ -15,11 +15,11 @@
 
 <script>
 import { mapGetters, mapMutations } from "vuex";
-import Navigation from "@/modules/landing/components/navigation";
-import Footer from "@/modules/landing/components/footer";
+import Navigation from "@/modules/landing-v2/components/navigation";
+import Footer from "@/modules/landing-v2/components/footer";
 
 export default {
-  name: "LauoutLanding",
+  name: "LayoutLanding",
 
   components: {
     Navigation,
@@ -47,5 +47,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

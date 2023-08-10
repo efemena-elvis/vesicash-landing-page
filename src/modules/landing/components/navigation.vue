@@ -5,7 +5,7 @@
   >
     <div class="vesicash-container">
       <div class="navigation-section smooth-transition">
-        <router-link :to="{ name: 'VesicashHome' }" class="brand-logo">
+        <router-link :to="{ name: 'VesicashHomeV2' }" class="brand-logo">
           <VesicashBrandLogo />
         </router-link>
 
@@ -91,11 +91,11 @@ export default {
 <style lang="scss" scoped>
 .navigation-section {
   @include flex-row-between-nowrap;
-  padding: toRem(12) 0;
+  padding: toRem(20) 0;
 
   .brand-logo {
     svg {
-      width: toRem(146);
+      width: toRem(150);
       height: auto;
     }
   }
@@ -173,7 +173,7 @@ export default {
   @include transition(0.3s);
 
   .navigation-section {
-    padding: toRem(8) 0;
+    padding: toRem(10) 0;
   }
 }
 
