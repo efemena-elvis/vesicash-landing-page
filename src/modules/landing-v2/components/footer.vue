@@ -7,11 +7,15 @@
             <VesicashBrandLogo />
           </div>
 
-          <a href="mailto:info@vesicash.com" class="info-text mgb-16"
-            >info@vesicash.com</a
+          <a href="mailto:support@vesicash.com" class="info-text mgb-16"
+            >support@vesicash.com</a
           >
 
-          <a href="tel:+2347039914767" class="info-text">+234 703 991 4767</a>
+          <a href="mailto:support@vesicash.co.uk" class="info-text mgb-16"
+            >support@vesicash.co.uk</a
+          >
+
+          <!-- <a href="tel:+2347039914767" class="info-text">+234 703 991 4767</a> -->
 
           <!-- SOCIAL ICONS -->
           <div class="social-icons mgt-32">
@@ -87,28 +91,23 @@
                   >Service Status</span
                 >
                 <span
-                  class="
-                    coming-soon-indicator
-                    text-no-wrap
-                    roobert-400
-                    yellow-600
-                  "
+                  class="coming-soon-indicator text-no-wrap roobert-400 yellow-600"
                   >Coming Soon</span
                 >
               </router-link>
             </div>
 
             <div class="col-12 col-sm-3">
-              <div class="nav-item fw-700 mgb-24">Payments processed by</div>
+              <!-- <div class="nav-item fw-700 mgb-24">Payments processed by</div> -->
 
               <!-- PRODUCT DISPLAY -->
               <div class="product-display">
                 <!-- TOP IMAGE -->
-                <img
+                <!-- <img
                   v-lazy="loadImage('flutterwave.png', 'landing')"
                   alt
                   class="top-img mgb-8"
-                />
+                /> -->
 
                 <!-- DESCRIPTION -->
                 <div class="bottom-text tertiary-1-text roobert-400">
@@ -125,14 +124,7 @@
       <!-- COPYRIGHT TEXT -->
       <div class="row copyright-row">
         <div
-          class="
-            copyright-text
-            col-12
-            grey-900
-            text-center
-            tertiary-1-text
-            roobert-400
-          "
+          class="copyright-text col-12 grey-900 text-center tertiary-1-text roobert-400"
         >
           Copyright {{ current_year }}. Vesicash Innovative Technologies.
         </div>
