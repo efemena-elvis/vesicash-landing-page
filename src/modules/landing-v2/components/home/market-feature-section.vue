@@ -12,7 +12,7 @@
           <InfoDisplayCard
             icon="globe-icon.svg"
             title="Global reach"
-            description="Enabling businesses to accept payments from customers worldwide"
+            description="Vesicash enables businesses to accept payments from their customers worldwide with ease"
             has_border
           />
         </div>
@@ -30,7 +30,7 @@
           <InfoDisplayCard
             icon="user-icon.svg"
             title="Customer satisfaction"
-            description="Enhancing the payment experience, leading to increased customer loyalty."
+            description="We are focused on enhancing payment experience, leading to increased customer loyalty"
             has_border
           />
         </div>
