@@ -7,8 +7,11 @@
             <VesicashBrandLogo />
           </div>
 
-          <a href="mailto:info@vesicash.com" class="info-text mgb-16"
-            >info@vesicash.com</a
+          <a href="mailto:support@vesicash.com" class="info-text mgb-16"
+            >support@vesicash.com</a
+          >
+          <a href="mailto:support@vesicash.co.uk" class="info-text mgb-16"
+            >support@vesicash.co.uk</a
           >
 
           <!-- <a href="tel:+2347039914767" class="info-text">+234 703 991 4767</a> -->
