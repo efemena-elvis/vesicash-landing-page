@@ -39,7 +39,7 @@
             <MoRInfoCard
               icon="BangIcon"
               title="Compliance assurance"
-              description="Our Merchant of Record services ensure adherence to local regulations and tax laws, minimizing legal and financial risks for businesses."
+              description="At Vesicash our Merchant of Record services ensure adherence to local regulations and tax laws, minimizing legal and financial risks for businesses in these countries"
             />
           </div>
 
