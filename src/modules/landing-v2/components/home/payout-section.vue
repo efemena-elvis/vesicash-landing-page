@@ -18,7 +18,7 @@
           <PayoutCard
             icon="money-icon.svg"
             title="Payment Options"
-            description="Access a complete suite of payment solutions essential for your success cards, USSD, bank transfers, and mobile money capabilities."
+            description="Access payment solutions essential for your success cards, USSD, bank transfers, and mobile money."
           />
         </div>
 

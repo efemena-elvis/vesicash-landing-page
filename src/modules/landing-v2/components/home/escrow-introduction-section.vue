@@ -32,15 +32,15 @@
             <InfoDisplayCard
               icon="certified-icon.svg"
               title="Risk elimination"
-              description="Utilizing an escrow service enhances elimination of risk between parties involved in the transaction, especially in unfamiliar or international business dealings"
+              description="Vesicash escrow service ensures elimination of risk between parties involved in the transaction, especially in unfamiliar or international business dealings"
             />
           </div>
 
           <div class="col-12 col-sm-6 col-md-4">
             <InfoDisplayCard
               icon="paper-money-icon.svg"
-              title="Milestone and instalment payment"
-              description="Escrow services enable safe and efficient transactions disbursed in milestones."
+              title="Milestone payment"
+              description="You can enable safe and efficient transactions is disbursed in milestones or installments using Vesicash escrow service"
             />
           </div>
 
@@ -48,7 +48,7 @@
             <InfoDisplayCard
               icon="lock-icon.svg"
               title="Payment protection"
-              description="Escrow services provide a secure and neutral platform, safeguarding both buyers and sellers during high-value transactions."
+              description="Escrow service provide a secure and neutral platform, safeguarding both buyers and sellers during high-value transactions."
             />
           </div>
         </div>
