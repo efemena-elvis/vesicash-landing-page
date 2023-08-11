@@ -26,9 +26,10 @@
           <div class="content-text margin-24">
             This Vesicash Payment Services Terms set out the agreement between
             us Vesicash Innovative Technologies Limited, Lagos, Nigeria, and its
-            subsidiaries across Africa, US, and UK, and you, the person who has
-            completed the on-line application process on our secure customer
-            website (the Vesicash platform).
+            subsidiaries across
+            <a href="/contact" class="link-underline">Africa, US, and UK</a> ,
+            and you, the person who has completed the on-line application
+            process on our secure customer website (the Vesicash platform).
           </div>
 
           <div class="content-text margin-32">
