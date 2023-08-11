@@ -20,12 +20,24 @@
             </div>
 
             <div class="contact-block">
+              <div class="title">Support</div>
+              <div class="description">
+                For customer support please send an email to
+                <a href="mailto:support@vesicash.com" class="mgr-10"
+                  >support@vesicash.com</a
+                >
+                <a href="mailto:support@vesicash.co.uk"
+                  >support@vesicash.co.uk</a
+                >
+              </div>
+            </div>
+
+            <div class="contact-block">
               <div class="title">Technical</div>
               <div class="description">
                 For technical support please send an email to
-                <a href="mailto:support@vesicash.com">support@vesicash.com</a>
-                <a href="mailto:support@vesicash.co.uk"
-                  >support@vesicash.co.uk</a
+                <a href="mailto:techsupport@vesicash.com"
+                  >techsupport@vesicash.com</a
                 >
               </div>
             </div>
@@ -48,18 +60,7 @@
               </div>
             </div> -->
 
-            <div class="contact-block">
-              <div class="title">Address</div>
-              <div class="description">
-                16 Alhaji Mudashiru Eletu Way, Osapa Estate, Lekki, Lagos,
-                Nigeria
-              </div>
-              <div class="description mgt-15">
-                2 Minster Court, London, United Kingdom
-              </div>
-            </div>
-
-            <div class="contact-block">
+            <div class="contact-block d-none d-md-block">
               <!-- SOCIAL ICONS -->
               <div class="social-icons">
                 <a
@@ -88,7 +89,7 @@
           </div>
 
           <!-- CONTACT FORM -->
-          <div class="contact-form col-12 col-md-6">
+          <div class="contact-form col-12 col-md-6" v-if="false">
             <div class="title-text h3-text roobert-700 mgb-8">
               Contact Sales
             </div>
@@ -244,6 +245,78 @@
                   </button>
                 </div>
               </form>
+            </div>
+          </div>
+
+          <div class="contact-info col-12 col-md-6">
+            <div class="contact-block">
+              <div class="title">Nigeria Address</div>
+              <div class="description">
+                16 Alhaji Mudashiru Eletu Way, Osapa Estate, Lekki, Lagos,
+                Nigeria
+              </div>
+            </div>
+
+            <div class="contact-block">
+              <div class="title">UK Address</div>
+              <div class="description">
+                2 Minster Court, London, United Kingdom
+              </div>
+            </div>
+
+            <div class="contact-block">
+              <div class="title">Rwanda Address</div>
+              <div class="description">
+                Remera, Gasabo, Umujyi wa Kigali, Rwanda
+              </div>
+            </div>
+
+            <div class="contact-block">
+              <div class="title">Egypt Address</div>
+              <div class="description">
+                24 Al Tayaran Street, Nasr City, Cairo, Egypt
+              </div>
+            </div>
+
+            <div class="contact-block">
+              <div class="title">Ghana Address</div>
+              <div class="description">
+                The Enterprise Village, 7 Tunemete Street, Accra-Ghana
+              </div>
+            </div>
+
+            <div class="contact-block">
+              <div class="title">Zambia Address</div>
+              <div class="description">
+                LN2260/27 Off Lilayi Road, Shaft Five, Kafue, Zambia
+              </div>
+            </div>
+
+            <div class="contact-block d-block d-md-none">
+              <!-- SOCIAL ICONS -->
+              <div class="social-icons">
+                <a
+                  href="https://www.instagram.com/vesicash/"
+                  class="social-link"
+                >
+                  <div class="icon icon-instagram"></div>
+                </a>
+
+                <a href="https://www.facebook.com/vesicash" class="social-link">
+                  <div class="icon icon-facebook"></div>
+                </a>
+
+                <a href="https://twitter.com/Vesicash" class="social-link">
+                  <div class="icon icon-twitter"></div>
+                </a>
+
+                <a
+                  href="https://www.linkedin.com/company/vesicash"
+                  class="social-link"
+                >
+                  <div class="icon icon-linkedin"></div>
+                </a>
+              </div>
             </div>
           </div>
         </div>
