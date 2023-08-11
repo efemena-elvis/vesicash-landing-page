@@ -24,7 +24,12 @@
             Get your business set up in a new country with ease
           </div>
 
-          <button class="btn btn-primary">Create an account</button>
+          <a
+            class="btn btn-primary"
+            href="https://app.vesicash.com/register-lander"
+            target="_blank"
+            >Create an account</a
+          >
         </div>
       </div>
     </div>

@@ -11,7 +11,12 @@
           zero paperwork.
         </div>
 
-        <button class="btn btn-lg btn-primary">Create an account</button>
+        <a
+          class="btn btn-lg btn-primary"
+          href="https://app.vesicash.com/register-lander"
+          target="_blank"
+          >Create an account</a
+        >
       </div>
 
       <div class="hero-img-wrapper">
