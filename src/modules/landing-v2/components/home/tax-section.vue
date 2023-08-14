@@ -10,7 +10,8 @@
 
           <!-- DESCRIPTION TEXT -->
           <div class="description-text h6-text roobert-400 grey-700 mgb-40">
-            All your local and international tax handled professionally
+            Experience seamless management of your local tax obligations with
+            our expert Merchant of Record Services
           </div>
         </div>
 
