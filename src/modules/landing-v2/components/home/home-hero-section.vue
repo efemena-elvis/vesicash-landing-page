@@ -3,7 +3,7 @@
     <div class="content-wrapper vesicash-container">
       <div>
         <div class="hero-title h1-text grey-900 mgb-24 roobert-700">
-          Imagine a world where you can access new markets in one minute
+          Imagine a world where you can access new markets in minutes
         </div>
 
         <div class="hero-description h6-text grey-700 roobert-400 mgb-40">
