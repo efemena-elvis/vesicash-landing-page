@@ -25,7 +25,7 @@
           </div>
 
           <a
-            class="btn btn-primary"
+            class="btn btn-lg btn-primary roobert-500"
             href="https://app.vesicash.com/register-lander"
             target="_blank"
             >Create an account</a
@@ -87,6 +87,11 @@ export default {
     @include breakpoint-down(md) {
       @include font-height(19, 28);
     }
+  }
+
+  .btn {
+    padding: toRem(13) toRem(42);
+    width: max-content;
   }
 }
 </style>

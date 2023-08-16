@@ -48,6 +48,7 @@ button {
 .btn {
   @include generate-font-type("secondary-1");
   @include flex-row-center-wrap;
+  font-family: "Roobert-Medium";
   text-decoration: none !important;
   background-color: transparent;
   box-shadow: 0 0 0 transparent;

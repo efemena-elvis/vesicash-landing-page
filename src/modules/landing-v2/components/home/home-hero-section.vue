@@ -12,7 +12,7 @@
         </div>
 
         <a
-          class="btn btn-lg btn-primary"
+          class="btn btn-lg btn-primary roobert-500"
           href="https://app.vesicash.com/register-lander"
           target="_blank"
           >Create an account</a
@@ -104,6 +104,7 @@ export default {
 
     .btn {
       padding: toRem(13) toRem(42);
+      width: max-content;
 
       @include breakpoint-down(md) {
         margin: 0 auto;
