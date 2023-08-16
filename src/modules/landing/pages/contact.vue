@@ -25,7 +25,8 @@
                 For customer support please send an email to
                 <a href="mailto:support@vesicash.com" class="mgr-10"
                   >support@vesicash.com</a
-                >,  
+                >
+                <br />
                 <a href="mailto:support@vesicash.co.uk"
                   >support@vesicash.co.uk</a
                 >
