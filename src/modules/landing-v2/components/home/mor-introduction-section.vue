@@ -5,7 +5,7 @@
       <div class="top-section row align-items-center">
         <div class="col-12 col-md-6 col-xl-5 copy-content">
           <div class="title secondary-1-text teal-300 mgb-8 roobert-500">
-            MERCHANTS OF RECORD TECHNOLOGY
+            MERCHANT OF RECORD TECHNOLOGY
           </div>
 
           <div class="description h2-text neutral-10 roobert-700">
