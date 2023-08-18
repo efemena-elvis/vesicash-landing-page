@@ -41,7 +41,7 @@ export default {
       {
         title: "Playground",
         description:
-          "Interract with the Vesicash system and est out various use cases via our playground.",
+          "Interract with the Vesicash system and test our various use cases via our playground.",
         cta: "Launch Playground",
         link: "/coming-soon",
       },

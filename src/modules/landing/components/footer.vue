@@ -19,20 +19,33 @@
 
           <!-- SOCIAL ICONS -->
           <div class="social-icons mgt-32">
-            <a href="https://www.instagram.com/vesicash/" class="social-link">
+            <a
+              href="https://www.instagram.com/vesicash/"
+              target="_blank"
+              class="social-link"
+            >
               <div class="icon icon-instagram"></div>
             </a>
 
-            <a href="https://www.facebook.com/vesicash" class="social-link">
+            <a
+              href="https://www.facebook.com/vesicash"
+              class="social-link"
+              target="_blank"
+            >
               <div class="icon icon-facebook"></div>
             </a>
 
-            <a href="https://twitter.com/Vesicash" class="social-link">
+            <a
+              href="https://twitter.com/Vesicash"
+              class="social-link"
+              target="_blank"
+            >
               <div class="icon icon-twitter"></div>
             </a>
 
             <a
               href="https://www.linkedin.com/company/vesicash"
+              target="_blank"
               class="social-link"
             >
               <div class="icon icon-linkedin"></div>
