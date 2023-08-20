@@ -1,5 +1,5 @@
 <template>
-  <div class="api-doc-section teal-50-bg">
+  <div class="api-doc-section neutral-10-bg">
     <div class="vesicash-container">
       <div class="row">
         <!-- COPY SECTION -->

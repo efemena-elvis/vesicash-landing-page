@@ -3,17 +3,7 @@
     <div class="content-wrapper vesicash-container">
       <!-- TOP SECTION -->
       <div class="top-section row align-items-center">
-        <div class="col-12 col-md-6 col-xl-5 copy-content">
-          <div class="title secondary-1-text teal-300 mgb-8 roobert-500">
-            MERCHANT OF RECORD TECHNOLOGY
-          </div>
-
-          <div class="description h2-text neutral-10 roobert-700">
-            Our MoR Technology enables you to expand into new markets quickly.
-          </div>
-        </div>
-
-        <div class="col-12 col-md-6 col-xl-7">
+        <div class="col-12 col-md-6">
           <div class="image-section position-relative w-100">
             <img
               v-lazy="loadImage('mor-frame.png', 'landing-v2')"
@@ -22,33 +12,36 @@
             />
           </div>
         </div>
-      </div>
 
-      <!-- BOTTOM SECTION -->
-      <div class="bottom-section">
-        <div class="row">
-          <div class="col-12 col-sm-6 col-md-4">
-            <MoRInfoCard
-              icon="ClockIcon"
-              title="Faster Time-to-Market"
-              description="By taking care of legal, financial, and compliance aspects, we accelerate the speed at which businesses can start selling their products and services in new regions."
-            />
+        <div class="col-12 col-md-6 copy-content">
+          <div class="title secondary-1-text green-500 mgb-16 roobert-500">
+            MERCHANT OF RECORDS
           </div>
 
-          <div class="col-12 col-sm-6 col-md-4">
-            <MoRInfoCard
-              icon="BangIcon"
-              title="Compliance assurance"
-              description="At Vesicash our Merchant of Record services ensure adherence to local regulations and tax laws, minimizing legal and financial risks for businesses in these countries"
-            />
+          <div class="description h2-text neutral-10 roobert-700 mgb-16">
+            What makes us different?
           </div>
 
-          <div class="col-12 col-sm-6 col-md-4">
-            <MoRInfoCard
-              icon="GlobeIcon"
-              title="Global expansion"
-              description="As a Merchant of Record, we enable businesses to enter new international markets without the complexities of establishing legal entities in each country."
-            />
+          <div class="meta h7-text roobert-400 neutral-10 mgb-40">
+            Vesicash enable your business reach a wider market faster with our
+            full stack payment infrastructure
+          </div>
+
+          <!-- FEATURES LIST -->
+          <div class="feature-list">
+            <div
+              class="feature-item"
+              v-for="(feature, index) in features"
+              :key="index"
+            >
+              <div class="icon-wrapper">
+                <SuccessIcon />
+              </div>
+
+              <div class="text tertiary-1-text roobert-400 neutral-10">
+                {{ feature }}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -64,6 +57,22 @@ export default {
 
   components: {
     MoRInfoCard,
+    SuccessIcon: () =>
+      import(
+        /* webpackChunkName: 'shared-module' */ "@/shared/components/icon-comps/success-icon"
+      ),
+  },
+
+  data() {
+    return {
+      features: [
+        "We build and maintain relationships with payment providers.",
+        "We shoulder the responsibility of collecting and remitting global sales taxes.",
+        "We shoulder the responsibility for all fraud that takes place on our platform",
+        "Align your revenue data across various billing and payment methods",
+        "Handle all billing-related support queries for you",
+      ],
+    };
   },
 };
 </script>
@@ -73,23 +82,24 @@ export default {
   padding: toRem(100) 0;
 
   @include breakpoint-down(md) {
-    padding: toRem(80) 0;
+    padding: toRem(90) 0 toRem(80);
   }
 
   @include breakpoint-down(sm) {
-    padding: toRem(60) 0 toRem(80);
+    padding: toRem(60) 0;
   }
 
   .content-wrapper {
     .top-section {
-      margin-bottom: toRem(100);
-
       .copy-content {
-        padding: toRem(40);
+        padding-left: toRem(80);
+
+        @include breakpoint-down(lg) {
+          padding-left: toRem(50);
+        }
 
         @include breakpoint-down(md) {
           padding: toRem(15);
-          margin-bottom: toRem(40);
         }
 
         .title {
@@ -113,19 +123,53 @@ export default {
             font-size: toRem(32);
           }
         }
-      }
-    }
 
-    .bottom-section {
-      .col-12 {
-        @include breakpoint-down(md) {
-          margin-bottom: toRem(44);
+        .meta {
+          @include breakpoint-down(lg) {
+            font-size: toRem(18);
+          }
 
-          &:last-of-type {
-            margin-bottom: 0;
+          @include breakpoint-down(sm) {
+            font-size: toRem(16);
+          }
+        }
+
+        .feature-list {
+          @include flex-row-start-wrap;
+          align-items: flex-start;
+          width: 90%;
+
+          .feature-item {
+            @include flex-row-start-nowrap;
+            align-items: center;
+            margin-bottom: toRem(16);
+
+            &:last-of-type {
+              margin-bottom: 0;
+            }
+
+            .icon-wrapper {
+              margin-right: toRem(16);
+            }
+
+            .text {
+              @include breakpoint-down(md) {
+                font-size: toRem(15);
+              }
+            }
           }
         }
       }
+    }
+  }
+
+  .image-section {
+    @include breakpoint-down(md) {
+      margin-bottom: toRem(60);
+    }
+
+    @include breakpoint-down(sm) {
+      margin-bottom: toRem(40);
     }
   }
 }
