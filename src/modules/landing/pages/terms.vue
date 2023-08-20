@@ -8,15 +8,11 @@
         </h1>
 
         <div class="content-text sub-header-text">
-          These Website Terms and Conditions (“Terms”) contained herein on this
-          webpage, shall govern your access to and use of this website,
-          including all pages within this website (collectively referred to as
-          this “Website”). These Terms apply in full force and effect to your
-          use of this Website and by using this Website, you expressly accept
-          all terms and conditions contained herein in full. You must not use
-          this Website, if you have any objection to any of these Terms. PLEASE
-          READ AND UNDERSTAND THE TERMS OF AGREEMENT CAREFULLY BEFORE BEING
-          AGREED TO BE BOUND BY ITS TERMS.
+          This Vesicash Payment Services Terms set out the agreement between us
+          Vesicash Innovative Technologies Limited, Lagos, Nigeria, and its
+          subsidiaries across Africa, US, and UK with operations in England and
+          Wales, and you, the person who has completed the on-line application
+          process on our secure customer website (the Vesicash platform).
         </div>
 
         <!-- INTRODUCTION SECTION -->
