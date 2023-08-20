@@ -8,10 +8,17 @@
             ESCROW TRANSACTIONS
           </div>
 
-          <div class="h2-text grey-900 roobert-700">
+          <div class="description h2-text grey-900 roobert-700 mgb-40">
             Escrow technology ensures you get value for your B2B and B2C
             payments
           </div>
+
+          <a
+            class="btn btn-lg btn-primary roobert-500"
+            href="https://app.vesicash.com/register-lander"
+            target="_blank"
+            >Create an account</a
+          >
         </div>
 
         <div class="col-12 col-md-6">
@@ -115,8 +122,13 @@ export default {
           }
 
           @include breakpoint-down(sm) {
-            font-size: toRem(32);
+            @include font-height(32, 42);
           }
+        }
+
+        .btn {
+          padding: toRem(14) toRem(46);
+          width: max-content;
         }
       }
     }

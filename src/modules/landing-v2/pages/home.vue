@@ -7,22 +7,22 @@
     <MorIntroductionSection />
 
     <!-- BUSINESS INCORPORATION SECTION -->
-    <BusinessIncorporationSection />
+    <!-- <BusinessIncorporationSection /> -->
 
     <!-- TAX SECTION -->
-    <TaxSection />
+    <!-- <TaxSection /> -->
+
+    <!-- PAYOUT SECTION -->
+    <PaymentSection />
 
     <!-- CLIENT SECTION -->
     <ClientSection />
-
-    <!-- PAYOUT SECTION -->
-    <PayoutSection />
 
     <!-- ESCROW INTRODUCTION SECTION -->
     <EscrowIntroductionSection />
 
     <!-- MARKET FEATURE SECTION -->
-    <MarketFeatureSection />
+    <!-- <MarketFeatureSection /> -->
 
     <!-- API DOC SECTION -->
     <APIDocSection />
@@ -42,30 +42,30 @@ export default {
   components: {
     HomeHeroSection,
     MorIntroductionSection,
-    BusinessIncorporationSection: () =>
-      import(
-        /* webpackChunkName: "landing-module-v2" */ "@/modules/landing-v2/components/home/business-incorporation-section"
-      ),
-    TaxSection: () =>
-      import(
-        /* webpackChunkName: "landing-module-v2" */ "@/modules/landing-v2/components/home/tax-section"
-      ),
+    // BusinessIncorporationSection: () =>
+    //   import(
+    //     /* webpackChunkName: "landing-module-v2" */ "@/modules/landing-v2/components/home/business-incorporation-section"
+    //   ),
+    // TaxSection: () =>
+    //   import(
+    //     /* webpackChunkName: "landing-module-v2" */ "@/modules/landing-v2/components/home/tax-section"
+    //   ),
     ClientSection: () =>
       import(
         /* webpackChunkName: "landing-module-v2" */ "@/modules/landing-v2/components/home/client-section"
       ),
-    PayoutSection: () =>
+    PaymentSection: () =>
       import(
-        /* webpackChunkName: "landing-module-v2" */ "@/modules/landing-v2/components/home/payout-section"
+        /* webpackChunkName: "landing-module-v2" */ "@/modules/landing-v2/components/home/payment-section"
       ),
     EscrowIntroductionSection: () =>
       import(
         /* webpackChunkName: "landing-module-v2" */ "@/modules/landing-v2/components/home/escrow-introduction-section"
       ),
-    MarketFeatureSection: () =>
-      import(
-        /* webpackChunkName: "landing-module-v2" */ "@/modules/landing-v2/components/home/market-feature-section"
-      ),
+    // MarketFeatureSection: () =>
+    //   import(
+    //     /* webpackChunkName: "landing-module-v2" */ "@/modules/landing-v2/components/home/market-feature-section"
+    //   ),
     APIDocSection: () =>
       import(
         /* webpackChunkName: "landing-module-v2" */ "@/modules/landing-v2/components/home/api-doc-section"

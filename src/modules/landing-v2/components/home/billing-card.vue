@@ -1,5 +1,5 @@
 <template>
-  <div class="info-display-card">
+  <div class="billing-card">
     <!-- ICON SECTION -->
     <div
       class="icon-section neutral-10-bg mgb-24 rounded-circle"
@@ -9,12 +9,12 @@
     </div>
 
     <!-- TITLE SECTION -->
-    <div class="title-section h6-text grey-900 mgb-8 roobert-700">
+    <div class="title-section grey-900 mgb-8 roobert-700">
       {{ title }}
     </div>
 
     <!-- DESCRIPTION SECTION -->
-    <div class="description-section h7-text grey-700 roobert-400">
+    <div class="description-section grey-700 roobert-400">
       {{ description }}
     </div>
   </div>
@@ -43,7 +43,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.info-display-card {
+.billing-card {
+  margin: toRem(30) 0;
+
+  @include breakpoint-down(md) {
+    margin: toRem(15) 0;
+  }
+
   .icon-section {
     position: relative;
     @include draw-shape(70);
@@ -62,6 +68,7 @@ export default {
   }
 
   .title-section {
+    @include font-height(22.5, 30);
     padding-right: toRem(10);
 
     @include breakpoint-down(sm) {
@@ -70,14 +77,15 @@ export default {
   }
 
   .description-section {
-    padding-right: toRem(20);
+    @include font-height(18.5, 28);
+    padding-right: toRem(15);
 
     @include breakpoint-down(lg) {
       font-size: toRem(18);
     }
 
     @include breakpoint-down(sm) {
-      font-size: toRem(18.5);
+      font-size: toRem(18);
     }
   }
 

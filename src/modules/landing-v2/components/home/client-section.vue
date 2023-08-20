@@ -53,8 +53,9 @@ export default {
   @include breakpoint-down(md) {
     padding: toRem(80) 0;
   }
+
   @include breakpoint-down(sm) {
-    padding: toRem(30) 0 toRem(80);
+    padding: toRem(70) 0 toRem(80);
   }
 
   .title-text {
