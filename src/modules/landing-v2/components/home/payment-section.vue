@@ -3,7 +3,7 @@
     <div class="vesicash-container">
       <!-- TITLE TEXT -->
       <div class="title-text primary-1-text roobert-500 mgb-8 green-800">
-        PAYMENT INFRASRTRUCTIURE
+        PAYMENT INFRASTRUCTIURE
       </div>
 
       <div class="description-text grey-900 h2-text roobert-700 mgb-16">
