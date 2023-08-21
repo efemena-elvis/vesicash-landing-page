@@ -15,7 +15,7 @@
 
         <div class="col-12 col-md-6 copy-content">
           <div class="title secondary-1-text green-500 mgb-16 roobert-500">
-            MERCHANT OF RECORDS
+            MERCHANT OF RECORD
           </div>
 
           <div class="description h2-text neutral-10 roobert-700 mgb-16">
