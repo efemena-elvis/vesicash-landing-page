@@ -11,7 +11,8 @@
       </div>
 
       <div class="meta-text h7-text grey-700 roobert-400 mgb-20">
-        Expand sales, grow revenue with our payment infrastructure
+        Expand sales, grow revenue, and ensure secure transactions with our
+        Merchant of Record (MoR) payment infrastructure.
       </div>
 
       <!-- PAYOUT CARD ROW -->
@@ -36,7 +37,7 @@
           <BillingCard
             icon="bang-icon.svg"
             title="Tax Compliance"
-            description="Experience seamless management of your local tax obligations with our expert Merchant of Record Services."
+            description="Experience seamless management of your local tax obligations with our expert Merchant of Record (MoR) Services."
           />
         </div>
 
@@ -68,7 +69,7 @@
           <BillingCard
             icon="fraud-icon.svg"
             title="Fraud Prevention"
-            description="Mitigate your risk through fraud protection and prevention."
+            description="Mitigate your risk through Merchant of Record-enabled fraud protection and prevention."
           />
         </div>
       </div>
