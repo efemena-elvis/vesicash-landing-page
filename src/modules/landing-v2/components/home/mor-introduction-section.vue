@@ -22,9 +22,13 @@
             What makes us different?
           </div>
 
-          <div class="meta h7-text roobert-400 neutral-10 mgb-40">
-            Vesicash enable your business reach a wider market faster with our
-            full stack payment infrastructure
+          <div class="meta h7-text roobert-400 neutral-10 mgb-25">
+            Vesicash enables your business to reach a wider market faster with
+            our full-stack payment infrastructure. We serve as your trusted
+            Merchant of Record (MoR), providing comprehensive payment solutions
+            to streamline your global transactions.
+            <br />
+            Our services include:
           </div>
 
           <!-- FEATURES LIST -->
@@ -42,6 +46,11 @@
                 {{ feature }}
               </div>
             </div>
+          </div>
+          <div class="meta h7-text roobert-400 neutral-10 mgt-25">
+            With Vesicash as your Merchant of Record (MoR), you can focus on
+            growing your business while we ensure secure, compliant, and
+            hassle-free transactions.
           </div>
         </div>
       </div>
@@ -66,11 +75,11 @@ export default {
   data() {
     return {
       features: [
-        "We build and maintain relationships with payment providers.",
-        "We shoulder the responsibility of collecting and remitting global sales taxes.",
-        "We shoulder the responsibility for all fraud that takes place on our platform",
-        "Align your revenue data across various billing and payment methods",
-        "Handle all billing-related support queries for you",
+        "Building and maintaining relationships with payment providers.",
+        "Shouldering the responsibility of collecting and remitting global sales taxes.",
+        "Managing and taking responsibility for all fraud that takes place on our platform.",
+        "Aligning your revenue data across various billing and payment methods.",
+        "Handling all billing-related support queries for you.",
       ],
     };
   },
