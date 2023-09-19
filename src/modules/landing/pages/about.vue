@@ -1,17 +1,20 @@
 <template>
-  <div>
-    <!-- ABOUT HERO SECTION -->
-    <AboutHeroSection />
+  <div class="page-container">
+    <template v-if="!loading">
+      <!-- ABOUT HERO SECTION -->
+      <AboutHeroSection />
 
-    <!-- ABOUT VALUES SECTION -->
-    <AboutValues />
+      <!-- ABOUT VALUES SECTION -->
+      <AboutValues />
 
-    <!-- SOLUTION CTA SECTION -->
-    <SolutionCTA />
+      <!-- SOLUTION CTA SECTION -->
+      <SolutionCTA />
+    </template>
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import AboutHeroSection from "@/modules/landing/components/about/about-hero-section";
 import AboutValues from "@/modules/landing/components/about/about-values";
 
@@ -30,8 +33,30 @@ export default {
         /* webpackChunkName: "landing-module" */ "@/modules/landing/components/solutions/solution-cta"
       ),
   },
+
+  async created() {
+    this.loading = true;
+    await this.fetchAboutPage();
+    this.loading = false;
+  },
+
+  data() {
+    return {
+      res: "",
+      loading: false,
+    };
+  },
+
+  methods: {
+    ...mapActions({
+      fetchAboutPage: "cms/fetchAboutPage",
+    }),
+  },
 };
 </script>
 
 <style lang="scss" scoped>
+.page-container {
+  min-height: 80vh;
+}
 </style>

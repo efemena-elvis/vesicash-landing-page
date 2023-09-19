@@ -8,11 +8,15 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@prismicio/client": "^5.1.1",
+    "@prismicio/helpers": "^2.3.9",
+    "@prismicio/vue": "^2.2.0",
     "axios": "^0.27.2",
     "bootstrap": "^5.2.1",
     "core-js": "^3.6.5",
     "node-sass": "^4.14.1",
     "portal-vue": "^2.1.7",
+    "prismic-dom": "^2.2.7",
     "register-service-worker": "^1.7.1",
     "sass-math": "^1.0.0",
     "vue": "^2.6.11",
