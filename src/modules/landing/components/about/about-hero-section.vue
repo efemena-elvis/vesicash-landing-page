@@ -3,19 +3,15 @@
     <div class="vesicash-container">
       <!-- HEADER TEXT -->
       <h1 class="header-text mgb-32 roobert-700 teal-900 slide-right">
-        <span class="teal-900">We build bridges between</span>
+        <span class="teal-900">{{ getAboutPage.hero_title_1 }}</span>
         <br />
-        <span class="green-500">companies and customers.</span>
+        <span class="green-500">{{ getAboutPage.hero_title_2 }}</span>
       </h1>
 
       <!-- DESCRIPTION TEXT -->
       <div class="description-text grey-700 h6-text roobert-400 slide-left">
         <p class="text-content">
-          Vesicash Innovative Technologies was founded in 2018 with a mission to
-          catalyze the African digital economy by enabling African businesses to
-          make and receive secure digital payments in a seamless, customized and
-          bespoke. Our patented,digital escrow technology has helped over 5,000
-          businesses grow and scale.
+          {{ getAboutPage.hero_description }}
         </p>
       </div>
     </div>
@@ -23,8 +19,13 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "AboutHeroSection",
+
+  computed: {
+    ...mapGetters({ getAboutPage: "cms/getAboutPage" }),
+  },
 };
 </script>
 
