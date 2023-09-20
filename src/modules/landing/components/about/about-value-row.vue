@@ -1,7 +1,7 @@
 <template>
   <div class="about-value-row">
     <!-- COUNTER STATE -->
-    <div class="counter teal-200 roobert-700">{{ value.counter }}</div>
+    <div class="counter teal-200 roobert-700">{{ value.index }}</div>
 
     <!-- INFO BLOCK -->
     <div class="info-block">

@@ -1,6 +1,6 @@
 <template>
   <div class="page-container">
-    <template v-if="!loading">
+    <template v-if="!loading && getAboutPage">
       <!-- ABOUT HERO SECTION -->
       <AboutHeroSection />
 
@@ -14,12 +14,12 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import AboutHeroSection from "@/modules/landing/components/about/about-hero-section";
 import AboutValues from "@/modules/landing/components/about/about-values";
 
 export default {
-  name: "About",
+  name: "AboutPage",
 
   metaInfo: {
     title: "About Us",
@@ -38,6 +38,10 @@ export default {
     this.loading = true;
     await this.fetchAboutPage();
     this.loading = false;
+  },
+
+  computed: {
+    ...mapGetters({ getAboutPage: "cms/getAboutPage" }),
   },
 
   data() {
