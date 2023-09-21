@@ -5,16 +5,14 @@
       <div
         class="header-text text-center h1-text roobert-700 neutral-10 mgb-32"
       >
-        Need a custom or
-        <br />white label solution ?
+        {{ getAboutPage.service_title }}
       </div>
 
       <!-- DESCRIPTION TEXT -->
       <div
         class="description-text text-center h6-text roobert-400 grey-200 mgb-50"
       >
-        At vesicash we have product and services that can take your business to
-        the next level
+        {{ getAboutPage.service_description }}
       </div>
 
       <!-- BUTTON ROW -->
@@ -23,13 +21,13 @@
           href="https://docs.vesicash.com/"
           target="_blank"
           class="btn btn-secondary btn-md mgr-16 roobert-500"
-          >View documentation</a
+          >{{ getAboutPage.labels.view_doc_cta }}</a
         >
 
         <router-link
           to="/contact"
           class="btn btn-primary btn-md mgr-16 roobert-500"
-          >Contact Us</router-link
+          >{{ getAboutPage.labels.contact_cta }}</router-link
         >
       </div>
     </div>
@@ -37,8 +35,13 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "SolutionCTA",
+
+  computed: {
+    ...mapGetters({ getAboutPage: "cms/getAboutPage" }),
+  },
 };
 </script>
 
