@@ -5,11 +5,11 @@
         <!-- COPY SECTION -->
         <div class="copy-section col-12 col-md-6 mb-5 mb-md-0">
           <h2 class="title-text h2-text roobert-700 grey-900 mgb-16">
-            Your Payments, Your Way
+            {{ getHomePage.api_title }}
           </h2>
 
           <h5 class="description-text h7-text roobert-400 grey-600 mgb-36">
-            Experience our functionality On Platform Or via API
+            {{ getHomePage.api_description }}
           </h5>
 
           <!-- DOC LINK -->
@@ -19,7 +19,7 @@
             </div>
 
             <div class="text secondary-1-text roobert-400">
-              Explore our documentation
+              {{ getHomePage.labels.view_doc_title }}
             </div>
           </a>
         </div>
@@ -40,8 +40,14 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "APIDocSection",
+
+  computed: {
+    ...mapGetters({ getHomePage: "cms/getHomePage" }),
+  },
 };
 </script>
 
