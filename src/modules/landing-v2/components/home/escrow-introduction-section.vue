@@ -5,19 +5,18 @@
       <div class="top-section row align-items-center">
         <div class="col-12 col-md-6 copy-content">
           <div class="title secondary-1-text green-500 mgb-8 roobert-500">
-            ESCROW TRANSACTIONS
+            {{ getHomePage.escrow_title }}
           </div>
 
           <div class="description h2-text grey-900 roobert-700 mgb-40">
-            Escrow technology ensures you get value for your B2B and B2C
-            payments
+            {{ getHomePage.escrow_description }}
           </div>
 
           <a
             class="btn btn-lg btn-primary roobert-500"
             href="https://app.vesicash.com/register-lander"
             target="_blank"
-            >Create an account</a
+            >{{ getHomePage.labels.sign_up_cta_title }}</a
           >
         </div>
 
@@ -35,27 +34,15 @@
       <!-- BOTTOM SECTION -->
       <div class="bottom-section">
         <div class="row">
-          <div class="col-12 col-sm-6 col-md-4">
+          <div
+            class="col-12 col-sm-6 col-md-4"
+            v-for="(benefit, i) in getHomePage.escrow_benefits"
+            :key="i"
+          >
             <InfoDisplayCard
-              icon="certified-icon.svg"
-              title="Risk elimination"
-              description="Vesicash escrow service ensures elimination of risk between parties involved in the transaction, especially in unfamiliar or international business dealings"
-            />
-          </div>
-
-          <div class="col-12 col-sm-6 col-md-4">
-            <InfoDisplayCard
-              icon="paper-money-icon.svg"
-              title="Milestone payment"
-              description="You can enable safe and efficient transactions is disbursed in milestones or installments using Vesicash escrow service"
-            />
-          </div>
-
-          <div class="col-12 col-sm-6 col-md-4">
-            <InfoDisplayCard
-              icon="lock-icon.svg"
-              title="Payment protection"
-              description="Escrow service provide a secure and neutral platform, safeguarding both buyers and sellers during high-value transactions."
+              :icon="benefit.icon"
+              :title="benefit.title"
+              :description="benefit.description"
             />
           </div>
         </div>
@@ -65,6 +52,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import InfoDisplayCard from "@/modules/landing-v2/components/home/info-display-card";
 
 export default {
@@ -72,6 +60,10 @@ export default {
 
   components: {
     InfoDisplayCard,
+  },
+
+  computed: {
+    ...mapGetters({ getHomePage: "cms/getHomePage" }),
   },
 };
 </script>
