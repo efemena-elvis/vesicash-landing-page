@@ -81,7 +81,7 @@ export default {
   }),
 
   created() {
-    window?.NProgress.configure({ showSpinner: false });
+    window?.NProgress && window?.NProgress.configure({ showSpinner: false });
     // EVENT BUS TO TOGGLE PAGE LOADER
     this.$bus.$on("toggle-page-loader", (message) => {
       this.show_feather_loader = !this.show_feather_loader;
