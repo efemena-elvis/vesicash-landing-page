@@ -123,13 +123,20 @@ class serviceApi {
   // REQUEST AXIOS INTERCEPTOR
   // ===============================
   async injectTokenInterceptor() {
-    axios.interceptors.request.use((config) => config);
+    axios.interceptors.request.use((config) => {
+          window?.Nprogres.start()
+          return config
+    });
 
     axios.interceptors.response.use(
-      async (response) => response,
+      async (response) => {
+        window?.Nprogres.done()
+        return response
+      },
 
       // ERROR RESPONSE
       async (error) => {
+        window?.Nprogres.done()
         const originalConfig = error.config;
 
         if (error.response) {

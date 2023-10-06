@@ -81,6 +81,7 @@ export default {
   }),
 
   created() {
+    window?.NProgress && window?.NProgress.configure({ showSpinner: false });
     // EVENT BUS TO TOGGLE PAGE LOADER
     this.$bus.$on("toggle-page-loader", (message) => {
       this.show_feather_loader = !this.show_feather_loader;
@@ -126,5 +127,9 @@ body {
 .fade-leave-active {
   transition: opacity 0.2s ease;
   opacity: 0;
+}
+
+#nprogress .bar {
+  background: getColor("green-500");
 }
 </style>

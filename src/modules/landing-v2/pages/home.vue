@@ -1,38 +1,41 @@
 <template>
   <div class="home-container">
-    <!-- HOME HERO SECTION -->
-    <HomeHeroSection />
+    <template v-if="getHomePage">
+      <!-- HOME HERO SECTION -->
+      <HomeHeroSection />
 
-    <!-- MOR INTRODUCTION SECTION -->
-    <MorIntroductionSection />
+      <!-- MOR INTRODUCTION SECTION -->
+      <MorIntroductionSection />
 
-    <!-- BUSINESS INCORPORATION SECTION -->
-    <!-- <BusinessIncorporationSection /> -->
+      <!-- BUSINESS INCORPORATION SECTION -->
+      <!-- <BusinessIncorporationSection /> -->
 
-    <!-- TAX SECTION -->
-    <!-- <TaxSection /> -->
+      <!-- TAX SECTION -->
+      <!-- <TaxSection /> -->
 
-    <!-- PAYOUT SECTION -->
-    <PaymentSection />
+      <!-- PAYOUT SECTION -->
+      <PaymentSection />
 
-    <!-- CLIENT SECTION -->
-    <ClientSection />
+      <!-- CLIENT SECTION -->
+      <ClientSection />
 
-    <!-- ESCROW INTRODUCTION SECTION -->
-    <EscrowIntroductionSection />
+      <!-- ESCROW INTRODUCTION SECTION -->
+      <EscrowIntroductionSection />
 
-    <!-- MARKET FEATURE SECTION -->
-    <!-- <MarketFeatureSection /> -->
+      <!-- MARKET FEATURE SECTION -->
+      <!-- <MarketFeatureSection /> -->
 
-    <!-- API DOC SECTION -->
-    <APIDocSection />
+      <!-- API DOC SECTION -->
+      <APIDocSection />
 
-    <!-- CALL TO ACTION SECTION -->
-    <CallToActionSection />
+      <!-- CALL TO ACTION SECTION -->
+      <CallToActionSection />
+    </template>
   </div>
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
 import HomeHeroSection from "@/modules/landing-v2/components/home/home-hero-section";
 import MorIntroductionSection from "@/modules/landing-v2/components/home/mor-introduction-section";
 
@@ -75,11 +78,26 @@ export default {
         /* webpackChunkName: "landing-module-v2" */ "@/modules/landing-v2/components/home/call-to-action-section"
       ),
   },
+
+  computed: {
+    ...mapGetters({ getHomePage: "cms/getHomePage" }),
+  },
+
+  async created() {
+    await this.fetchHomePage();
+  },
+
+  methods: {
+    ...mapActions({
+      fetchHomePage: "cms/fetchHomePage",
+    }),
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .home-container {
+  min-height: 100vh;
   padding-top: toRem(70);
 }
 </style>

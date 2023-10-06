@@ -3,19 +3,18 @@
     <div class="content-wrapper vesicash-container">
       <div>
         <div class="hero-title h1-text grey-900 mgb-24 roobert-700">
-          Imagine a world where you can access new markets in minutes
+          {{ getHomePage.hero_title }}
         </div>
 
         <div class="hero-description h6-text grey-700 roobert-400 mgb-40">
-          Vesicash enables global businesses, expand into emerging markets with
-          zero paperwork.
+          {{ getHomePage.hero_description }}
         </div>
 
         <a
           class="btn btn-lg btn-primary roobert-500"
           href="https://app.vesicash.com/register-lander"
           target="_blank"
-          >Create an account</a
+          >{{ getHomePage.labels.sign_up_cta_title }}</a
         >
       </div>
 
@@ -27,6 +26,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import MoRGlobe from "@/shared/components/icon-comps/mor-globe";
 
 export default {
@@ -34,6 +34,10 @@ export default {
 
   components: {
     MoRGlobe,
+  },
+
+  computed: {
+    ...mapGetters({ getHomePage: "cms/getHomePage" }),
   },
 };
 </script>

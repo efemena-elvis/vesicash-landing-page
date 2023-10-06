@@ -5,7 +5,7 @@
       class="icon-section neutral-10-bg mgb-24 rounded-circle"
       :class="has_border && 'icon-border'"
     >
-      <img v-lazy="loadImage(icon, 'landing-v2')" :alt="`${icon} logo`" />
+      <img v-lazy="icon" :alt="`${icon} logo`" />
     </div>
 
     <!-- TITLE SECTION -->

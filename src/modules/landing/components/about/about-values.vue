@@ -2,12 +2,14 @@
   <div class="about-values teal-50-bg">
     <div class="vesicash-container">
       <!-- TITLE TEXT -->
-      <div class="title-text h1-text teal-900 roobert-700">Our Values</div>
+      <div class="title-text h1-text teal-900 roobert-700">
+        {{ vesicashValue.title }}
+      </div>
 
       <div class="row">
         <div
           class="col-12 col-lg-10"
-          v-for="(value, index) in values"
+          v-for="(value, index) in vesicashValue.values"
           :key="index"
         >
           <AboutValueRow :value="value" />
@@ -18,6 +20,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "AboutValues",
 
@@ -26,6 +29,17 @@ export default {
       import(
         /* webpackChunkName: 'landing-module' */ "@/modules/landing/components/about/about-value-row"
       ),
+  },
+
+  computed: {
+    ...mapGetters({ getAboutPage: "cms/getAboutPage" }),
+
+    vesicashValue() {
+      return {
+        title: this.getAboutPage.value_title,
+        values: [...this.getAboutPage.values],
+      };
+    },
   },
 
   data: () => ({

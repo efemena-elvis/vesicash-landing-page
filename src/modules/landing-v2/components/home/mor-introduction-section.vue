@@ -15,23 +15,22 @@
 
         <div class="col-12 col-md-6 copy-content">
           <div class="title secondary-1-text green-500 mgb-16 roobert-500">
-            MERCHANT OF RECORDS
+            {{ getHomePage.mor_title }}
           </div>
 
           <div class="description h2-text neutral-10 roobert-700 mgb-16">
-            What makes us different?
+            {{ getHomePage.vesicash_mor }}
           </div>
 
-          <div class="meta h7-text roobert-400 neutral-10 mgb-40">
-            Vesicash enable your business reach a wider market faster with our
-            full stack payment infrastructure
+          <div class="meta h7-text roobert-400 neutral-10 mgb-25">
+            {{ getHomePage.why_vesicash_mor }}
           </div>
 
           <!-- FEATURES LIST -->
           <div class="feature-list">
             <div
               class="feature-item"
-              v-for="(feature, index) in features"
+              v-for="(feature, index) in getHomePage.mor_services"
               :key="index"
             >
               <div class="icon-wrapper">
@@ -43,6 +42,9 @@
               </div>
             </div>
           </div>
+          <div class="meta h7-text roobert-400 neutral-10 mgt-25">
+            {{ getHomePage.mor_extra_benefit }}
+          </div>
         </div>
       </div>
     </div>
@@ -50,6 +52,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import MoRInfoCard from "@/modules/landing-v2/components/home/mor-info-card";
 
 export default {
@@ -63,14 +66,18 @@ export default {
       ),
   },
 
+  computed: {
+    ...mapGetters({ getHomePage: "cms/getHomePage" }),
+  },
+
   data() {
     return {
       features: [
-        "We build and maintain relationships with payment providers.",
-        "We shoulder the responsibility of collecting and remitting global sales taxes.",
-        "We shoulder the responsibility for all fraud that takes place on our platform",
-        "Align your revenue data across various billing and payment methods",
-        "Handle all billing-related support queries for you",
+        "Building and maintaining relationships with payment providers.",
+        "Shouldering the responsibility of collecting and remitting global sales taxes.",
+        "Managing and taking responsibility for all fraud that takes place on our platform.",
+        "Aligning your revenue data across various billing and payment methods.",
+        "Handling all billing-related support queries for you.",
       ],
     };
   },

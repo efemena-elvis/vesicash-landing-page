@@ -3,72 +3,28 @@
     <div class="vesicash-container">
       <!-- TITLE TEXT -->
       <div class="title-text primary-1-text roobert-500 mgb-8 green-800">
-        PAYMENT INFRASRTRUCTIURE
+        {{ getHomePage.payment_title }}
       </div>
 
       <div class="description-text grey-900 h2-text roobert-700 mgb-16">
-        Billing box
+        {{ getHomePage.payment_subtitle }}
       </div>
 
       <div class="meta-text h7-text grey-700 roobert-400 mgb-20">
-        Expand sales, grow revenue with our payment infrastructure
+        {{ getHomePage.payment_description }}
       </div>
 
       <!-- PAYOUT CARD ROW -->
       <div class="payment-card-row row">
-        <div class="col-12 col-sm-6 col-md-3">
+        <div
+          class="col-12 col-sm-6 col-md-3"
+          v-for="(card, i) in getHomePage.payment_services"
+          :key="i"
+        >
           <BillingCard
-            icon="center-icon.svg"
-            title="Payment Options"
-            description="Access a complete suite of payment solutions essential for your success - cards, USSD, bank transfers, and mobile money capabilities."
-          />
-        </div>
-
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-          <BillingCard
-            icon="file-icon.svg"
-            title="B2B invoicing"
-            description="Easily create and send invoices. Utilize advanced features and APIs to automate your B2B sales procedures."
-          />
-        </div>
-
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-          <BillingCard
-            icon="bang-icon.svg"
-            title="Tax Compliance"
-            description="Experience seamless management of your local tax obligations with our expert Merchant of Record Services."
-          />
-        </div>
-
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-          <BillingCard
-            icon="checkout-icon.svg"
-            title="Checkout"
-            description="Offer a smooth and safe checkout encounter that boosts customer conversions."
-          />
-        </div>
-
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-          <BillingCard
-            icon="transfer-icon.svg"
-            title="Seamless fund transfers"
-            description="Easily initiate single or bulk transfers to bank accounts anywhere in the world."
-          />
-        </div>
-
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-          <BillingCard
-            icon="subscription-icon.svg"
-            title="Subscriptions"
-            description="Enable automatic recurring payments for your valued customers with ease."
-          />
-        </div>
-
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-          <BillingCard
-            icon="fraud-icon.svg"
-            title="Fraud Prevention"
-            description="Mitigate your risk through fraud protection and prevention."
+            :icon="card.icon"
+            :title="card.title"
+            :description="card.description"
           />
         </div>
       </div>
@@ -77,6 +33,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import BillingCard from "@/modules/landing-v2/components/home/billing-card";
 
 export default {
@@ -84,6 +41,10 @@ export default {
 
   components: {
     BillingCard,
+  },
+
+  computed: {
+    ...mapGetters({ getHomePage: "cms/getHomePage" }),
   },
 };
 </script>

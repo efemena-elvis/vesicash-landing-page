@@ -3,37 +3,22 @@
     <div class="vesicash-container">
       <!-- TITLE TEXT -->
       <div class="title-text h2-text roobert-700 mgb-24 grey-900 text-center">
-        Our partners
+        {{ getHomePage.partner_title }}
       </div>
 
       <div
         class="description-text text-center grey-700 h6-text roobert-400 mgb-50 mx-auto"
       >
-        To make your expansion into new markets seamless, we have partnered with
-        global payment processors
+        {{ getHomePage.partner_description }}
       </div>
 
       <!-- CLIENT ROW -->
       <div class="client-row">
         <img
-          v-lazy="loadImage('Wapipay.png', 'landing-v2')"
-          alt="Wapipay logo"
-        />
-        <img
-          v-lazy="loadImage('eTranzact.png', 'landing-v2')"
-          alt="eTranzact logo"
-        />
-        <img
-          v-lazy="loadImage('Checkout.png', 'landing-v2')"
-          alt="checkout logo"
-        />
-        <img
-          v-lazy="loadImage('Alexpay.png', 'landing-v2')"
-          alt="Alexpay logo"
-        />
-        <img
-          v-lazy="loadImage('Flutterwave.png', 'landing-v2')"
-          alt="Flutterwave logo"
+          v-for="(partner, i) in getHomePage.partners"
+          :key="i"
+          v-lazy="partner"
+          :alt="partner"
         />
       </div>
     </div>
@@ -41,8 +26,13 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "ClientSection",
+
+  computed: {
+    ...mapGetters({ getHomePage: "cms/getHomePage" }),
+  },
 };
 </script>
 
