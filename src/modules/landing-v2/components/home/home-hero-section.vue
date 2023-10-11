@@ -117,15 +117,15 @@ export default {
 
     .hero-img-wrapper {
       @include breakpoint-down(md) {
-        margin-top: toRem(40);
         @include flex-row-center-nowrap;
+        margin-top: toRem(40);
       }
 
       svg {
-        width: toRem(504);
-        height: toRem(431);
+        width: toRem(520);
+        height: toRem(420);
 
-        @include breakpoint-down(sxl) {
+        @include breakpoint-down(xl) {
           width: toRem(450);
           height: toRem(380);
         }

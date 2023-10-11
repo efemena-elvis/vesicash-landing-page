@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- TOP NAVIGATION -->
-    <Navigation />
+    <Navigation :key="$route.fullPath" />
 
     <!-- BODY SECTION -->
     <transition name="fade" mode="out-in">
