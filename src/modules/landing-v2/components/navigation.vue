@@ -18,15 +18,23 @@
 
           <!-- NAV ITEMS -->
           <div class="nav-items">
-            <!-- <router-link :to="{ name: 'VesicashHome' }" class="nav-item"
-            >Home</router-link
-          > -->
-            <router-link :to="{ name: 'VesicashSolutions' }" class="nav-item"
-              >What we do</router-link
-            >
-            <router-link :to="{ name: 'VesicashAbout' }" class="nav-item"
-              >About us</router-link
-            >
+            <NavItem
+              nav_link="#"
+              nav_text="Products"
+              :active_level="product_level"
+              :stack="product_stack.side_stack"
+              :primary_stack="getCurrentProduct.primary_stack"
+              :secondary_stack="getCurrentProduct.secondary_stack"
+              @switchMenu="updateProductLevel"
+            />
+            <NavItem nav_link="/about" nav_text="About us" />
+            <NavItem nav_link="/pricing-plans" nav_text="Pricing" />
+            <NavItem
+              nav_link="#"
+              nav_text="Resources"
+              :primary_stack="resource_stack.primary_stack"
+            />
+            <NavItem nav_link="/developers" nav_text="Developers" />
           </div>
 
           <!-- NAV BUTTONS -->
@@ -58,20 +66,137 @@
 
 <script>
 import VesicashBrandLogo from "@/shared/components/icon-comps/vesicash-brand-logo";
+import NavItem from "@/modules/landing-v2/components/nav-item";
 
 export default {
   name: "Navigation",
 
   components: {
     VesicashBrandLogo,
+    NavItem,
     MobileMenu: () =>
       import(
         /* webpackChunkName: 'MobileMenu' */ "@/modules/landing/components/mobile-menu"
       ),
   },
 
+  computed: {
+    getCurrentProduct() {
+      return this.product_level === "billing"
+        ? {
+            primary_stack: this.product_stack.primary_stack,
+            secondary_stack: this.product_stack.secondary_stack,
+          }
+        : {
+            primary_stack: this.product_stack.escrow_stack,
+            secondary_stack: [],
+          };
+    },
+  },
+
   data: () => ({
     show_mobile_dropdown: false,
+
+    product_level: "billing", // escrow
+
+    product_stack: {
+      side_stack: [
+        {
+          title: "Billing box",
+          level: "billing",
+          link: "",
+          description:
+            "Expand sales, grow revenue with our payment infrastructure",
+        },
+        {
+          title: "Escrow",
+          level: "escrow",
+          link: "",
+          description:
+            "Escrow technology ensures you get value for B2B and B2C payments",
+        },
+      ],
+
+      primary_stack: [
+        {
+          icon: "central-icon.svg",
+          title: "Payment options",
+          link: "/payment-option",
+          description: "The idea is to have a subtitle and see how it looks",
+        },
+        {
+          icon: "certified-icon.svg",
+          title: "Fraud prevention",
+          link: "/fraud-prevention",
+          description: "The idea is to have a subtitle and see how it looks",
+        },
+        {
+          icon: "bang-icon.svg",
+          title: "Tax compliance",
+          link: "/tax-compliance",
+          description: "The idea is to have a subtitle and see how it looks",
+        },
+        {
+          icon: "transfer-icon.svg",
+          title: "Seamless fund transfers",
+          link: "/fund-transfer",
+          description: "The idea is to have a subtitle and see how it looks",
+        },
+      ],
+
+      secondary_stack: [
+        {
+          icon: "file-icon.svg",
+          title: "B2B invoicing",
+          link: "/b2b-invoicing",
+          description: "The idea is to have a subtitle and see how it looks",
+        },
+        {
+          icon: "basket-icon.svg",
+          title: "Checkout",
+          link: "/checkout",
+          description: "The idea is to have a subtitle and see how it looks",
+        },
+        {
+          icon: "subscription-icon.svg",
+          title: "Subscriptions",
+          link: "/subscription",
+          description: "The idea is to have a subtitle and see how it looks",
+        },
+      ],
+
+      escrow_stack: [
+        {
+          icon: "wallet-icon.svg",
+          title: "Escrow services",
+          link: "/escrow-service",
+          description: "The idea is to have a subtitle and see how it looks",
+        },
+      ],
+    },
+
+    resource_stack: {
+      primary_stack: [
+        {
+          icon: "file-icon.svg",
+          title: "Blog",
+          link: "/blogs",
+          description: "The idea is to have a subtitle and see how it looks",
+        },
+        {
+          icon: "support-icon.svg",
+          title: "Help and Support",
+          link: "/contact",
+          description: "The idea is to have a subtitle and see how it looks",
+        },
+        {
+          icon: "alert-icon.svg",
+          title: "F A Q",
+          link: "/faqs",
+          description: "The idea is to have a subtitle and see how it looks",
+        },
+      ],
+    },
   }),
 
   mounted() {
@@ -83,6 +208,10 @@ export default {
   methods: {
     toggleMobileDropdown() {
       this.show_mobile_dropdown = !this.show_mobile_dropdown;
+    },
+
+    updateProductLevel($event) {
+      this.product_level = $event === 0 ? "billing" : "escrow";
     },
   },
 };
@@ -117,23 +246,6 @@ export default {
 
       @include breakpoint-down(md) {
         display: none;
-      }
-
-      .nav-item {
-        @include generate-font-type("secondary-1");
-        font-family: "Roobert-Medium", sans-serif;
-        color: getColor("grey-600");
-        @include transition(0.4s);
-        margin-right: toRem(56);
-
-        &:hover,
-        &.router-link-exact-active {
-          color: getColor("green-500");
-        }
-
-        @include breakpoint-custom-down(920) {
-          margin-right: toRem(35);
-        }
       }
     }
 

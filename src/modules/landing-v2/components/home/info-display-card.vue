@@ -5,7 +5,10 @@
       class="icon-section neutral-10-bg mgb-24 rounded-circle"
       :class="has_border && 'icon-border'"
     >
-      <img v-lazy="icon" :alt="`${icon} logo`" />
+      <img
+        v-lazy="is_local_icon ? loadImage(icon, 'landing-v2') : icon"
+        :alt="`${icon} logo`"
+      />
     </div>
 
     <!-- TITLE SECTION -->
@@ -14,7 +17,7 @@
     </div>
 
     <!-- DESCRIPTION SECTION -->
-    <div class="description-section h7-text grey-700 roobert-400">
+    <div class="description-section grey-700 roobert-400">
       {{ description }}
     </div>
   </div>
@@ -35,6 +38,10 @@ export default {
       type: String,
     },
     has_border: {
+      type: Boolean,
+      default: false,
+    },
+    is_local_icon: {
       type: Boolean,
       default: false,
     },
@@ -70,6 +77,7 @@ export default {
   }
 
   .description-section {
+    @include font-height(19, 28);
     padding-right: toRem(20);
 
     @include breakpoint-down(lg) {
