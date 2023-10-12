@@ -38,7 +38,7 @@
 
 <script>
 import { mapMutations, mapGetters } from "vuex";
-import { countries } from "@/utilities/countries.json";
+import countries from "@/utilities/countries.js";
 import {
   SINGLE_ROLE_OPTIONS,
   MULTIPLE_ROLE_OPTIONS,
