@@ -47,12 +47,14 @@ export default {
       }
       commit('SAVE_HOME_PAGE',home)
     }
+    return response;
   },
 
   async fetchAboutPage({commit}) {
     window?.NProgress && window?.NProgress.start();
     const response = await app.$prismic.client.getSingle("about_page");
     window?.NProgress && window?.NProgress.done();
+    console.log('ABOUT DATA',response.data)
     
     if(response?.data){
       const about = {
@@ -76,4 +78,13 @@ export default {
     }
     return response;
   },
+
+  async fetchTermsPage({commit}){
+    window?.NProgress && window?.NProgress.start();
+    const response = await app.$prismic.client.getSingle("vesicash_terms");
+    window?.NProgress && window?.NProgress.done();
+    if(response?.data) commit('SAVE_TERMS_PAGE', prismicH.asHTML(response?.data?.terms))
+    console.log('HERE SEE', response?.data?.terms)
+    return response;
+  }
 };
