@@ -95,9 +95,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.home-container {
-  min-height: 100vh;
-  padding-top: toRem(70);
-}
-</style>
+<style lang="scss" scoped></style>

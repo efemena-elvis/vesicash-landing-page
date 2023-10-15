@@ -3,14 +3,17 @@
     <div class="vesicash-container">
       <!-- HEADER TEXT -->
       <h1 class="header-text text-center h1-text roobert-700 neutral-10 mgb-32">
-        {{ getHomePage.onboard_title }}
+        {{ getHomePage?.onboard_title ?? "Get onboarded on Vesicash" }}
       </h1>
 
       <!-- DESCRIPTION TEXT -->
       <p
         class="description-text text-center h6-text roobert-400 grey-200 mgb-50"
       >
-        {{ getHomePage.onboard_description }}
+        {{
+          getHomePage?.onboard_description ??
+          "Let’s help you with all the tools you need to take your business to the next level"
+        }}
       </p>
 
       <!-- BUTTON ROW -->
@@ -18,14 +21,18 @@
         <router-link
           to="/contact"
           class="btn btn-secondary btn-md mgr-16 roobert-500"
-          >{{ getHomePage.labels.contact_sales_cta_title }}</router-link
+          >{{
+            getHomePage?.labels?.contact_sales_cta_title ?? "Contact Sales"
+          }}</router-link
         >
 
         <a
           :href="`${$app_url}/register-lander`"
           target="_blank"
           class="btn btn-primary btn-md mgl-16 roobert-500"
-          >{{ getHomePage.labels.sign_up_cta_title }}</a
+          >{{
+            getHomePage?.labels?.sign_up_cta_title ?? "Create an account"
+          }}</a
         >
       </div>
     </div>
@@ -34,6 +41,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+
 export default {
   name: "CallToActionSection",
 

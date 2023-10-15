@@ -18,15 +18,24 @@
 
           <!-- NAV ITEMS -->
           <div class="nav-items">
-            <!-- <router-link :to="{ name: 'VesicashHome' }" class="nav-item"
-            >Home</router-link
-          > -->
-            <router-link :to="{ name: 'VesicashSolutions' }" class="nav-item"
-              >What we do</router-link
-            >
-            <router-link :to="{ name: 'VesicashAbout' }" class="nav-item"
-              >About us</router-link
-            >
+            <NavItem
+              nav_link="#"
+              nav_text="Products"
+              :active_level="product_level"
+              :stack="product_stack.side_stack"
+              :primary_stack="getCurrentProduct.primary_stack"
+              :secondary_stack="getCurrentProduct.secondary_stack"
+              :is_mobile_view="is_mobile_view"
+              @switchMenu="updateProductLevel"
+            />
+            <NavItem nav_link="/about" nav_text="About us" />
+            <NavItem nav_link="/pricing-plans" nav_text="Pricing" />
+            <NavItem
+              nav_link="#"
+              nav_text="Resources"
+              :primary_stack="resource_stack.primary_stack"
+            />
+            <NavItem nav_link="/developers" nav_text="Developers" />
           </div>
 
           <!-- NAV BUTTONS -->
@@ -50,7 +59,16 @@
 
       <!-- MOBILE MENU -->
       <template v-if="show_mobile_dropdown">
-        <MobileMenu @closeMenu="toggleMobileDropdown" />
+        <MobileMenu
+          :product_level="product_level"
+          :current_product_stack="getCurrentProduct"
+          :product_stack="product_stack"
+          :resource_stack="resource_stack"
+          :sub_stack_view="sub_stack_view"
+          @updateProductStack="updateProductLevel"
+          @changeStackView="sub_stack_view = false"
+          @closeMenu="toggleMobileDropdown"
+        />
       </template>
     </div>
   </div>
@@ -58,23 +76,151 @@
 
 <script>
 import VesicashBrandLogo from "@/shared/components/icon-comps/vesicash-brand-logo";
+import NavItem from "@/modules/landing-v2/components/nav-item";
 
 export default {
   name: "Navigation",
 
   components: {
     VesicashBrandLogo,
+    NavItem,
     MobileMenu: () =>
       import(
         /* webpackChunkName: 'MobileMenu' */ "@/modules/landing/components/mobile-menu"
       ),
   },
 
+  computed: {
+    getCurrentProduct() {
+      return this.product_level === "billing"
+        ? {
+            primary_stack: this.is_mobile_view
+              ? [
+                  ...this.product_stack.primary_stack,
+                  ...this.product_stack.secondary_stack,
+                ]
+              : this.product_stack.primary_stack,
+            secondary_stack: this.is_mobile_view
+              ? []
+              : this.product_stack.secondary_stack,
+          }
+        : {
+            primary_stack: this.product_stack.escrow_stack,
+            secondary_stack: [],
+          };
+    },
+  },
+
   data: () => ({
     show_mobile_dropdown: false,
+    is_mobile_view: false,
+    sub_stack_view: false,
+
+    product_level: "billing", // escrow
+
+    product_stack: {
+      side_stack: [
+        {
+          title: "Billing box",
+          level: "billing",
+          link: "",
+          description:
+            "Expand sales, grow revenue with our payment infrastructure",
+        },
+        {
+          title: "Escrow",
+          level: "escrow",
+          link: "",
+          description: "Escrow ensures transactional security amongst parties",
+        },
+      ],
+
+      primary_stack: [
+        {
+          icon: "central-icon.svg",
+          title: "Payment options",
+          link: "/payment-option",
+          description: "A complete suite of payment solutions",
+        },
+        {
+          icon: "certified-icon.svg",
+          title: "Fraud prevention",
+          link: "/fraud-prevention",
+          description: "Mitigate risk through fraud protection and prevention.",
+        },
+        {
+          icon: "bang-icon.svg",
+          title: "Tax compliance",
+          link: "/tax-compliance",
+          description: "Seamless management of local tax obligations",
+        },
+        {
+          icon: "transfer-icon.svg",
+          title: "Seamless fund transfers",
+          link: "/fund-transfer",
+          description: "Initiate single/bulk transfers to accounts globally.",
+        },
+      ],
+
+      secondary_stack: [
+        {
+          icon: "file-icon.svg",
+          title: "B2B invoicing",
+          link: "/b2b-invoicing",
+          description: "Create and send payment invoices",
+        },
+        {
+          icon: "basket-icon.svg",
+          title: "Checkout",
+          link: "/checkout",
+          description: "Safe checkout to complete payment flow",
+        },
+        {
+          icon: "subscription-icon.svg",
+          title: "Subscriptions",
+          link: "/subscription",
+          description: "Enable recurring payments on a transaction",
+        },
+      ],
+
+      escrow_stack: [
+        {
+          icon: "wallet-icon.svg",
+          title: "Escrow services",
+          link: "/escrow-service",
+          description: "Escrow service boost payment confidence for B2B & B2C.",
+        },
+      ],
+    },
+
+    resource_stack: {
+      primary_stack: [
+        {
+          icon: "file-icon.svg",
+          title: "Blog",
+          link: "/blogs",
+          description: "Curated educational contents to help you get started",
+        },
+        {
+          icon: "support-icon.svg",
+          title: "Help and Support",
+          link: "/contact",
+          description: "Readily available customer support",
+        },
+        {
+          icon: "alert-icon.svg",
+          title: "F A Q",
+          link: "/faqs",
+          description: "Frequently asked questions and answers",
+        },
+      ],
+    },
   }),
 
   mounted() {
+    this.checkMobileView();
+    window.onresize = () => this.checkMobileView();
+
     window.onscroll = () => {
       this.$refs.navbar?.classList.toggle("scrolling-up", window.scrollY > 20);
     };
@@ -83,6 +229,15 @@ export default {
   methods: {
     toggleMobileDropdown() {
       this.show_mobile_dropdown = !this.show_mobile_dropdown;
+    },
+
+    updateProductLevel($event) {
+      this.product_level = $event === 0 ? "billing" : "escrow";
+      this.sub_stack_view = this.is_mobile_view;
+    },
+
+    checkMobileView() {
+      this.is_mobile_view = window.innerWidth < 1020;
     },
   },
 };
@@ -107,7 +262,7 @@ export default {
       font-size: toRem(25);
       display: none;
 
-      @include breakpoint-down(md) {
+      @include breakpoint-custom-down(1020) {
         display: unset;
       }
     }
@@ -115,44 +270,35 @@ export default {
     .nav-items {
       @include flex-row-end-nowrap;
 
-      @include breakpoint-down(md) {
+      @include breakpoint-custom-down(1020) {
         display: none;
-      }
-
-      .nav-item {
-        @include generate-font-type("secondary-1");
-        font-family: "Roobert-Medium", sans-serif;
-        color: getColor("grey-600");
-        @include transition(0.4s);
-        margin-right: toRem(56);
-
-        &:hover,
-        &.router-link-exact-active {
-          color: getColor("green-500");
-        }
-
-        @include breakpoint-custom-down(920) {
-          margin-right: toRem(35);
-        }
       }
     }
 
     .nav-buttons {
       @include flex-row-end-nowrap;
 
-      @include breakpoint-down(md) {
+      @include breakpoint-custom-down(1020) {
         display: none;
       }
 
       .btn {
-        font-size: toRem(16);
+        font-size: toRem(15.75);
+
+        @include breakpoint-custom-down(1100) {
+          @include font-height(15.5, 21);
+        }
+
+        @include breakpoint-custom-down(1020) {
+          @include font-height(16, 22);
+        }
       }
 
       .btn-tertiary {
         padding: toRem(11) toRem(37);
 
         @include breakpoint-custom-down(920) {
-          padding: toRem(11) toRem(30);
+          padding: toRem(12) toRem(30);
           margin-right: toRem(12);
         }
       }
@@ -161,7 +307,7 @@ export default {
         padding: toRem(11.75) toRem(20);
 
         @include breakpoint-custom-down(920) {
-          padding: toRem(11.75) toRem(15);
+          padding: toRem(12) toRem(15);
         }
       }
     }
