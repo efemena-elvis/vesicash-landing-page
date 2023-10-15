@@ -18,7 +18,12 @@
               </div>
             </div>
 
-            <button class="btn btn-primary">Create account</button>
+            <a
+              href="https://app.vesicash.com/register-lander"
+              target="_blank"
+              class="btn btn-primary"
+              >Create account</a
+            >
           </template>
         </PricingFeatureCard>
       </div>
@@ -43,7 +48,9 @@
               </div>
             </div>
 
-            <button class="btn btn-secondary">Reach out to support</button>
+            <router-link to="/contact" class="btn btn-secondary"
+              >Reach out to support</router-link
+            >
           </template>
         </PricingFeatureCard>
       </div>
@@ -89,13 +96,32 @@ export default {
 
     .copy-text-title {
       margin-bottom: toRem(40);
+
+      @include breakpoint-down(lg) {
+        @include font-height(30, 38);
+      }
+
+      @include breakpoint-down(sm) {
+        @include font-height(28, 38);
+        margin-bottom: toRem(20);
+      }
     }
 
     .copy-area {
       .copy-area-header {
+        @include breakpoint-down(lg) {
+          @include font-height(34, 44);
+        }
+
+        @include breakpoint-down(sm) {
+          @include font-height(32, 44);
+        }
       }
 
       .copy-area-body {
+        @include breakpoint-down(lg) {
+          @include font-height(18, 28);
+        }
       }
     }
 
@@ -105,6 +131,18 @@ export default {
       position: absolute;
       bottom: toRem(40);
       width: 86%;
+
+      @include breakpoint-down(md) {
+        width: 88%;
+      }
+
+      @include breakpoint-down(sm) {
+        width: 86%;
+      }
+
+      @include breakpoint-down(xs) {
+        width: 84%;
+      }
     }
   }
 }

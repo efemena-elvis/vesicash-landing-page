@@ -12,7 +12,7 @@
         <div class="col-12 col-md-8">
           <!-- PAYOUT CARD ROW -->
           <div class="payout-card-row row">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-sm-6">
               <InfoDisplayCard
                 icon="cash-green-icon.svg"
                 title="Convenience"
@@ -22,7 +22,7 @@
               />
             </div>
 
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-sm-6">
               <InfoDisplayCard
                 icon="transaction-green-icon.svg"
                 title="Efficiency"
@@ -32,7 +32,7 @@
               />
             </div>
 
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-sm-6">
               <InfoDisplayCard
                 icon="calendar-green-icon.svg"
                 title="Customisation"
@@ -42,7 +42,7 @@
               />
             </div>
 
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-sm-6">
               <InfoDisplayCard
                 icon="check-green-icon.svg"
                 title="Reduced churn"
@@ -74,6 +74,10 @@ export default {
 .subscription-service-section {
   .title-text {
     width: 80%;
+
+    @include breakpoint-down(md) {
+      margin-bottom: 0;
+    }
   }
 }
 </style>

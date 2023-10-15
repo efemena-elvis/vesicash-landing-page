@@ -44,11 +44,6 @@
   }
 
   @include breakpoint-up(lg) {
-    max-width: toRem(1020);
-    padding: 0 toRem(32);
-  }
-
-  @include breakpoint-up(xl) {
     max-width: toRem(1140);
     padding: 0 toRem(20);
   }
