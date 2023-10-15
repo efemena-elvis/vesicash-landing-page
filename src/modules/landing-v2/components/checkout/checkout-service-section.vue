@@ -12,7 +12,7 @@
         <div class="col-12 col-md-8">
           <!-- PAYOUT CARD ROW -->
           <div class="payout-card-row row">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-sm-6">
               <InfoDisplayCard
                 icon="up-trend-green-icon.svg"
                 title="Higher Conversions"
@@ -22,7 +22,7 @@
               />
             </div>
 
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-sm-6">
               <InfoDisplayCard
                 icon="three-circle-green-icon.svg"
                 title="Payment variety"
@@ -32,7 +32,7 @@
               />
             </div>
 
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-sm-6">
               <InfoDisplayCard
                 icon="mobile-green-icon.svg"
                 title="Mobile friendly"
@@ -42,7 +42,7 @@
               />
             </div>
 
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-sm-6">
               <InfoDisplayCard
                 icon="square-check-green-icon.svg"
                 title="Order review"
@@ -74,6 +74,10 @@ export default {
 .checkout-service-section {
   .title-text {
     width: 80%;
+
+    @include breakpoint-down(md) {
+      margin-bottom: 0;
+    }
   }
 }
 </style>

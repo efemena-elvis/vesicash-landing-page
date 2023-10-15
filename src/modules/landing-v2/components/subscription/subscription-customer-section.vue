@@ -3,7 +3,7 @@
     <div class="vesicash-container">
       <!-- PAYOUT CARD ROW -->
       <div class="payout-card-row row">
-        <div class="col-12 col-sm-4">
+        <div class="col-12 col-sm-6 col-md-4">
           <InfoDisplayCard
             icon="insight-icon.svg"
             title="Customer insights to boost your bottom line"
@@ -13,9 +13,9 @@
           />
         </div>
 
-        <div class="col-12 col-sm-1"></div>
+        <div class="col-12 d-none d-md-block col-md-1"></div>
 
-        <div class="col-12 col-sm-4">
+        <div class="col-12 col-sm-6 col-md-4">
           <InfoDisplayCard
             icon="add-user-icon.svg"
             title="Pause and reactivate customers"
@@ -44,10 +44,6 @@ export default {
 <style lang="scss" scoped>
 .subscription-customer-section {
   padding: 0 0 toRem(110);
-
-  @include breakpoint-down(md) {
-    padding: 0 0;
-  }
 
   @include breakpoint-down(sm) {
     padding: 0 0 toRem(80);
