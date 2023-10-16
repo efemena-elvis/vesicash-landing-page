@@ -1,5 +1,5 @@
 <template>
-  <div class="home-container">
+  <div class="home-container container-layout">
     <template v-if="getHomePage">
       <!-- HOME HERO SECTION -->
       <HomeHeroSection />
