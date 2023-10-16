@@ -25,7 +25,10 @@ if (process.env.NODE_ENV === "production") {
         for (let name of names) caches.delete(name);
       });
 
-      registration.update();
+      // registration.update();
+      registration.unregister().then(() => {
+        window.location.reload(true);
+      });
     },
     offline() {
       console.log(
