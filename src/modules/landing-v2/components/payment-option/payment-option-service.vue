@@ -72,6 +72,10 @@ export default {
   min-height: 100vh;
   .title-text {
     width: 80%;
+
+    @include breakpoint-down(md) {
+      margin-bottom: 0;
+    }
   }
 }
 </style>

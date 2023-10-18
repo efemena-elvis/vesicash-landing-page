@@ -48,6 +48,7 @@ export default {
 
       @include breakpoint-down(md) {
         padding-left: toRem(15);
+        margin-bottom: 0;
       }
 
       .description-text {
@@ -57,6 +58,10 @@ export default {
 
     .image-section {
       width: 96%;
+
+      @include breakpoint-down(md) {
+        margin-bottom: toRem(80);
+      }
     }
   }
 }

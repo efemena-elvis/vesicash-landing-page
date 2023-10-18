@@ -85,7 +85,8 @@ export default {
       padding: 0 !important;
 
       @include breakpoint-down(md) {
-        margin-bottom: toRem(40);
+        padding: 0 toRem(15) !important;
+        margin-bottom: 0;
       }
 
       .description-text {
@@ -99,6 +100,12 @@ export default {
         @include breakpoint-down(sm) {
           font-size: toRem(16);
         }
+      }
+    }
+
+    .image-section {
+      @include breakpoint-down(md) {
+        margin-bottom: toRem(80);
       }
     }
   }

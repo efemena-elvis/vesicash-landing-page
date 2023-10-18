@@ -50,6 +50,13 @@ export default {
 
       @include breakpoint-down(md) {
         padding-left: toRem(15);
+        margin-bottom: 0;
+      }
+    }
+
+    .image-section {
+      @include breakpoint-down(md) {
+        margin-bottom: toRem(60);
       }
     }
   }

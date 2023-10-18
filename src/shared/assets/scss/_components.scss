@@ -1,12 +1,8 @@
 %page-padding {
-  padding: toRem(100) 0 toRem(100);
-
-  @include breakpoint-down(md) {
-    padding: toRem(80) 0;
-  }
+  padding: toRem(100) 0;
 
   @include breakpoint-down(sm) {
-    padding: toRem(60) 0 toRem(80);
+    padding: toRem(80) 0;
   }
 }
 
@@ -26,11 +22,7 @@
         letter-spacing: toRem(1);
 
         @include breakpoint-down(lg) {
-          font-size: toRem(14.5);
-        }
-
-        @include breakpoint-down(sm) {
-          font-size: toRem(12);
+          font-size: toRem(14);
         }
       }
 
@@ -52,9 +44,19 @@
           font-size: toRem(18);
         }
 
-        @include breakpoint-down(sm) {
-          font-size: toRem(16);
+        @include breakpoint-down(md) {
+          width: 100% !important;
         }
+
+        @include breakpoint-down(sm) {
+          font-size: toRem(18);
+        }
+      }
+    }
+
+    .image-section {
+      @include breakpoint-down(md) {
+        width: 100% !important;
       }
     }
   }
@@ -73,13 +75,27 @@
     }
 
     @include breakpoint-down(md) {
-      @include font-height(34, 42);
-      width: 95%;
+      @include font-height(36, 38);
+      font-size: toRem(36) !important;
+      width: 95% !important;
+    }
+
+    @include breakpoint-down(sm) {
+      font-size: toRem(32) !important;
+      width: 100% !important;
     }
   }
 
   .row {
     row-gap: toRem(50);
+
+    @include breakpoint-down(md) {
+      row-gap: toRem(40);
+    }
+
+    @include breakpoint-down(sm) {
+      row-gap: toRem(30);
+    }
 
     .col-12 {
       @include breakpoint-down(md) {
@@ -117,7 +133,7 @@
       @include font-height(19.25, 30);
 
       @include breakpoint-down(md) {
-        font-size: toRem(15);
+        font-size: toRem(17.5);
       }
     }
   }

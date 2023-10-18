@@ -25,6 +25,7 @@
               :stack="product_stack.side_stack"
               :primary_stack="getCurrentProduct.primary_stack"
               :secondary_stack="getCurrentProduct.secondary_stack"
+              :is_mobile_view="is_mobile_view"
               @switchMenu="updateProductLevel"
             />
             <NavItem nav_link="/about" nav_text="About us" />
@@ -58,7 +59,16 @@
 
       <!-- MOBILE MENU -->
       <template v-if="show_mobile_dropdown">
-        <MobileMenu @closeMenu="toggleMobileDropdown" />
+        <MobileMenu
+          :product_level="product_level"
+          :current_product_stack="getCurrentProduct"
+          :product_stack="product_stack"
+          :resource_stack="resource_stack"
+          :sub_stack_view="sub_stack_view"
+          @updateProductStack="updateProductLevel"
+          @changeStackView="sub_stack_view = false"
+          @closeMenu="toggleMobileDropdown"
+        />
       </template>
     </div>
   </div>
@@ -84,8 +94,15 @@ export default {
     getCurrentProduct() {
       return this.product_level === "billing"
         ? {
-            primary_stack: this.product_stack.primary_stack,
-            secondary_stack: this.product_stack.secondary_stack,
+            primary_stack: this.is_mobile_view
+              ? [
+                  ...this.product_stack.primary_stack,
+                  ...this.product_stack.secondary_stack,
+                ]
+              : this.product_stack.primary_stack,
+            secondary_stack: this.is_mobile_view
+              ? []
+              : this.product_stack.secondary_stack,
           }
         : {
             primary_stack: this.product_stack.escrow_stack,
@@ -96,6 +113,8 @@ export default {
 
   data: () => ({
     show_mobile_dropdown: false,
+    is_mobile_view: false,
+    sub_stack_view: false,
 
     product_level: "billing", // escrow
 
@@ -112,8 +131,7 @@ export default {
           title: "Escrow",
           level: "escrow",
           link: "",
-          description:
-            "Escrow technology ensures you get value for B2B and B2C payments",
+          description: "Escrow ensures transactional security amongst parties",
         },
       ],
 
@@ -122,25 +140,25 @@ export default {
           icon: "central-icon.svg",
           title: "Payment options",
           link: "/payment-option",
-          description: "The idea is to have a subtitle and see how it looks",
+          description: "A complete suite of payment solutions",
         },
         {
           icon: "certified-icon.svg",
           title: "Fraud prevention",
           link: "/fraud-prevention",
-          description: "The idea is to have a subtitle and see how it looks",
+          description: "Mitigate risk through fraud protection and prevention.",
         },
         {
           icon: "bang-icon.svg",
           title: "Tax compliance",
           link: "/tax-compliance",
-          description: "The idea is to have a subtitle and see how it looks",
+          description: "Seamless management of local tax obligations",
         },
         {
           icon: "transfer-icon.svg",
           title: "Seamless fund transfers",
           link: "/fund-transfer",
-          description: "The idea is to have a subtitle and see how it looks",
+          description: "Initiate single/bulk transfers to accounts globally.",
         },
       ],
 
@@ -149,19 +167,19 @@ export default {
           icon: "file-icon.svg",
           title: "B2B invoicing",
           link: "/b2b-invoicing",
-          description: "The idea is to have a subtitle and see how it looks",
+          description: "Create and send payment invoices",
         },
         {
           icon: "basket-icon.svg",
           title: "Checkout",
           link: "/checkout",
-          description: "The idea is to have a subtitle and see how it looks",
+          description: "Safe checkout to complete payment flow",
         },
         {
           icon: "subscription-icon.svg",
           title: "Subscriptions",
           link: "/subscription",
-          description: "The idea is to have a subtitle and see how it looks",
+          description: "Enable recurring payments on a transaction",
         },
       ],
 
@@ -170,7 +188,7 @@ export default {
           icon: "wallet-icon.svg",
           title: "Escrow services",
           link: "/escrow-service",
-          description: "The idea is to have a subtitle and see how it looks",
+          description: "Escrow service boost payment confidence for B2B & B2C.",
         },
       ],
     },
@@ -181,25 +199,28 @@ export default {
           icon: "file-icon.svg",
           title: "Blog",
           link: "/blogs",
-          description: "The idea is to have a subtitle and see how it looks",
+          description: "Curated educational contents to help you get started",
         },
         {
           icon: "support-icon.svg",
           title: "Help and Support",
           link: "/contact",
-          description: "The idea is to have a subtitle and see how it looks",
+          description: "Readily available customer support",
         },
         {
           icon: "alert-icon.svg",
           title: "F A Q",
           link: "/faqs",
-          description: "The idea is to have a subtitle and see how it looks",
+          description: "Frequently asked questions and answers",
         },
       ],
     },
   }),
 
   mounted() {
+    this.checkMobileView();
+    window.onresize = () => this.checkMobileView();
+
     window.onscroll = () => {
       this.$refs.navbar?.classList.toggle("scrolling-up", window.scrollY > 20);
     };
@@ -212,6 +233,11 @@ export default {
 
     updateProductLevel($event) {
       this.product_level = $event === 0 ? "billing" : "escrow";
+      this.sub_stack_view = this.is_mobile_view;
+    },
+
+    checkMobileView() {
+      this.is_mobile_view = window.innerWidth < 1020;
     },
   },
 };
@@ -236,7 +262,7 @@ export default {
       font-size: toRem(25);
       display: none;
 
-      @include breakpoint-down(md) {
+      @include breakpoint-custom-down(1020) {
         display: unset;
       }
     }
@@ -244,7 +270,7 @@ export default {
     .nav-items {
       @include flex-row-end-nowrap;
 
-      @include breakpoint-down(md) {
+      @include breakpoint-custom-down(1020) {
         display: none;
       }
     }
@@ -252,19 +278,27 @@ export default {
     .nav-buttons {
       @include flex-row-end-nowrap;
 
-      @include breakpoint-down(md) {
+      @include breakpoint-custom-down(1020) {
         display: none;
       }
 
       .btn {
-        font-size: toRem(16);
+        font-size: toRem(15.75);
+
+        @include breakpoint-custom-down(1100) {
+          @include font-height(15.5, 21);
+        }
+
+        @include breakpoint-custom-down(1020) {
+          @include font-height(16, 22);
+        }
       }
 
       .btn-tertiary {
         padding: toRem(11) toRem(37);
 
         @include breakpoint-custom-down(920) {
-          padding: toRem(11) toRem(30);
+          padding: toRem(12) toRem(30);
           margin-right: toRem(12);
         }
       }
@@ -273,7 +307,7 @@ export default {
         padding: toRem(11.75) toRem(20);
 
         @include breakpoint-custom-down(920) {
-          padding: toRem(11.75) toRem(15);
+          padding: toRem(12) toRem(15);
         }
       }
     }

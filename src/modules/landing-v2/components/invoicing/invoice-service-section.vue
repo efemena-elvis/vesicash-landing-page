@@ -12,7 +12,7 @@
         <div class="col-12 col-md-8">
           <!-- PAYOUT CARD ROW -->
           <div class="payout-card-row row">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-sm-6">
               <InfoDisplayCard
                 icon="clock-icon.svg"
                 title="Efficiency"
@@ -22,7 +22,7 @@
               />
             </div>
 
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-sm-6">
               <InfoDisplayCard
                 icon="automate-icon.svg"
                 title="Automation"
@@ -32,7 +32,7 @@
               />
             </div>
 
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-sm-6">
               <InfoDisplayCard
                 icon="cash-icon.svg"
                 title="Payment tracking"
@@ -42,7 +42,7 @@
               />
             </div>
 
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-sm-6">
               <InfoDisplayCard
                 icon="bang-icon.svg"
                 title="Compliance"
@@ -83,6 +83,10 @@ export default {
 .invoice-service-section {
   .title-text {
     width: 80%;
+
+    @include breakpoint-down(md) {
+      margin-bottom: 0;
+    }
   }
 }
 </style>
