@@ -1,4 +1,14 @@
 import { app } from "../../main";
+import {
+  getSlice,
+  getHeroSectionSlice,
+  getSecondaryHeroSectionSlice,
+  getSecondaryHeroSectionWithBenefitsSlice,
+  getSecondaryHeroSectionSliceII,
+  getBenefitsSectionSlice,
+  getListedBenefitsSectionSlice,
+  getOnboardingSlice,
+} from "../../utilities/prismic-utils";
 import * as prismicH from "@prismicio/helpers";
 
 export default {
@@ -95,6 +105,125 @@ export default {
     if (response?.data)
       commit("SAVE_TERMS_PAGE", prismicH.asHTML(response?.data?.terms));
     console.log("HERE SEE", response?.data?.terms);
+    return response;
+  },
+
+  async fetchPaymentOptionsPage({ commit }) {
+    window?.NProgress && window?.NProgress.start();
+    const response = await app.$prismic.client.getSingle("payment_option_page");
+    window?.NProgress && window?.NProgress.done();
+
+    if (response?.data) {
+      const res = response?.data;
+      const slices = res?.body;
+
+      const hero_section = getHeroSectionSlice(slices);
+      const benefits_section = getBenefitsSectionSlice(slices);
+      const onboarding_section = getOnboardingSlice(slices);
+
+      const page = {
+        hero_section,
+        benefits_section,
+        onboarding_section,
+      };
+      commit("SAVE_PAYMENT_OPTIONS_PAGE", page);
+    }
+    return response;
+  },
+
+  async fetchFraudPreventionPage({ commit }) {
+    window?.NProgress && window?.NProgress.start();
+    const response = await app.$prismic.client.getSingle(
+      "fraud_prevention_page"
+    );
+    window?.NProgress && window?.NProgress.done();
+    if (response?.data) {
+      const res = response?.data;
+      const slices = res?.body;
+      const hero_section = getHeroSectionSlice(slices);
+      const secondary_hero_section = getSecondaryHeroSectionSlice(slices);
+      const listed_benefit_section = getListedBenefitsSectionSlice(slices);
+      const benefits_section = getBenefitsSectionSlice(slices);
+      const onboarding_section = getOnboardingSlice(slices);
+
+      const page = {
+        hero_section,
+        secondary_hero_section,
+        listed_benefit_section,
+        benefits_section,
+        onboarding_section,
+      };
+      commit("SAVE_FRAUD_PREVENTION_PAGE", page);
+    }
+    return response;
+  },
+
+  async fetchTaxCompliancePage({ commit }) {
+    window?.NProgress && window?.NProgress.start();
+    const response = await app.$prismic.client.getSingle("tax_compliance_page");
+    window?.NProgress && window?.NProgress.done();
+    if (response?.data) {
+      const res = response?.data;
+      const slices = res?.body;
+      const hero_section = getHeroSectionSlice(slices);
+      const listed_benefit_section = getListedBenefitsSectionSlice(slices);
+      const benefits_section = getBenefitsSectionSlice(slices);
+      const onboarding_section = getOnboardingSlice(slices);
+
+      const page = {
+        hero_section,
+        listed_benefit_section,
+        benefits_section,
+        onboarding_section,
+      };
+      commit("SAVE_TAX_COMPLIANCE_PAGE", page);
+    }
+    return response;
+  },
+
+  async fetchFundTransfersPage({ commit }) {
+    window?.NProgress && window?.NProgress.start();
+    const response = await app.$prismic.client.getSingle("fund_transfers_page");
+    window?.NProgress && window?.NProgress.done();
+    if (response?.data) {
+      const res = response?.data;
+      const slices = res?.body;
+      const hero_section = getHeroSectionSlice(slices);
+      const benefits_section = getBenefitsSectionSlice(slices);
+      const onboarding_section = getOnboardingSlice(slices);
+
+      const page = {
+        hero_section,
+        benefits_section,
+        onboarding_section,
+      };
+      commit("SAVE_FUND_TRANSFERS_PAGE", page);
+    }
+    return response;
+  },
+
+  async fetchB2BInvoicingPage({ commit }) {
+    window?.NProgress && window?.NProgress.start();
+    const response = await app.$prismic.client.getSingle("b2b_invoicing_page");
+    window?.NProgress && window?.NProgress.done();
+    if (response?.data) {
+      const res = response?.data;
+      const slices = res?.body;
+      const hero_section = getHeroSectionSlice(slices);
+      const secondary_hero_section = getSecondaryHeroSectionSlice(slices);
+      const secondary_hero_section_ii = getSecondaryHeroSectionSliceII(slices);
+      const benefits_section = getBenefitsSectionSlice(slices);
+      const onboarding_section = getOnboardingSlice(slices);
+
+      const page = {
+        hero_section,
+        secondary_hero_section,
+        secondary_hero_section_ii,
+        benefits_section,
+        onboarding_section,
+      };
+      commit("SAVE_B2B_INVOICING_PAGE", page);
+    }
     return response;
   },
 };

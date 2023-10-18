@@ -84,7 +84,7 @@ export default {
   },
 
   async created() {
-    await this.fetchHomePage();
+    !this.getHomePage && (await this.fetchHomePage());
   },
 
   methods: {
@@ -95,4 +95,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.home-container {
+  min-height: 100vh;
+}
+</style>

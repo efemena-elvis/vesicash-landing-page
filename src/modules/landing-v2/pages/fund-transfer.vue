@@ -1,13 +1,15 @@
 <template>
   <div class="container-layout">
-    <!-- HERO SECTION -->
-    <TransferHeroSection />
+    <template v-if="getFundTransfersPage">
+      <!-- HERO SECTION -->
+      <TransferHeroSection />
 
-    <!-- SERVICE SECTION -->
-    <TransferServiceSection />
+      <!-- SERVICE SECTION -->
+      <TransferServiceSection />
 
-    <!-- CALL TO ACTION SECTION -->
-    <CallToActionSection />
+      <!-- CALL TO ACTION SECTION -->
+      <CallToActionSection :data="getFundTransfersPage?.onboarding_section" />
+    </template>
   </div>
 </template>
 
@@ -31,13 +33,21 @@ export default {
   },
 
   computed: {
-    ...mapGetters(),
+    ...mapGetters({ getFundTransfersPage: "cms/getFundTransfersPage" }),
+  },
+
+  async mounted() {
+    if (!this.getFundTransfersPage) await this.fetchFundTransfersPage();
   },
 
   methods: {
-    ...mapActions(),
+    ...mapActions({ fetchFundTransfersPage: "cms/fetchFundTransfersPage" }),
   },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.container-layout {
+  min-height: 100vh;
+}
+</style>
