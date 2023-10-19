@@ -5,7 +5,7 @@
         <div class="col-12 col-md-4">
           <!-- TITLE TEXT -->
           <div class="title-text h2-text roobert-700 grey-900">
-            What you get with us
+            {{ section.title }}
           </div>
         </div>
 
@@ -59,6 +59,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import InfoDisplayCard from "@/modules/landing-v2/components/home/info-display-card";
 
 export default {
@@ -66,6 +67,14 @@ export default {
 
   components: {
     InfoDisplayCard,
+  },
+
+  computed: {
+    ...mapGetters({ getB2BInvoicingPage: "cms/getB2BInvoicingPage" }),
+
+    section() {
+      return this.getB2BInvoicingPage?.benefits_section;
+    },
   },
 };
 </script>

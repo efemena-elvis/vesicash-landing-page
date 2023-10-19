@@ -15,12 +15,11 @@
 
         <div class="col-12 col-md-6 copy-content">
           <div class="title-text h2-text grey-900 roobert-700 mgb-24">
-            Full protection for every payment
+            {{ getFraudPreventionPage?.secondary_hero_section?.title }}
           </div>
 
           <h5 class="description-text h6-text roobert-400 grey-700">
-            We evaluate multiple factors in every transaction and utilize
-            insights to keep you consistently ahead of the game.
+            {{ getFraudPreventionPage?.secondary_hero_section?.description }}
           </h5>
         </div>
       </div>
@@ -29,8 +28,14 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "FraudPaymentSection",
+
+  computed: {
+    ...mapGetters({ getFraudPreventionPage: "cms/getFraudPreventionPage" }),
+  },
 };
 </script>
 

@@ -5,20 +5,19 @@
       <div class="row align-items-center">
         <div class="col-12 col-md-6 copy-content">
           <div class="title-text h2-text grey-900 roobert-700 mgb-24">
-            Fight chargebacks
+            {{ getFraudPreventionPage?.listed_benefit_section?.title }}
           </div>
 
           <h5 class="description-text h7-text roobert-400 grey-700 mgb-40">
-            Safeguarding your business from fraudulent chargebacks is vital.
-            Vesicash is here to assist in reducing chargeback risks for your
-            business's well-being.
+            {{ getFraudPreventionPage?.listed_benefit_section?.description }}
           </h5>
 
           <!-- FEATURES LIST -->
           <div class="feature-section-list">
             <div
               class="feature-item"
-              v-for="(feature, index) in features"
+              v-for="(feature, index) in getFraudPreventionPage
+                ?.listed_benefit_section?.benefits"
               :key="index"
             >
               <div class="icon-wrapper">
@@ -47,6 +46,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "FraudChargebackSection",
 
@@ -55,6 +56,10 @@ export default {
       import(
         /* webpackChunkName: 'shared-module' */ "@/shared/components/icon-comps/success-icon"
       ),
+  },
+
+  computed: {
+    ...mapGetters({ getFraudPreventionPage: "cms/getFraudPreventionPage" }),
   },
 
   data() {

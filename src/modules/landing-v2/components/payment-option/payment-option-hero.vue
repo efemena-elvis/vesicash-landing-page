@@ -5,19 +5,15 @@
       <div class="row align-items-center">
         <div class="col-12 col-md-6 copy-content">
           <div class="meta-text secondary-1-text green-500 mgb-8 roobert-500">
-            PAYMENT OPTIONS
+            {{ getPaymentOptionsPage?.hero_section?.title }}
           </div>
 
           <div class="title-text h2-text grey-900 roobert-700 mgb-24">
-            Access a complete suite of payment solutions essential for your
-            success
+            {{ getPaymentOptionsPage?.hero_section?.subtitle }}
           </div>
 
           <h5 class="description-text h6-text roobert-400 grey-700">
-            With our suite of offerings, you will have the tools needed to
-            optimize transactions, enhance customer experiences, and drive
-            growth. Streamline payments, increase efficiency, and unlock your
-            business's full potential.
+            {{ getPaymentOptionsPage?.hero_section?.description }}
           </h5>
         </div>
 
@@ -36,8 +32,13 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "PaymentOption",
+
+  computed: {
+    ...mapGetters({ getPaymentOptionsPage: "cms/getPaymentOptionsPage" }),
+  },
 };
 </script>
 

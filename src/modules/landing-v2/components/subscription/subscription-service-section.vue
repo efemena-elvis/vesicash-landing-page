@@ -5,50 +5,23 @@
         <div class="col-12 col-md-4">
           <!-- TITLE TEXT -->
           <div class="title-text h2-text roobert-700 grey-900">
-            What you get with us
+            {{ section?.title }}
           </div>
         </div>
 
         <div class="col-12 col-md-8">
           <!-- PAYOUT CARD ROW -->
           <div class="payout-card-row row">
-            <div class="col-12 col-sm-6">
+            <div
+              class="col-12 col-sm-6"
+              v-for="(benefit, index) in section?.benefits"
+              :key="index"
+            >
               <InfoDisplayCard
-                icon="cash-green-icon.svg"
-                title="Convenience"
-                description="Effortless bill payments"
+                :icon="benefit.icon"
+                :title="benefit.title"
+                :description="benefit.description"
                 has_border
-                is_local_icon
-              />
-            </div>
-
-            <div class="col-12 col-sm-6">
-              <InfoDisplayCard
-                icon="transaction-green-icon.svg"
-                title="Efficiency"
-                description="Streamlined billing for businesses."
-                has_border
-                is_local_icon
-              />
-            </div>
-
-            <div class="col-12 col-sm-6">
-              <InfoDisplayCard
-                icon="calendar-green-icon.svg"
-                title="Customisation"
-                description="Choose payment dates"
-                has_border
-                is_local_icon
-              />
-            </div>
-
-            <div class="col-12 col-sm-6">
-              <InfoDisplayCard
-                icon="check-green-icon.svg"
-                title="Reduced churn"
-                description="Enhanced customer satisfaction"
-                has_border
-                is_local_icon
               />
             </div>
           </div>
@@ -59,6 +32,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import InfoDisplayCard from "@/modules/landing-v2/components/home/info-display-card";
 
 export default {
@@ -66,6 +40,14 @@ export default {
 
   components: {
     InfoDisplayCard,
+  },
+
+  computed: {
+    ...mapGetters({ getSubscriptionPage: "cms/getSubscriptionPage" }),
+
+    section() {
+      return this.getSubscriptionPage?.benefits_section;
+    },
   },
 };
 </script>

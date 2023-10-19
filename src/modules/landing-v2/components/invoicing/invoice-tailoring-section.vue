@@ -5,14 +5,11 @@
       <div class="row align-items-center">
         <div class="col-12 col-md-6 copy-content">
           <div class="title-text h2-text grey-900 roobert-700 mgb-24">
-            Tailor invoices to reflect your brand and client needs.
+            {{ section.title }}
           </div>
 
           <h5 class="description-text h6-text roobert-400 grey-700">
-            Offer your clients a comprehensive cost breakdown and convenient
-            payment choices to accelerate your entire accounts receivable cycle.
-            Employ our Billing APIs to automate your B2B billing procedures and
-            unlock further business expansion.
+            {{ section.description }}
           </h5>
         </div>
 
@@ -31,8 +28,17 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "InvoiceTailoringSection",
+
+  computed: {
+    ...mapGetters({ getB2BInvoicingPage: "cms/getB2BInvoicingPage" }),
+
+    section() {
+      return this.getB2BInvoicingPage?.secondary_hero_section_ii;
+    },
+  },
 };
 </script>
 

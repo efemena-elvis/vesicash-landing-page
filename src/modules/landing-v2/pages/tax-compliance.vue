@@ -1,16 +1,18 @@
 <template>
   <div class="container-layout">
-    <!-- TAX HERO SECTION -->
-    <TaxHeroSection />
+    <template v-if="getTaxCompliancePage">
+      <!-- TAX HERO SECTION -->
+      <TaxHeroSection />
 
-    <!-- TAX COLLECTION SECTION -->
-    <TaxCollectionSection />
+      <!-- TAX COLLECTION SECTION -->
+      <TaxCollectionSection />
 
-    <!-- TAX SERVICE SECTION -->
-    <TaxServiceSection />
+      <!-- TAX SERVICE SECTION -->
+      <TaxServiceSection />
 
-    <!-- CALL TO ACTION SECTION -->
-    <CallToActionSection />
+      <!-- CALL TO ACTION SECTION -->
+      <CallToActionSection :data="getTaxCompliancePage?.onboarding_section" />
+    </template>
   </div>
 </template>
 
@@ -38,13 +40,21 @@ export default {
   },
 
   computed: {
-    ...mapGetters(),
+    ...mapGetters({ getTaxCompliancePage: "cms/getTaxCompliancePage" }),
+  },
+
+  async mounted() {
+    if (!this.getTaxCompliancePage) await this.fetchTaxCompliancePage();
   },
 
   methods: {
-    ...mapActions(),
+    ...mapActions({ fetchTaxCompliancePage: "cms/fetchTaxCompliancePage" }),
   },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.container-layout {
+  min-height: 100vh;
+}
+</style>

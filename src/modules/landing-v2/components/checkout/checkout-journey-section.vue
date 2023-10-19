@@ -5,13 +5,11 @@
       <div class="row align-items-center">
         <div class="col-12 col-md-6 copy-content">
           <div class="title-text h2-text grey-900 roobert-700 mgb-24">
-            Personalise the checkout journey to reflect your identity
+            {{ section.title }}
           </div>
 
           <h5 class="description-text h6-text roobert-400 grey-700">
-            Enhance conversions and user trust with a checkout aligned to your
-            brand. Choose from optimized UI formats across devices, and
-            customize for a unique checkout experience.
+            {{ section.description }}
           </h5>
         </div>
 
@@ -30,8 +28,17 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "CheckoutJourneySection",
+
+  computed: {
+    ...mapGetters({ getCheckoutPage: "cms/getCheckoutPage" }),
+
+    section() {
+      return this.getCheckoutPage?.secondary_hero_section;
+    },
+  },
 };
 </script>
 

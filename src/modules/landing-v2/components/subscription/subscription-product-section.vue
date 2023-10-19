@@ -5,14 +5,11 @@
       <div class="row align-items-center">
         <div class="col-12 col-md-6 copy-content">
           <div class="title-text h2-text grey-900 roobert-700 mgb-24">
-            Prioritize your products
+            {{ section?.title }}
           </div>
 
           <h5 class="description-text h6-text roobert-400 grey-700">
-            Within a unified payments framework, Vesicash’s subscriptions ensure
-            automatic tax compliance, fraud protection, and global payment
-            optimization. This lets you prioritize product development with
-            peace of mind.
+            {{ section?.description }}
           </h5>
         </div>
 
@@ -31,8 +28,17 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "SubscriptionProductSection",
+
+  computed: {
+    ...mapGetters({ getSubscriptionPage: "cms/getSubscriptionPage" }),
+
+    section() {
+      return this.getSubscriptionPage?.secondary_hero_section;
+    },
+  },
 };
 </script>
 

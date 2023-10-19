@@ -5,50 +5,23 @@
         <div class="col-12 col-md-4">
           <!-- TITLE TEXT -->
           <div class="title-text h2-text roobert-700 grey-900">
-            What you get with us
+            {{ section.title }}
           </div>
         </div>
 
         <div class="col-12 col-md-8">
           <!-- PAYOUT CARD ROW -->
           <div class="payout-card-row row">
-            <div class="col-12 col-sm-6">
+            <div
+              class="col-12 col-sm-6"
+              v-for="(benefit, index) in section.benefits"
+              :key="index"
+            >
               <InfoDisplayCard
-                icon="up-trend-green-icon.svg"
-                title="Higher Conversions"
-                description="Increased successful transactions."
+                :icon="benefit.icon"
+                :title="benefit.title"
+                :description="benefit.description"
                 has_border
-                is_local_icon
-              />
-            </div>
-
-            <div class="col-12 col-sm-6">
-              <InfoDisplayCard
-                icon="three-circle-green-icon.svg"
-                title="Payment variety"
-                description="Multiple methods suits all customers."
-                has_border
-                is_local_icon
-              />
-            </div>
-
-            <div class="col-12 col-sm-6">
-              <InfoDisplayCard
-                icon="mobile-green-icon.svg"
-                title="Mobile friendly"
-                description="Responsive design for mobile users."
-                has_border
-                is_local_icon
-              />
-            </div>
-
-            <div class="col-12 col-sm-6">
-              <InfoDisplayCard
-                icon="square-check-green-icon.svg"
-                title="Order review"
-                description="Prevents mistakes before confirming."
-                has_border
-                is_local_icon
               />
             </div>
           </div>
@@ -59,6 +32,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import InfoDisplayCard from "@/modules/landing-v2/components/home/info-display-card";
 
 export default {
@@ -66,6 +40,14 @@ export default {
 
   components: {
     InfoDisplayCard,
+  },
+
+  computed: {
+    ...mapGetters({ getCheckoutPage: "cms/getCheckoutPage" }),
+
+    section() {
+      return this.getCheckoutPage?.benefits_section;
+    },
   },
 };
 </script>
