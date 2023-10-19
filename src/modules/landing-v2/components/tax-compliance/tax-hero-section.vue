@@ -5,16 +5,15 @@
       <div class="row align-items-center">
         <div class="col-12 col-md-6 copy-content">
           <div class="meta-text secondary-1-text teal-500 mgb-8 roobert-500">
-            TAX COMPLIANCE
+            {{ getTaxCompliancePage?.hero_section?.title }}
           </div>
 
           <div class="title-text h2-text neutral-10 roobert-700 mgb-24">
-            Sell with confidence as we handle sales tax compliance
+            {{ getTaxCompliancePage?.hero_section?.subtitle }}
           </div>
 
           <h5 class="description-text h6-text roobert-400 neutral-10">
-            You can count on us to handle tax and compliance for every payment,
-            freeing you from any liability.
+            {{ getTaxCompliancePage?.hero_section?.description }}
           </h5>
         </div>
 
@@ -33,8 +32,13 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "TaxHeroSection",
+
+  computed: {
+    ...mapGetters({ getTaxCompliancePage: "cms/getTaxCompliancePage" }),
+  },
 };
 </script>
 

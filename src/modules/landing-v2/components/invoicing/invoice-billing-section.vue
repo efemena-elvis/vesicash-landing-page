@@ -15,12 +15,11 @@
 
         <div class="col-12 col-md-6 copy-content">
           <div class="title-text h2-text grey-900 roobert-700 mgb-24">
-            Seamlessly automate your B2B billing
+            {{ section?.title }}
           </div>
 
           <h5 class="description-text h6-text roobert-400 grey-700">
-            Streamline invoice creation and issuance, along with related
-            processes, through automation. Leverage robust Billing APIs
+            {{ section?.description }}
           </h5>
         </div>
       </div>
@@ -29,8 +28,17 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "InvoiceBillingSection",
+
+  computed: {
+    ...mapGetters({ getB2BInvoicingPage: "cms/getB2BInvoicingPage" }),
+
+    section() {
+      return this.getB2BInvoicingPage?.secondary_hero_section;
+    },
+  },
 };
 </script>
 

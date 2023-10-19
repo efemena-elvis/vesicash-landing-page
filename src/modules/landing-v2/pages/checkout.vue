@@ -1,27 +1,30 @@
 <template>
   <div class="container-layout">
-    <!-- HERO SECTION -->
-    <CheckoutHeroSection />
+    <template v-if="getCheckoutPage">
+      <!-- HERO SECTION -->
+      <CheckoutHeroSection />
 
-    <!-- WIDGET SECTION -->
-    <CheckoutWidgetSection />
+      <!-- WIDGET SECTION -->
+      <CheckoutWidgetSection />
 
-    <!-- SERVICE SECTION -->
-    <CheckoutServiceSection />
+      <!-- SERVICE SECTION -->
+      <CheckoutServiceSection />
 
-    <!-- JOURNEY SECTION -->
-    <CheckoutJourneySection />
+      <!-- JOURNEY SECTION -->
+      <CheckoutJourneySection />
 
-    <!-- CALL TO ACTION SECTION -->
-    <CallToActionSection />
+      <!-- CALL TO ACTION SECTION -->
+      <CallToActionSection :data="getCheckoutPage.onboarding_section" />
+    </template>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
 import CheckoutHeroSection from "@/modules/landing-v2/components/checkout/checkout-hero-section";
 
 export default {
-  name: "Checkout",
+  name: "CheckoutPage",
 
   components: {
     CheckoutHeroSection,
@@ -42,7 +45,23 @@ export default {
         /* webpackChunkName: "landing-module-v2" */ "@/modules/landing-v2/components/home/call-to-action-section"
       ),
   },
+
+  computed: {
+    ...mapGetters({ getCheckoutPage: "cms/getCheckoutPage" }),
+  },
+
+  async mounted() {
+    if (!this.getCheckoutPage) await this.fetchCheckoutPage();
+  },
+
+  methods: {
+    ...mapActions({ fetchCheckoutPage: "cms/fetchCheckoutPage" }),
+  },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.container-layout {
+  min-height: 100vh;
+}
+</style>

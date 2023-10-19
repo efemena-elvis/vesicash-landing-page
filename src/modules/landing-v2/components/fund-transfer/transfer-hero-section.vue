@@ -5,18 +5,15 @@
       <div class="row align-items-center">
         <div class="col-12 col-md-6 copy-content">
           <div class="meta-text secondary-1-text yellow-500 mgb-8 roobert-500">
-            SEAMLESS FUND TRANSFERS
+            {{ section.title }}
           </div>
 
           <div class="title-text h2-text grey-900 roobert-700 mgb-24">
-            Effortlessly send single or bulk transfers
+            {{ section.subtitle }}
           </div>
 
           <h5 class="description-text h6-text roobert-400 grey-700">
-            Whether you're sending funds individually or in batches, our
-            platform ensures a smooth and efficient process. Simplify
-            international payments, saving time and streamlining financial
-            transactions.
+            {{ section.description }}
           </h5>
         </div>
 
@@ -35,8 +32,17 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "TransferHeroSection",
+
+  computed: {
+    ...mapGetters({ getFundTransfersPage: "cms/getFundTransfersPage" }),
+
+    section() {
+      return this.getFundTransfersPage.hero_section;
+    },
+  },
 };
 </script>
 

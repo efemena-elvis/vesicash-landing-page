@@ -5,18 +5,15 @@
       <div class="row align-items-center">
         <div class="col-12 col-md-6 copy-content">
           <div class="meta-text secondary-1-text green-500 mgb-8 roobert-500">
-            FRAUD PREVENTION
+            {{ getFraudPreventionPage?.hero_section?.title }}
           </div>
 
           <div class="title-text h2-text grey-900 roobert-700 mgb-24">
-            Boost security: Prevent fraud, reduce risk.
+            {{ getFraudPreventionPage?.hero_section?.subtitle }}
           </div>
 
           <h5 class="description-text h6-text roobert-400 grey-700">
-            Mitigate your risk through fraud protection and prevention measures,
-            ensuring the security of your transactions. Safeguard your business
-            and customers from potential threats with our comprehensive
-            approach.
+            {{ getFraudPreventionPage?.hero_section?.description }}
           </h5>
         </div>
 
@@ -35,8 +32,14 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "FraudHeroSection",
+
+  computed: {
+    ...mapGetters({ getFraudPreventionPage: "cms/getFraudPreventionPage" }),
+  },
 };
 </script>
 

@@ -13,7 +13,7 @@
     <FraudServiceSection />
 
     <!-- CALL TO ACTION SECTION -->
-    <CallToActionSection />
+    <CallToActionSection :data="getFraudPreventionPage?.onboarding_section" />
   </div>
 </template>
 
@@ -45,11 +45,15 @@ export default {
   },
 
   computed: {
-    ...mapGetters(),
+    ...mapGetters({ getFraudPreventionPage: "cms/getFraudPreventionPage" }),
+  },
+
+  async mounted() {
+    if (!this.getFraudPreventionPage) await this.fetchFraudPreventionPage();
   },
 
   methods: {
-    ...mapActions(),
+    ...mapActions({ fetchFraudPreventionPage: "cms/fetchFraudPreventionPage" }),
   },
 };
 </script>

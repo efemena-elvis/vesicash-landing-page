@@ -1,54 +1,46 @@
 <template>
   <div class="payment-option-service item-listing-section">
     <div class="vesicash-container">
-      <div class="row">
-        <div class="col-12 col-md-4">
+      <div
+        :class="
+          getPaymentOptionsPage?.benefits_section?.row_type
+            ? 'row row-gap-0'
+            : ''
+        "
+      >
+        <div
+          :class="
+            getPaymentOptionsPage?.benefits_section?.row_type
+              ? 'col-12 col-md-4 mb-0'
+              : ''
+          "
+        >
           <!-- TITLE TEXT -->
           <div class="title-text h2-text roobert-700 grey-900">
-            What you get with us
+            {{ getPaymentOptionsPage?.benefits_section?.title }}
           </div>
         </div>
 
-        <div class="col-12 col-md-8">
+        <div
+          :class="
+            getPaymentOptionsPage?.benefits_section?.row_type
+              ? 'col-12 col-md-8 mb-0'
+              : ''
+          "
+        >
           <!-- PAYOUT CARD ROW -->
           <div class="payout-card-row row">
-            <div class="col-12 col-sm-6">
+            <div
+              class="col-12 col-md-6"
+              v-for="(service, index) in getPaymentOptionsPage?.benefits_section
+                ?.benefits"
+              :key="index"
+            >
               <InfoDisplayCard
-                icon="three-circle-icon.svg"
-                title="Competitive edge"
-                description="Stand out and attract customers."
+                :icon="service.icon"
+                :title="service.title"
+                :description="service.description"
                 has_border
-                is_local_icon
-              />
-            </div>
-
-            <div class="col-12 col-sm-6">
-              <InfoDisplayCard
-                icon="up-trend-icon.svg"
-                title="Higher Conversions"
-                description="Reduce abandoned transactions."
-                has_border
-                is_local_icon
-              />
-            </div>
-
-            <div class="col-12 col-sm-6">
-              <InfoDisplayCard
-                icon="insight-icon.svg"
-                title="Data insights"
-                description="Understand customer preferences."
-                has_border
-                is_local_icon
-              />
-            </div>
-
-            <div class="col-12 col-sm-6">
-              <InfoDisplayCard
-                icon="three-circle-icon.svg"
-                title="Convenience"
-                description="Customers can choose their preferred method."
-                has_border
-                is_local_icon
               />
             </div>
           </div>
@@ -59,6 +51,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import InfoDisplayCard from "@/modules/landing-v2/components/home/info-display-card";
 
 export default {
@@ -67,11 +60,16 @@ export default {
   components: {
     InfoDisplayCard,
   },
+
+  computed: {
+    ...mapGetters({ getPaymentOptionsPage: "cms/getPaymentOptionsPage" }),
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .payment-option-service {
+  min-height: 100vh;
   .title-text {
     width: 80%;
 

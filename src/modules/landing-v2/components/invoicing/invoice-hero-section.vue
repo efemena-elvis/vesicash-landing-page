@@ -5,16 +5,15 @@
       <div class="row align-items-center">
         <div class="col-12 col-md-6 copy-content">
           <div class="meta-text secondary-1-text teal-500 mgb-8 roobert-500">
-            B2B INVOICING
+            {{ section.title }}
           </div>
 
           <div class="title-text h2-text grey-900 roobert-700 mgb-24">
-            Facilitate invoicing on a large scale
+            {{ section.subtitle }}
           </div>
 
           <h5 class="description-text h6-text roobert-400 grey-700">
-            Make invoicing a breeze. Automate B2B sales with advanced features
-            and APIs.
+            {{ section.description }}
           </h5>
         </div>
 
@@ -33,8 +32,17 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "InvoiceHeroSection",
+
+  computed: {
+    ...mapGetters({ getB2BInvoicingPage: "cms/getB2BInvoicingPage" }),
+
+    section() {
+      return this.getB2BInvoicingPage?.hero_section;
+    },
+  },
 };
 </script>
 

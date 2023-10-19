@@ -5,18 +5,15 @@
       <div class="row align-items-center">
         <div class="col-12 col-md-6 copy-content">
           <div class="meta-text secondary-1-text teal-500 mgb-8 roobert-500">
-            SUBSCRIPTIONS
+            {{ section?.title }}
           </div>
 
           <div class="title-text h2-text neutral-10 roobert-700 mgb-24">
-            Ensure automatic recurring payments
+            {{ section?.subtitle }}
           </div>
 
           <h5 class="description-text h6-text roobert-400 neutral-10">
-            Effortlessly set up scheduled transactions to ensure timely
-            payments, enhancing customer convenience and revenue predictability.
-            Simplify billing processes and provide a seamless experience for
-            both you and your customers.
+            {{ section?.description }}
           </h5>
         </div>
 
@@ -35,8 +32,18 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "SubscriptionHeroSection",
+
+  computed: {
+    ...mapGetters({ getSubscriptionPage: "cms/getSubscriptionPage" }),
+
+    section() {
+      return this.getSubscriptionPage?.hero_section;
+    },
+  },
 };
 </script>
 
