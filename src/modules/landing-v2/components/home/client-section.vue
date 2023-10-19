@@ -17,7 +17,7 @@
         <img
           v-for="(partner, i) in getHomePage.partners"
           :key="i"
-          v-lazy="partner"
+          :src="partner"
           :alt="partner"
         />
       </div>

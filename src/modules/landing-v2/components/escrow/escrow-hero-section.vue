@@ -5,18 +5,15 @@
       <div class="row align-items-center">
         <div class="col-12 col-md-6 copy-content">
           <div class="meta-text secondary-1-text teal-500 mgb-8 roobert-500">
-            ESCROW SERVICES
+            {{ section?.title }}
           </div>
 
           <div class="title-text h2-text neutral-10 roobert-700 mgb-24">
-            Escrow technology ensures you get value for your B2B and B2C
-            payments
+            {{ section?.subtitle }}
           </div>
 
           <h5 class="description-text h6-text roobert-400 neutral-10">
-            Utilize the power of escrow technology to secure optimal value in
-            your B2B and B2C payments. With funds held in escrow until terms are
-            met, you gain confidence in transaction outcomes.
+            {{ section?.description }}
           </h5>
         </div>
 
@@ -35,8 +32,17 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "EscrowHeroSection",
+
+  computed: {
+    ...mapGetters({ getEscrowPage: "cms/getEscrowPage" }),
+
+    section() {
+      return this.getEscrowPage?.hero_section;
+    },
+  },
 };
 </script>
 

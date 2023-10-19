@@ -1,7 +1,7 @@
 import { app } from "../../main";
 import {
-  getSlice,
   getHeroSectionSlice,
+  getHeroSectionSliceII,
   getSecondaryHeroSectionSlice,
   getSecondaryHeroSectionWithBenefitsSlice,
   getSecondaryHeroSectionSliceII,
@@ -223,6 +223,78 @@ export default {
         onboarding_section,
       };
       commit("SAVE_B2B_INVOICING_PAGE", page);
+    }
+    return response;
+  },
+
+  async fetchCheckoutPage({ commit }) {
+    window?.NProgress && window?.NProgress.start();
+    const response = await app.$prismic.client.getSingle("checkout_page");
+    window?.NProgress && window?.NProgress.done();
+    if (response?.data) {
+      const res = response?.data;
+      const slices = res?.body;
+      const hero_section = getHeroSectionSlice(slices);
+      const hero_section_ii = getHeroSectionSliceII(slices);
+      const secondary_hero_section = getSecondaryHeroSectionSlice(slices);
+      const benefits_section = getBenefitsSectionSlice(slices);
+      const onboarding_section = getOnboardingSlice(slices);
+
+      const page = {
+        hero_section,
+        hero_section_ii,
+        secondary_hero_section,
+        benefits_section,
+        onboarding_section,
+      };
+      commit("SAVE_CHECKOUT_PAGE", page);
+    }
+    return response;
+  },
+
+  async fetchSubscriptionPage({ commit }) {
+    window?.NProgress && window?.NProgress.start();
+    const response = await app.$prismic.client.getSingle("subscription_page");
+    window?.NProgress && window?.NProgress.done();
+    if (response?.data) {
+      const res = response?.data;
+      const slices = res?.body;
+      const hero_section = getHeroSectionSlice(slices);
+      const benefits_section = getBenefitsSectionSlice(slices);
+      const secondary_hero_section =
+        getSecondaryHeroSectionWithBenefitsSlice(slices);
+      const onboarding_section = getOnboardingSlice(slices);
+
+      const page = {
+        hero_section,
+        secondary_hero_section,
+        benefits_section,
+        onboarding_section,
+      };
+      commit("SAVE_SUBSCRIPTION_PAGE", page);
+    }
+    return response;
+  },
+
+  async fetchEscrowServicePage({ commit }) {
+    window?.NProgress && window?.NProgress.start();
+    const response = await app.$prismic.client.getSingle("escrow_service_page");
+    window?.NProgress && window?.NProgress.done();
+    if (response?.data) {
+      const res = response?.data;
+      const slices = res?.body;
+      const hero_section = getHeroSectionSlice(slices);
+      const benefits_section = getBenefitsSectionSlice(slices);
+      const secondary_hero_section = getSecondaryHeroSectionSlice(slices);
+      const onboarding_section = getOnboardingSlice(slices);
+
+      const page = {
+        hero_section,
+        secondary_hero_section,
+        benefits_section,
+        onboarding_section,
+      };
+      commit("SAVE_ESCROW_PAGE", page);
     }
     return response;
   },

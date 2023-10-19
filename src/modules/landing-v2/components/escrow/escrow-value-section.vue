@@ -15,12 +15,11 @@
 
         <div class="col-12 col-md-6 copy-content">
           <div class="title-text h2-text grey-900 roobert-700 mgb-24">
-            Get value for money
+            {{ section.title }}
           </div>
 
           <h5 class="description-text h6-text roobert-400 grey-700">
-            Secure your transaction with our escrow solution. Ensure your
-            payment is safe and secure until you receive value.
+            {{ section.description }}
           </h5>
         </div>
       </div>
@@ -29,8 +28,17 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "EscrowValueSection",
+
+  computed: {
+    ...mapGetters({ getEscrowPage: "cms/getEscrowPage" }),
+
+    section() {
+      return this.getEscrowPage?.secondary_hero_section;
+    },
+  },
 };
 </script>
 

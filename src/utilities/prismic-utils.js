@@ -55,6 +55,31 @@ export const getHeroSectionSlice = (slices) => {
       };
 };
 
+export const getHeroSectionSliceII = (slices) => {
+  const { data, label } = getSlice(
+    slices,
+    "hero_section",
+    "with_left_aligned_image"
+  );
+  return data
+    ? {
+        title: prismicH.asText(data.hero_title),
+        subtitle: prismicH.asText(data.hero_subtitle),
+        description: prismicH.asText(data.hero_description),
+        image: prismicH.asImageSrc(data.hero_image),
+        label,
+        right_aligned: label === "with_right_aligned_image",
+      }
+    : {
+        title: "",
+        subtitle: "",
+        description: "",
+        image: "",
+        label: "",
+        right_aligned: false,
+      };
+};
+
 export const getBenefitsSectionSlice = (slices) => {
   const { data, items, label } = getSlice(slices, "benefits_section");
   return data
@@ -162,3 +187,17 @@ export const getSecondaryHeroSectionWithBenefitsSlice = (slices) => {
         right_aligned: false,
       };
 };
+
+[
+  {
+    title: String,
+    description: String,
+    items: [
+      {
+        title: String,
+        description: String,
+        link: String,
+      },
+    ],
+  },
+];

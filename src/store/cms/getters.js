@@ -7,4 +7,7 @@ export default {
   getTaxCompliancePage: (state) => state.tax_compliance_page,
   getFundTransfersPage: (state) => state.fund_transfers_page,
   getB2BInvoicingPage: (state) => state.b2b_invoicing_page,
+  getCheckoutPage: (state) => state.checkout_page,
+  getSubscriptionPage: (state) => state.subscription_page,
+  getEscrowPage: (state) => state.escrow_page,
 };

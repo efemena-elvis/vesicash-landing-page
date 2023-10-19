@@ -9,4 +9,7 @@ export default {
   SAVE_TAX_COMPLIANCE_PAGE: (state, data) => (state.tax_compliance_page = data),
   SAVE_FUND_TRANSFERS_PAGE: (state, data) => (state.fund_transfers_page = data),
   SAVE_B2B_INVOICING_PAGE: (state, data) => (state.b2b_invoicing_page = data),
+  SAVE_CHECKOUT_PAGE: (state, data) => (state.checkout_page = data),
+  SAVE_SUBSCRIPTION_PAGE: (state, data) => (state.subscription_page = data),
+  SAVE_ESCROW_PAGE: (state, data) => (state.escrow_page = data),
 };

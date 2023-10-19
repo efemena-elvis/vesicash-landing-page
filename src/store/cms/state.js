@@ -7,4 +7,7 @@ export default () => ({
   tax_compliance_page: null,
   fund_transfers_page: null,
   b2b_invoicing_page: null,
+  checkout_page: null,
+  subscription_page: null,
+  escrow_page: null,
 });
