@@ -139,13 +139,13 @@ export default {
       width: 100%;
     }
 
-    &::after {
-      content: "";
-      position: absolute;
-      height: toRem(30);
-      top: toRem(22);
-      width: 100%;
-    }
+    // &::after {
+    //   content: "";
+    //   position: absolute;
+    //   height: toRem(30);
+    //   top: toRem(22);
+    //   width: 100%;
+    // }
 
     .nav-item-top {
       @include breakpoint-custom-down(1020) {

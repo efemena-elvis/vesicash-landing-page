@@ -12,4 +12,5 @@ export default {
   SAVE_CHECKOUT_PAGE: (state, data) => (state.checkout_page = data),
   SAVE_SUBSCRIPTION_PAGE: (state, data) => (state.subscription_page = data),
   SAVE_ESCROW_PAGE: (state, data) => (state.escrow_page = data),
+  SAVE_PAGE_LAYOUT: (state, data) => (state.page_layout = data),
 };

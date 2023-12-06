@@ -10,4 +10,5 @@ export default {
   getCheckoutPage: (state) => state.checkout_page,
   getSubscriptionPage: (state) => state.subscription_page,
   getEscrowPage: (state) => state.escrow_page,
+  getPageLayout: (state) => state.page_layout,
 };

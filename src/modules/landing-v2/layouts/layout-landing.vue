@@ -1,7 +1,15 @@
 <template>
   <div>
     <!-- TOP NAVIGATION -->
-    <Navigation :key="$route.fullPath" />
+    <Navigation :key="$route.fullPath" :scrolled="scrolled" />
+
+    <MessageBanner
+      v-for="(banner, index) in banners"
+      :key="index + banner.position"
+      v-bind="banner"
+      :scrolled="scrolled"
+      @close="closeBanner(index)"
+    />
 
     <!-- BODY SECTION -->
     <transition name="fade" mode="out-in">
@@ -14,9 +22,10 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import Navigation from "@/modules/landing-v2/components/navigation";
 import Footer from "@/modules/landing-v2/components/footer";
+import MessageBanner from "@/shared/components/message-banner";
 
 export default {
   name: "LayoutLanding",
@@ -24,24 +33,50 @@ export default {
   components: {
     Navigation,
     Footer,
+    MessageBanner,
   },
 
   computed: {
-    ...mapGetters({ getTransactions: "transactions/getTransactions" }),
+    ...mapGetters({ getPageLayout: "cms/getPageLayout" }),
+
+    alertBanners() {
+      return this.getPageLayout?.banners?.length
+        ? this.getPageLayout?.banners?.filter((banner) => banner.show_banner)
+        : [];
+    },
   },
 
   mounted() {
     this.$color.setPageBackgroundColor("#ffffff");
-    this.resetTransaction();
+
+    window.onscroll = () => {
+      this.scrolled = window.scrollY > 20;
+    };
+
+    if (!this.getPageLayout) this.fetchPageLayout();
+  },
+
+  watch: {
+    alertBanners: {
+      handler(banners) {
+        this.banners = [...banners];
+      },
+      immediate: true,
+    },
+  },
+
+  data() {
+    return {
+      scrolled: false,
+      banners: [],
+    };
   },
 
   methods: {
-    ...mapMutations({ RESET_TRANSACTION: "transactions/RESET_TRANSACTION" }),
+    ...mapActions({ fetchPageLayout: "cms/fetchPageLayout" }),
 
-    resetTransaction() {
-      if (this.getTransactions?.name?.length) {
-        this.RESET_TRANSACTION();
-      }
+    closeBanner(index) {
+      this.banners.splice(index, 1);
     },
   },
 };

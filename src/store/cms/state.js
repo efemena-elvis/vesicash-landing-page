@@ -10,4 +10,5 @@ export default () => ({
   checkout_page: null,
   subscription_page: null,
   escrow_page: null,
+  page_layout: null,
 });

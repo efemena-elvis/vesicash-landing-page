@@ -17,6 +17,24 @@ export const getSlice = (slices, slice_type, slice_label = "") => {
     : { data: null, items: [], type: null, label: null, id: null };
 };
 
+export const getSlices = (slices, slice_type, slice_label = "") => {
+  const matched_slices = slices.filter(
+    (slice) =>
+      slice.slice_type === slice_type &&
+      (slice_label ? slice_label === slice.slice_label : true)
+  );
+
+  return matched_slices
+    ? matched_slices.map((slice) => ({
+        data: slice.primary,
+        items: slice.items,
+        type: slice.slice_type,
+        label: slice.slice_label,
+        id: slice.id,
+      }))
+    : [];
+};
+
 export const getOnboardingSlice = (slices) => {
   const { data } = getSlice(slices, "onboarding_section");
   return data
@@ -188,16 +206,9 @@ export const getSecondaryHeroSectionWithBenefitsSlice = (slices) => {
       };
 };
 
-[
-  {
-    title: String,
-    description: String,
-    items: [
-      {
-        title: String,
-        description: String,
-        link: String,
-      },
-    ],
-  },
-];
+export const getAlertBannerSlices = (slices) => {
+  return getSlices(slices, "alert_banner")?.map((slice) => ({
+    ...slice.data,
+    message: prismicH.asHTML(slice.data.message),
+  }));
+};
