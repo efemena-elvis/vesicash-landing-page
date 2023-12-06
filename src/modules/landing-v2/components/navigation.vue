@@ -1,6 +1,7 @@
 <template>
   <div
     class="fixed-top w-100 index-999 smooth-transition neutral-10-bg"
+    :class="{ 'scrolling-up': scrolled }"
     ref="navbar"
   >
     <div class="vesicash-container">
@@ -88,6 +89,13 @@ export default {
       import(
         /* webpackChunkName: 'MobileMenu' */ "@/modules/landing/components/mobile-menu"
       ),
+  },
+
+  props: {
+    scrolled: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   computed: {
@@ -221,9 +229,9 @@ export default {
     this.checkMobileView();
     window.onresize = () => this.checkMobileView();
 
-    window.onscroll = () => {
-      this.$refs.navbar?.classList.toggle("scrolling-up", window.scrollY > 20);
-    };
+    // window.onscroll = () => {
+    //   this.$refs.navbar?.classList.toggle("scrolling-up", window.scrollY > 20);
+    // };
   },
 
   methods: {

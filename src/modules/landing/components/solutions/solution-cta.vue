@@ -5,14 +5,14 @@
       <div
         class="header-text text-center h1-text roobert-700 neutral-10 mgb-32"
       >
-        {{ getAboutPage.service_title }}
+        {{ getCTA.service_title }}
       </div>
 
       <!-- DESCRIPTION TEXT -->
       <div
         class="description-text text-center h6-text roobert-400 grey-200 mgb-50"
       >
-        {{ getAboutPage.service_description }}
+        {{ getCTA.service_description }}
       </div>
 
       <!-- BUTTON ROW -->
@@ -21,13 +21,13 @@
           href="https://docs.vesicash.com/"
           target="_blank"
           class="btn btn-secondary btn-md mgr-16 roobert-500"
-          >{{ getAboutPage.labels.view_doc_cta }}</a
+          >{{ getCTA.labels.view_doc_cta }}</a
         >
 
         <router-link
           to="/contact"
           class="btn btn-primary btn-md mgr-16 roobert-500"
-          >{{ getAboutPage.labels.contact_cta }}</router-link
+          >{{ getCTA.labels.contact_cta }}</router-link
         >
       </div>
     </div>
@@ -41,6 +41,20 @@ export default {
 
   computed: {
     ...mapGetters({ getAboutPage: "cms/getAboutPage" }),
+
+    getCTA() {
+      return this.getAboutPage
+        ? this.getAboutPage
+        : {
+            service_title: "Need a custom or white label solution ?",
+            service_description:
+              "At vesicash we have product and services that can take your business to the next level",
+            labels: {
+              view_doc_cta: "View documentation",
+              contact_cta: "Contact us",
+            },
+          };
+    },
   },
 };
 </script>
