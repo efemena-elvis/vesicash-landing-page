@@ -8,6 +8,7 @@ import {
   getBenefitsSectionSlice,
   getListedBenefitsSectionSlice,
   getOnboardingSlice,
+  getAlertBannerSlices,
 } from "../../utilities/prismic-utils";
 import * as prismicH from "@prismicio/helpers";
 
@@ -295,6 +296,25 @@ export default {
         onboarding_section,
       };
       commit("SAVE_ESCROW_PAGE", page);
+    }
+    return response;
+  },
+
+  async fetchPageLayout({ commit }) {
+    window?.NProgress && window?.NProgress.start();
+    const response = await app.$prismic.client.getSingle("layout");
+    window?.NProgress && window?.NProgress.done();
+    if (response?.data) {
+      const res = response?.data;
+      const slices = res.body;
+
+      const page = {
+        banners: getAlertBannerSlices(slices),
+      };
+
+      console.log("LAYOUT DATA", page);
+
+      commit("SAVE_PAGE_LAYOUT", page);
     }
     return response;
   },

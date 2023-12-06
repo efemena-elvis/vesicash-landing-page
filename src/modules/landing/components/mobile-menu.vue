@@ -165,6 +165,9 @@ export default {
 }
 
 .mobile-menu {
+  @include breakpoint-up(lg) {
+    display: none;
+  }
   animation: slide-left 0.4s ease-in-out forwards;
   @include fixed-display-area;
   padding-bottom: toRem(40);
