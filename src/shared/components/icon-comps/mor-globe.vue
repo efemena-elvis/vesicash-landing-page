@@ -5,7 +5,7 @@
     style="
        {
         width: 500px;
-        height: 430px;
+        height: 350px;
         max-width: 100%;
       }
     "
