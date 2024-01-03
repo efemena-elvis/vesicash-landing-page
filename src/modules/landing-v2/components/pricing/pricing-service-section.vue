@@ -61,7 +61,7 @@
         <div class="col-12 col-sm-6 col-md-3">
           <InfoDisplayCard
             icon="certified-icon.svg"
-            title="Migration support"
+            title="Migration Support"
             description="Migrate without jeopardizing the safety of subscribers during the process."
             has_border
             is_local_icon
@@ -81,7 +81,7 @@
         <div class="col-12 col-sm-6 col-md-3">
           <InfoDisplayCard
             icon="transaction-icon.svg"
-            title="Customer support"
+            title="Customer Support"
             description="Receive expert guidance on utilizing Vesicash, allowing you to concentrate on your business's expansion."
             has_border
             is_local_icon

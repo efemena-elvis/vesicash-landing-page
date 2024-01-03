@@ -312,8 +312,6 @@ export default {
         banners: getAlertBannerSlices(slices),
       };
 
-      console.log("LAYOUT DATA", page);
-
       commit("SAVE_PAGE_LAYOUT", page);
     }
     return response;
