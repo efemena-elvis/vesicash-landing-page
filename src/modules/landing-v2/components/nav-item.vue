@@ -133,19 +133,23 @@ export default {
       margin-right: toRem(20);
     }
 
-    @include breakpoint-custom-down(1020) {
+    @include breakpoint-custom-down(1024) {
       @include flex-column-start-start;
       margin-right: 0;
       width: 100%;
     }
 
-    // &::after {
-    //   content: "";
-    //   position: absolute;
-    //   height: toRem(30);
-    //   top: toRem(22);
-    //   width: 100%;
-    // }
+    &::after {
+      content: "";
+      position: absolute;
+      height: toRem(30);
+      top: toRem(22);
+      width: 100%;
+
+      @include breakpoint-custom-down(1024) {
+        top: 100%;
+      }
+    }
 
     .nav-item-top {
       @include breakpoint-custom-down(1020) {
