@@ -94,10 +94,15 @@ export default {
 }
 
 .banner-container-2 {
-  top: toRem(50);
+  top: toRem(65);
 
   @include breakpoint-down(lg) {
-    top: toRem(50);
+    top: toRem(45);
+  }
+
+  @include breakpoint-down(md) {
+    top: toRem(45);
+    display: none;
   }
 }
 </style>
