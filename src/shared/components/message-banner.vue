@@ -8,6 +8,7 @@
     }"
   >
     <div class="message-block" v-html="message"></div>
+
     <div
       class="icon icon-close"
       v-if="can_close_banner"
@@ -50,7 +51,7 @@ export default {
   width: 100%;
   background: getColor("teal-800");
   color: getColor("neutral-10");
-  padding: toRem(15);
+  padding-top: toRem(16);
   z-index: 99;
   transition: all ease-in-out 0.3s;
 
@@ -58,7 +59,7 @@ export default {
     width: 75%;
     margin: auto;
     text-align: center;
-    line-height: 175%;
+    // line-height: 175%;
 
     @include breakpoint-down(lg) {
       width: 85%;

@@ -13,6 +13,7 @@ Vue.config.productionTip = false;
 // IMPORT APPLICATION STYLES
 // =========================================
 import "bootstrap/dist/css/bootstrap.css";
+import "../public/css/app.css";
 import "@/shared/assets/scss/app.scss";
 
 // =========================================

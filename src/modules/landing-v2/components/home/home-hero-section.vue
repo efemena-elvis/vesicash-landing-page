@@ -47,6 +47,7 @@ export default {
   background: getColor("neutral-10");
   padding-top: toRem(130);
   padding-bottom: toRem(150);
+  height: 90vh;
 
   @include breakpoint-down(lg) {
     padding: toRem(100) 0;
