@@ -56,79 +56,98 @@
         <!-- NAVIGATION LINKS CONTAINER -->
         <div class="col-12 col-sm-12 col-md-8 footer-right mt-5 mt-md-0">
           <div class="row">
-            <div class="col-12 col-sm-3 mb-5 mb-sm-0">
-              <div class="nav-item fw-700 mgb-24">Product</div>
+            <div
+              class="col-12 col-sm-6 col-md-4 contact-column"
+              v-for="(contact, index) in contacts"
+              :key="index"
+            >
+              <div class="country-flag">
+                <img
+                  v-lazy="loadImage(`flags/${contact.flag}`, 'landing-v2')"
+                  :alt="contact.name"
+                />
+              </div>
 
-              <router-link to="/solutions" class="nav-item nav-item-link"
-                >What we do</router-link
-              >
-              <!-- <a href="" class="nav-item nav-item-link">Instant Excrow</a> -->
-              <router-link to="/privacy-policy" class="nav-item nav-item-link"
-                >Privacy Policy</router-link
-              >
-              <router-link to="/terms" class="nav-item nav-item-link"
-                >Terms of Use</router-link
-              >
-              <router-link to="/faqs" class="nav-item nav-item-link"
-                >FAQs</router-link
-              >
+              <div class="country-address">
+                {{ contact.address }}
+              </div>
             </div>
+          </div>
+        </div>
+      </div>
 
-            <div class="col-12 col-sm-3 mb-5 mb-sm-0">
-              <div class="nav-item fw-700 mgb-24">Company</div>
+      <div class="footer-bottom row mgb-50">
+        <div class="col-12 col-sm-3 mb-5 mb-sm-0">
+          <div class="nav-item fw-700 mgb-24">Product</div>
 
-              <router-link to="/about" class="nav-item nav-item-link"
-                >About Us</router-link
-              >
-              <a :href="$blog_url" class="nav-item nav-item-link">Blog</a>
+          <router-link to="/solutions" class="nav-item nav-item-link"
+            >What we do</router-link
+          >
+          <!-- <a href="" class="nav-item nav-item-link">Instant Excrow</a> -->
+          <router-link to="/privacy-policy" class="nav-item nav-item-link"
+            >Privacy Policy</router-link
+          >
+          <router-link to="/terms" class="nav-item nav-item-link"
+            >Terms of Use</router-link
+          >
+          <router-link to="/faqs" class="nav-item nav-item-link"
+            >FAQs</router-link
+          >
+        </div>
 
-              <router-link to="/contact" class="nav-item nav-item-link"
-                >Contact</router-link
-              >
-            </div>
+        <div class="col-12 col-sm-3 mb-5 mb-sm-0">
+          <div class="nav-item fw-700 mgb-24">Company</div>
 
-            <div class="col-12 col-sm-3 mb-5 mb-sm-0">
-              <div class="nav-item fw-700 mgb-24">Developer</div>
+          <router-link to="/about" class="nav-item nav-item-link"
+            >About Us</router-link
+          >
+          <a :href="$blog_url" class="nav-item nav-item-link">Blog</a>
 
-              <router-link to="/developers" class="nav-item nav-item-link"
-                >Overview</router-link
-              >
-              <a
-                href="https://docs.vesicash.com/"
-                target="_blank"
-                class="nav-item nav-item-link"
-                >Documentation</a
-              >
-              <router-link to="" class="nav-item nav-item-link">
-                <span class="grey-400 disabled" style="cursor: not-allowed"
-                  >Service Status</span
-                >
-                <span
-                  class="coming-soon-indicator text-no-wrap roobert-400 yellow-600"
-                  >Coming Soon</span
-                >
-              </router-link>
-            </div>
+          <router-link to="/contact" class="nav-item nav-item-link"
+            >Contact</router-link
+          >
+        </div>
 
-            <div class="col-12 col-sm-3">
-              <!-- <div class="nav-item fw-700 mgb-24">Payments processed by</div> -->
+        <div class="col-12 col-sm-3 mb-5 mb-sm-0">
+          <div class="nav-item fw-700 mgb-24">Developer</div>
 
-              <!-- PRODUCT DISPLAY -->
-              <div class="product-display">
-                <!-- TOP IMAGE -->
-                <!-- <img
+          <router-link to="/developers" class="nav-item nav-item-link"
+            >Overview</router-link
+          >
+          <a
+            href="https://docs.vesicash.com/"
+            target="_blank"
+            class="nav-item nav-item-link"
+            >Documentation</a
+          >
+          <router-link to="" class="nav-item nav-item-link">
+            <span class="grey-400 disabled" style="cursor: not-allowed"
+              >Service Status</span
+            >
+            <span
+              class="coming-soon-indicator text-no-wrap roobert-400 yellow-600"
+              >Coming Soon</span
+            >
+          </router-link>
+        </div>
+
+        <div class="col-12 col-sm-3">
+          <!-- <div class="nav-item fw-700 mgb-24">Payments processed by</div> -->
+
+          <!-- PRODUCT DISPLAY -->
+          <div class="product-display">
+            <!-- TOP IMAGE -->
+            <!-- <img
                   v-lazy="loadImage('flutterwave.png', 'landing')"
                   alt
                   class="top-img mgb-8"
                 /> -->
 
-                <!-- DESCRIPTION -->
-                <div class="bottom-text tertiary-1-text roobert-400">
-                  <div class="content">A member of the stellar</div>
-                  <img v-lazy="loadImage('stellar.png', 'landing')" alt />
-                  <div class="content">network</div>
-                </div>
-              </div>
+            <!-- DESCRIPTION -->
+            <div class="bottom-text tertiary-1-text roobert-400">
+              <div class="content">A member of the stellar</div>
+              <img v-lazy="loadImage('stellar.png', 'landing')" alt />
+              <div class="content">network</div>
             </div>
           </div>
         </div>
@@ -158,6 +177,55 @@ export default {
 
   data: () => ({
     current_year: "",
+
+    contacts: [
+      {
+        name: "Nigeria",
+        flag: "nigeria-flag.svg",
+        address: "16 Alhaji Mudashiru Eletu Way, Osapa Estate, Lekki, Lagos.",
+      },
+      {
+        name: "United State",
+        flag: "usa-flag.svg",
+        address:
+          "251 Little Falls Drive, Wilmington, New Castle County, Delaware 19808.",
+      },
+      {
+        name: "Zambia",
+        flag: "zambia-flag.svg",
+        address: "LN2260/27 Off Lilayi Road, Shaft Five, Kafue.",
+      },
+      {
+        name: "Ghana",
+        flag: "ghana-flag.svg",
+        address: "The Enterprise Village, 7 Tunemete Street.",
+      },
+      {
+        name: "United kingdom",
+        flag: "uk-flag.svg",
+        address: "2 Minster Court, London.",
+      },
+      {
+        name: "Rwanda",
+        flag: "rwanda-flag.svg",
+        address: "Remera, Gasabo, Umujyi wa, Kigali.",
+      },
+      {
+        name: "Egypt",
+        flag: "egypt-flag.svg",
+        address: "24 Al Tayaran Street, Nasr City, Cairo.",
+      },
+      {
+        name: "Kenya",
+        flag: "kenya-flag.svg",
+        address: "The Mirage Towers, Chiromo Road, Westlands District, Nairobi",
+      },
+      {
+        name: "South Africa",
+        flag: "southafrica-flag.svg",
+        address: "4 Cade Street, Southcrest, Alberton",
+      },
+    ],
   }),
 
   mounted() {
@@ -228,6 +296,32 @@ export default {
   }
 
   .footer-right {
+    .contact-column {
+      @include flex-row-start-nowrap;
+      margin-bottom: toRem(32);
+      gap: toRem(10);
+
+      .country-flag {
+        @include draw-shape(28);
+        border-radius: 50%;
+        position: relative;
+        overflow: hidden;
+
+        img {
+          @include set-full-bg("cover");
+        }
+      }
+
+      .country-address {
+        font-family: "Roobert-Regular", sans-serif;
+        @include generate-font-type("tertiary-3");
+        color: getColor("grey-700");
+      }
+    }
+  }
+
+  .footer-bottom {
+    margin-top: toRem(60);
     .nav-item {
       @include generate-font-type("primary-1");
       font-family: "Roobert-Bold", sans-serif;

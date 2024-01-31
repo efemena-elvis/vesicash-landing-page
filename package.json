@@ -14,7 +14,6 @@
     "axios": "^0.27.2",
     "bootstrap": "^5.2.1",
     "core-js": "^3.6.5",
-    "node-sass": "^9.0.0",
     "portal-vue": "^2.1.7",
     "prismic-dom": "^2.2.7",
     "register-service-worker": "^1.7.1",
