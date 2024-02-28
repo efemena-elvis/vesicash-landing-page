@@ -212,3 +212,23 @@ export const getAlertBannerSlices = (slices) => {
     message: prismicH.asHTML(slice.data.message),
   }));
 };
+
+export const getBreadcrumbSlice = (slices) => {
+  const { items } = getSlice(slices, "breadcrumb");
+
+  return items?.length
+    ? items?.map((item) => ({
+        name: prismicH.asText(item.name),
+        path: item.link,
+      }))
+    : [];
+};
+
+export const pageMeta = (page) => {
+  return {
+    title: page?.page_title || "",
+    description: page?.meta_description || "",
+    keywords: page?.meta_keywords || "",
+    tags: page?.meta_tags || "",
+  };
+};

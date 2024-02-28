@@ -22,31 +22,15 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "App",
 
-  metaInfo: {
-    title: "Vesicash",
-    titleTemplate: "%s | Escrow, Remittances and MoR for Businesses",
-
-    htmlAttrs: {
-      lang: "en-US",
-    },
-
-    meta: [
-      { charset: "utf-8" },
-      {
-        name: "description",
-        content:
-          "Nigeria & Africa’s trusted digital escrow service for ensuring safe and secure digital commerce transactions. Global settlements and payouts via API.",
-      },
-      {
-        name: "keywords",
-        content:
-          "escrow services, escrow in nigeria, nigerian escrow service, Escrow, nigerian escrow, online escrow, escrow service, safe online transaction, online transactions, nigeria, africa, online, escrow system in nigeria, escrow platforms in nigeria, escrow for africa, african escrow, milestone, split payments",
-      },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-    ],
+  metaInfo() {
+    return {
+      ...this.pageMeta,
+    };
   },
 
   components: {
@@ -66,6 +50,40 @@ export default {
       handler() {
         this.show_feather_loader = false;
       },
+    },
+  },
+
+  computed: {
+    ...mapGetters({ getHomePage: "cms/getHomePage" }),
+
+    pageMeta() {
+      if (!this.getHomePage) return {};
+
+      return {
+        title: "Vesicash",
+        titleTemplate: `%s | ${this.getHomePage?.meta?.title}`,
+
+        htmlAttrs: {
+          lang: "en-US",
+        },
+
+        meta: [
+          { charset: "utf-8" },
+          {
+            name: "description",
+            content: this.getHomePage?.meta?.description,
+          },
+          {
+            name: "tags",
+            content: this.getHomePage?.meta?.tags,
+          },
+          {
+            name: "keywords",
+            content: this.getHomePage?.meta?.keywords,
+          },
+          { name: "viewport", content: "width=device-width, initial-scale=1" },
+        ],
+      };
     },
   },
 

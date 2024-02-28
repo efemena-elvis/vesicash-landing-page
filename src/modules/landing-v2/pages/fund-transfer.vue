@@ -1,6 +1,8 @@
 <template>
   <div class="container-layout">
     <template v-if="getFundTransfersPage">
+      <Breadcrumb :links="getFundTransfersPage.breadcrumb" />
+
       <!-- HERO SECTION -->
       <TransferHeroSection />
 
@@ -15,12 +17,14 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+import Breadcrumb from "../components/breadcrumb.vue";
 import TransferHeroSection from "@/modules/landing-v2/components/fund-transfer/transfer-hero-section";
 
 export default {
   name: "FundTransfer",
 
   components: {
+    Breadcrumb,
     TransferHeroSection,
     TransferServiceSection: () =>
       import(

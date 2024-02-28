@@ -1,5 +1,7 @@
 <template>
   <div class="container-layout">
+    <Breadcrumb />
+
     <!-- HERO SECTION -->
     <PricingHeroSection />
 
@@ -20,6 +22,7 @@
 <script>
 import PricingHeroSection from "@/modules/landing-v2/components/pricing/pricing-hero-section";
 import PricingFeatureSection from "@/modules/landing-v2/components/pricing/pricing-feature-section";
+import Breadcrumb from "../components/breadcrumb.vue";
 
 export default {
   name: "PricingPlan",
@@ -27,6 +30,7 @@ export default {
   components: {
     PricingHeroSection,
     PricingFeatureSection,
+    Breadcrumb,
     PricingServiceSection: () =>
       import(
         /* webpackChunkName: "landing-module-pricing-v2" */ "@/modules/landing-v2/components/pricing/pricing-service-section"

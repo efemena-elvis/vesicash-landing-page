@@ -81,6 +81,32 @@ export default {
 
   computed: {
     ...mapGetters({ getHomePage: "cms/getHomePage" }),
+
+    pageMeta() {
+      if (!this.getHomePage) return {};
+
+      return {
+        title: "Vesicash",
+        titleTemplate: `%s | ${this.getHomePage?.meta?.title}`,
+
+        htmlAttrs: {
+          lang: "en-US",
+        },
+
+        meta: [
+          { charset: "utf-8" },
+          {
+            name: "description",
+            content: this.getHomePage?.meta?.description,
+          },
+          {
+            name: "keywords",
+            content: this.getHomePage?.meta?.keywords,
+          },
+          { name: "viewport", content: "width=device-width, initial-scale=1" },
+        ],
+      };
+    },
   },
 
   async created() {

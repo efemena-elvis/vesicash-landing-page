@@ -1,6 +1,8 @@
 <template>
   <div class="container-layout">
     <template v-if="getTaxCompliancePage">
+      <Breadcrumb :links="getTaxCompliancePage.breadcrumb" theme="light" />
+
       <!-- TAX HERO SECTION -->
       <TaxHeroSection />
 
@@ -19,12 +21,14 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 import TaxHeroSection from "@/modules/landing-v2/components/tax-compliance/tax-hero-section";
+import Breadcrumb from "../components/breadcrumb.vue";
 
 export default {
   name: "TaxCompliance",
 
   components: {
     TaxHeroSection,
+    Breadcrumb,
     TaxCollectionSection: () =>
       import(
         /* webpackChunkName: "landing-module-tax-v2" */ "@/modules/landing-v2/components/tax-compliance/tax-collection-section"

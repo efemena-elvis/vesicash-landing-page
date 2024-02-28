@@ -138,3 +138,9 @@
     }
   }
 }
+
+.breadcrumb-anchor {
+  position: fixed;
+  transform: translateY(5px);
+  z-index: 20;
+}
