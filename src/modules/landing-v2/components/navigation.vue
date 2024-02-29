@@ -72,6 +72,7 @@
         />
       </template>
     </div>
+    <div class="scroll-indicator" :style="{ width: `${page_scrolled}%` }"></div>
   </div>
 </template>
 
@@ -120,6 +121,7 @@ export default {
   },
 
   data: () => ({
+    page_scrolled: 0,
     show_mobile_dropdown: false,
     is_mobile_view: false,
     sub_stack_view: false,
@@ -228,13 +230,23 @@ export default {
   mounted() {
     this.checkMobileView();
     window.onresize = () => this.checkMobileView();
+    window.addEventListener("scroll", this.updateScrollExtent);
 
     // window.onscroll = () => {
     //   this.$refs.navbar?.classList.toggle("scrolling-up", window.scrollY > 20);
     // };
   },
 
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.updateScrollExtent);
+  },
+
   methods: {
+    updateScrollExtent() {
+      const totalHeight = document.body.scrollHeight - window.innerHeight;
+      this.page_scrolled = (window.scrollY / totalHeight) * 100;
+    },
+
     toggleMobileDropdown() {
       this.show_mobile_dropdown = !this.show_mobile_dropdown;
     },
@@ -333,5 +345,13 @@ export default {
 
 .scrolling-down {
   display: none;
+}
+
+.scroll-indicator {
+  height: toRem(3);
+  background: getColor("teal-500");
+  width: 40%;
+  position: fixed;
+  left: 0;
 }
 </style>

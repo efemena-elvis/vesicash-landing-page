@@ -139,15 +139,19 @@ export default {
       width: 100%;
     }
 
-    &::after {
-      content: "";
-      position: absolute;
-      height: toRem(30);
-      top: toRem(22);
-      width: 100%;
+    &:hover {
+      &::after {
+        content: "";
+        position: absolute;
+        height: toRem(40);
+        top: toRem(22);
+        width: toRem(450);
+        z-index: 100;
 
-      @include breakpoint-custom-down(1024) {
-        top: 100%;
+        @include breakpoint-custom-down(1024) {
+          top: 100%;
+          width: 100%;
+        }
       }
     }
 
