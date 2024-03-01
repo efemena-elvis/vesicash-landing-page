@@ -11,8 +11,10 @@
     <div class="top-row">
       <div>
         <div class="name">{{ item.name }}</div>
-        <div class="price">₦{{ item.price }}</div>
-        <div class="secondary-3-text grey-600 mgt-5">Tax: ₦{{ item.tax }}</div>
+        <div class="price">{{ getCountry.sign }}{{ item.price }}</div>
+        <div class="secondary-3-text grey-600 mgt-5">
+          Tax: {{ getCountry.sign }}{{ item.tax.toFixed(2) }}
+        </div>
       </div>
       <div class="remove" @click="REMOVE_CART_ITEM(item)">Remove</div>
     </div>
@@ -25,14 +27,16 @@
         :value="item.quantity"
         @change="updateItemQuantity($event.target.value)"
       />
-      <div class="price">₦{{ item.price * item.quantity }}</div>
+      <div class="price">
+        {{ getCountry.sign }}{{ (item.price * item.quantity).toFixed(2) }}
+      </div>
       <!-- <div class="remove">Remove</div> -->
     </div>
   </div>
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapMutations, mapGetters } from "vuex";
 
 export default {
   name: "LineItem",
@@ -45,6 +49,8 @@ export default {
   },
 
   computed: {
+    ...mapGetters({ getCountry: "checkout/getCountry" }),
+
     productInitials() {
       const name = this.item?.name;
       if (!name) return "";

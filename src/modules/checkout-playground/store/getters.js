@@ -4,6 +4,7 @@ export default {
   getCategories: (state) => state.categories,
 
   getCartCount: (state) => {
+    if (!state?.cart?.length) return 0;
     return state.cart?.reduce((sum, item) => {
       sum += item.quantity;
       return sum;
@@ -35,4 +36,6 @@ export default {
       total,
     };
   },
+
+  getCountry: (state) => state.checkout_country,
 };

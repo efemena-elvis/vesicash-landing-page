@@ -1,3 +1,5 @@
+import NG_FLAG from "../../src/modules/landing-v2/assets/flags/nigeria-flag.svg";
+
 export default [
   {
     name: "Arrivals",
@@ -157,4 +159,25 @@ export const getPlaygroundCart = () => {
 export const updatePlaygroundCart = (cart) => {
   const save_cart = JSON.stringify(cart);
   localStorage.setItem(CHECKOUT_PLAYGROUND_CART, save_cart);
+};
+
+export const CHECKOUT_PLAYGROUND_COUNTRY = "CHECKOUT_PLAYGROUND_COUNTRY";
+
+export const getPlaygroundCountry = () => {
+  const ng = {
+    name: "Nigeria",
+    code: "NG",
+    currency: "NGN",
+    flag: NG_FLAG,
+    payment_methods: ["card"],
+    sign: "₦",
+  };
+
+  const country = localStorage.getItem(CHECKOUT_PLAYGROUND_COUNTRY);
+  return country ? JSON.parse(country) : ng;
+};
+
+export const updatePlaygroundCountry = (country) => {
+  const saved_country = JSON.stringify(country);
+  localStorage.setItem(CHECKOUT_PLAYGROUND_COUNTRY, saved_country);
 };

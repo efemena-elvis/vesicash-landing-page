@@ -1,4 +1,7 @@
-import { updatePlaygroundCart } from "../../../utilities/product-categories";
+import {
+  updatePlaygroundCart,
+  updatePlaygroundCountry,
+} from "../../../utilities/product-categories";
 
 export default {
   ADD_PRODUCT_TO_CART: (state, product) => {
@@ -33,5 +36,10 @@ export default {
   CLEAR_CART: (state) => {
     state.cart = [];
     updatePlaygroundCart([]);
+  },
+
+  SET_CHECKOUT_COUNTRY: (state, country) => {
+    state.checkout_country = country;
+    updatePlaygroundCountry(country);
   },
 };
