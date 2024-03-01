@@ -10,7 +10,7 @@
     <div class="product-meta">
       <div>
         <div class="title">{{ product.name }}</div>
-        <div class="price">₦{{ product.price }}</div>
+        <div class="price">{{ getCountry.sign }}{{ product.price }}</div>
       </div>
       <div class="icon-spinner f-size-19 animate" v-if="adding"></div>
       <div
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapMutations, mapGetters } from "vuex";
 export default {
   name: "ProductCard",
 
@@ -36,6 +36,8 @@ export default {
   },
 
   computed: {
+    ...mapGetters({ getCountry: "checkout/getCountry" }),
+
     productInitials() {
       const name = this.product?.name;
       if (!name) return "";

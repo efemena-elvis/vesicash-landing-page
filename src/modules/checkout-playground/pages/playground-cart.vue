@@ -15,18 +15,33 @@
 
         <div class="summary-item">
           <div class="title">Subtotal</div>
-          <div class="value">₦{{ getOrderSummary.subtotal.toFixed(2) }}</div>
+          <div class="value">
+            {{ getCountry.sign }}{{ getOrderSummary.subtotal.toFixed(2) }}
+          </div>
         </div>
         <div class="summary-item">
           <div class="title">Tax estimate</div>
-          <div class="value">₦{{ getOrderSummary.tax.toFixed(2) }}</div>
+          <div class="value">
+            {{ getCountry.sign }}{{ getOrderSummary.tax.toFixed(2) }}
+          </div>
         </div>
         <div class="order-summary">
           <div class="title">Order total</div>
-          <div class="value">₦{{ getOrderSummary.total.toFixed(2) }}</div>
+          <div class="value">
+            {{ getCountry.sign }}{{ getOrderSummary.total.toFixed(2) }}
+          </div>
         </div>
         <div class="tertiary-2-text grey-500 mgt-2">
           Shipping fee will be estimated at checkout
+        </div>
+
+        <div class="tertiary-2-text grey-500 mgt-15">
+          You can complete payment at checkout with these
+          <a
+            href="https://developer.flutterwave.com/docs/integration-guides/testing-helpers/#cards"
+            target="_blank"
+            >test cards</a
+          >
         </div>
 
         <button
@@ -71,6 +86,7 @@ export default {
     ...mapGetters({
       getCart: "checkout/getCart",
       getOrderSummary: "checkout/getOrderSummary",
+      getCountry: "checkout/getCountry",
     }),
 
     paymentDescription() {
@@ -81,8 +97,8 @@ export default {
 
     mockPaymentModule() {
       return {
-        country_code: "NG",
-        currency_code: "NGN",
+        country_code: this.getCountry.code,
+        currency_code: this.getCountry.currency,
         amount: this.getOrderSummary.subtotal,
         redirect_url: `${location.origin}/checkout-playground?description=${this.paymentDescription}`,
         logo_url: "",
@@ -96,19 +112,19 @@ export default {
             name: "Home Delivery",
             time: "3 days",
             amount: 500,
-            currency_code: "NGN",
+            currency_code: this.getCountry.currency,
           },
           {
             name: "Office Pickup",
             time: "1 day",
             amount: 100,
-            currency_code: "NGN",
+            currency_code: this.getCountry.currency,
           },
         ],
         product_type: "Clothing",
         description: this.paymentDescription,
         vat: this.getOrderSummary.tax,
-        payment_methods: ["card"],
+        payment_methods: [...this.getCountry.payment_methods],
       };
     },
   },
