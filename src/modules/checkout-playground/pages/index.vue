@@ -9,7 +9,6 @@
         Shop new arrivals
       </router-link>
     </div>
-
     <!-- MODALS -->
     <portal to="vesicash-modals">
       <transition name="fade" v-if="show_success_modal">
@@ -28,11 +27,14 @@
 <script>
 import { mapMutations } from "vuex";
 import SuccessModal from "../../../shared/components/success-modal";
+import CheckoutPeview from "../components/checkout-peview";
+
 export default {
   name: "CheckoutOverviewPage",
 
   components: {
     SuccessModal,
+    CheckoutPeview,
   },
 
   computed: {
@@ -79,7 +81,6 @@ export default {
 .overview {
   height: calc(100% - 5px);
   top: 5px;
-  position: relative;
   background-color: getColor("teal-900");
   padding: toRem(150) toRem(20);
 
@@ -121,6 +122,13 @@ export default {
     color: #000;
     display: inline-block;
     margin: auto;
+  }
+
+  .preview-container {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(#000000, 0.5);
+    overflow-y: auto;
   }
 }
 </style>

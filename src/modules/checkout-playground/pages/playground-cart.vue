@@ -87,6 +87,7 @@ export default {
       getCart: "checkout/getCart",
       getOrderSummary: "checkout/getOrderSummary",
       getCountry: "checkout/getCountry",
+      getSettings: "checkout/getSettings",
     }),
 
     paymentDescription() {
@@ -95,36 +96,48 @@ export default {
         ?.join(", ");
     },
 
+    savedSettings() {
+      const code = this.getCountry?.code;
+
+      return this.getSettings[code]
+        ? this.getSettings[code]
+        : {
+            logo: "",
+            background: "#818988",
+            button: "#2c9a4b",
+            payment_options: ["card"],
+            shipping_methods: [
+              {
+                name: "Office Pickup",
+                time: "1 day",
+                amount: 0,
+                currency_code: this.getCountry.currency,
+              },
+            ],
+          };
+    },
+
     mockPaymentModule() {
+      const settings = this.savedSettings;
+
       return {
         country_code: this.getCountry.code,
         currency_code: this.getCountry.currency,
         amount: this.getOrderSummary.subtotal,
         redirect_url: `${location.origin}/checkout-playground?description=${this.paymentDescription}`,
-        logo_url: "",
-        background_colour: "#EEEEEE",
-        button_colour: "#3ab75d",
+        logo_url: settings.logo,
+        background_colour: settings.background,
+        button_colour: settings.button,
         request_phone_number: true,
         request_country: true,
         request_street_address: true,
-        shipping_types: [
-          {
-            name: "Home Delivery",
-            time: "3 days",
-            amount: 500,
-            currency_code: this.getCountry.currency,
-          },
-          {
-            name: "Office Pickup",
-            time: "1 day",
-            amount: 100,
-            currency_code: this.getCountry.currency,
-          },
-        ],
+        shipping_types: [...settings.shipping_methods],
         product_type: "Clothing",
         description: this.paymentDescription,
         vat: this.getOrderSummary.tax,
-        payment_methods: [...this.getCountry.payment_methods],
+        payment_methods: settings.payment_options?.length
+          ? [...settings.payment_options]
+          : ["card"],
       };
     },
   },
