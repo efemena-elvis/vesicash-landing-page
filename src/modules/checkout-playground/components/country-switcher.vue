@@ -29,6 +29,7 @@ import NG_FLAG from "../../landing-v2/assets/flags/nigeria-flag.svg";
 import GH_FLAG from "../../landing-v2/assets/flags/ghana-flag.svg";
 import RW_FLAG from "../../landing-v2/assets/flags/rwanda-flag.svg";
 import UG_FLAG from "../../landing-v2/assets/flags/uganda-flag.svg";
+import ZM_FLAG from "../../landing-v2/assets/flags/zambia-flag.svg";
 import { mapGetters, mapMutations } from "vuex";
 
 export default {
@@ -70,6 +71,14 @@ export default {
           sign: "RWF",
           flag: RW_FLAG,
           payment_methods: ["card", "mobilemoneyrwanda"],
+        },
+        {
+          name: "Zambia",
+          code: "ZM",
+          currency: "ZMW",
+          sign: "ZK",
+          flag: ZM_FLAG,
+          payment_methods: ["card", "mobilemoneyzambia"],
         },
         {
           name: "Uganda",

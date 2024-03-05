@@ -38,4 +38,6 @@ export default {
   },
 
   getCountry: (state) => state.checkout_country,
+
+  getSettings: (state) => state.checkout_settings,
 };

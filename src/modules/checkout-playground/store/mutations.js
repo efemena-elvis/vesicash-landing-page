@@ -3,6 +3,8 @@ import {
   updatePlaygroundCountry,
 } from "../../../utilities/product-categories";
 
+import { updateCheckoutSettings } from "../constants/mor-countries";
+
 export default {
   ADD_PRODUCT_TO_CART: (state, product) => {
     const productIndex = state.cart?.findIndex(
@@ -41,5 +43,10 @@ export default {
   SET_CHECKOUT_COUNTRY: (state, country) => {
     state.checkout_country = country;
     updatePlaygroundCountry(country);
+  },
+
+  UPDATE_CHECKOUT_SETTINGS: (state, { code, field, data }) => {
+    state.checkout_settings[code][field] = data;
+    updateCheckoutSettings(state.checkout_settings);
   },
 };
