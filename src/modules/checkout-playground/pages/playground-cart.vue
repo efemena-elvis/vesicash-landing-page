@@ -124,7 +124,7 @@ export default {
         country_code: this.getCountry.code,
         currency_code: this.getCountry.currency,
         amount: this.getOrderSummary.subtotal,
-        redirect_url: `${location.origin}/checkout-playground?description=${this.paymentDescription}`,
+        redirect_url: `${location.origin}/checkout-playground/history?description=${this.paymentDescription}`,
         logo_url: settings.logo,
         background_colour: settings.background,
         button_colour: settings.button,

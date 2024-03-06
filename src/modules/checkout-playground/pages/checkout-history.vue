@@ -1,14 +1,14 @@
 <template>
-  <div class="overview">
-    <div class="title">New arrivals are here</div>
-    <div class="subtitle">
-      Explore the latest fashion arrivals with our handpicked collection.
+  <div class="checkout">
+    <div class="tertiary-2-text mgt-4">
+      <span class="icon icon-caret-left primary-1-text"></span>
+      <router-link to="/checkout-playground">Home</router-link>
     </div>
-    <div class="btn-wrapper">
-      <router-link to="/checkout-playground/arrivals" class="btn btn-lg">
-        Shop new arrivals
-      </router-link>
-    </div>
+
+    <div class="mgy-20 title-text">Checkout History</div>
+
+    <CheckoutHistoryTable />
+
     <!-- MODALS -->
     <portal to="vesicash-modals">
       <transition name="fade" v-if="show_success_modal">
@@ -27,14 +27,14 @@
 <script>
 import { mapMutations } from "vuex";
 import SuccessModal from "../../../shared/components/success-modal";
-import CheckoutPeview from "../components/checkout-peview";
+import CheckoutHistoryTable from "../components/checkout-history-table";
 
 export default {
-  name: "CheckoutOverviewPage",
+  name: "CheckoutHistory",
 
   components: {
+    CheckoutHistoryTable,
     SuccessModal,
-    CheckoutPeview,
   },
 
   computed: {
@@ -70,7 +70,7 @@ export default {
 
       if (this.checkoutDescription && !this.show_success_modal) {
         this.CLEAR_CART();
-        this.$router.replace("/checkout-playground");
+        this.$router.replace("/checkout-playground/history");
       }
     },
   },
@@ -78,57 +78,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.overview {
-  height: calc(100vh - 110px);
-  background-color: getColor("teal-900");
-  padding: toRem(150) toRem(20);
+.checkout {
+  padding: toRem(5) toRem(60) toRem(100) toRem(60);
 
-  .title {
-    font-size: 3.5rem;
-    text-align: center;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: #fff;
-
-    @include breakpoint-down(md) {
-      font-size: 3rem;
-    }
+  @include breakpoint-down(lg) {
+    padding: toRem(5) toRem(30) toRem(100) toRem(30);
   }
+}
 
-  .subtitle {
-    width: 50%;
-    text-align: center;
-    font-size: 1.1rem;
-    color: getColor("grey-200");
-    margin: auto;
-
-    @include breakpoint-down(lg) {
-      width: 65%;
-    }
-
-    @include breakpoint-down(md) {
-      width: 85%;
-    }
-  }
-
-  .btn-wrapper {
-    @include flex-row-center-nowrap;
-    margin-top: 30px;
-  }
-
-  .btn {
-    background-color: #fff;
-    color: #000;
-    display: inline-block;
-    margin: auto;
-  }
-
-  .preview-container {
-    position: fixed;
-    inset: 0;
-    background-color: rgba(#000000, 0.5);
-    overflow-y: auto;
-  }
+.title-text {
+  font-size: toRem(20);
+  font-weight: 600;
 }
 </style>
 
