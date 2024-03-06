@@ -33,6 +33,19 @@ export default [
       },
 
       {
+        name: "PlaygroundHistory",
+        path: "history",
+        component: () =>
+          import(
+            /* webpackChunkName: "checkout-layout" */
+            "@/modules/checkout-playground/pages/checkout-history"
+          ),
+        meta: {
+          name: "Checkout History",
+        },
+      },
+
+      {
         name: "PlaygroundCategory",
         path: ":category",
         component: () =>

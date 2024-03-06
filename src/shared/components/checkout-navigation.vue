@@ -31,6 +31,9 @@
           ></path>
         </g>
       </svg>
+      <routerLink to="/checkout-playground/history" class="history"
+        >Checkout History</routerLink
+      >
       <CountrySwitcher />
     </div>
     <div class="navigation">
@@ -112,14 +115,28 @@ export default {
 
 <style lang="scss" scoped>
 .top-nav {
-  @include flex-row-between-nowrap;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: toRem(20);
   background-color: getColor("teal-800");
   padding: toRem(5) toRem(60);
 
   @include breakpoint-down(lg) {
     padding: toRem(5) toRem(30);
   }
+
+  .history {
+    color: getColor("neutral-10");
+    justify-self: flex-end;
+    transition: color ease 0.15s;
+
+    &:hover {
+      color: getColor("grey-100");
+    }
+  }
 }
+
 .navigation {
   display: grid;
   grid-template-columns: auto 1fr auto;

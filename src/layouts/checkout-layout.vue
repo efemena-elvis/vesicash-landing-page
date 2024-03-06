@@ -1,7 +1,7 @@
 <template>
   <div class="layout-section">
     <CheckoutNavigation />
-    <div><router-view /></div>
+    <router-view />
   </div>
 </template>
 
@@ -17,10 +17,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.layout-section {
-  height: 100vh;
-  display: grid;
-  grid-template-rows: auto 1fr;
-}
-</style>
+<style lang="scss"></style>
