@@ -4,7 +4,10 @@ import {
   getPlaygroundCountry,
 } from "../../../utilities/product-categories";
 
-import { getCheckoutSettings } from "../constants/mor-countries";
+import {
+  getCheckoutSettings,
+  getSubscriptions,
+} from "../constants/mor-countries";
 
 export default () => ({
   categories,
@@ -14,4 +17,6 @@ export default () => ({
   checkout_country: getPlaygroundCountry(),
 
   checkout_settings: getCheckoutSettings(),
+
+  subscriptions: getSubscriptions(),
 });

@@ -168,3 +168,55 @@ export const getCheckoutSettings = () => {
         return settings;
       }, {});
 };
+
+export const CHECKOUT_SUBSCRIPTIONS_KEY = "CHECKOUT_SUBSCRIPTIONS_KEY";
+
+export const default_subscriptions = [
+  {
+    name: "Starter",
+    price: "20",
+    link: "",
+    features: [
+      "Global payments and billing seamlessly unified in one platform.",
+      "Global payments and billing seamlessly unified in one platform.",
+      "Global payments and billing seamlessly unified in one platform.",
+    ],
+  },
+  {
+    name: "Medium",
+    price: "50",
+    link: "",
+    features: [
+      "Everything in starter plan",
+      "Global payments and billing seamlessly unified in one platform.",
+      "Global payments and billing seamlessly unified in one platform.",
+      "Global payments and billing seamlessly unified in one platform.",
+    ],
+  },
+  {
+    name: "Premium",
+    price: "90",
+    link: "",
+    features: [
+      "Everything in medium plan",
+      "Global payments and billing seamlessly unified in one platform.",
+      "Global payments and billing seamlessly unified in one platform.",
+      "Global payments and billing seamlessly unified in one platform.",
+    ],
+  },
+];
+
+export const getSubscriptions = () => {
+  const subs = localStorage.getItem(CHECKOUT_SUBSCRIPTIONS_KEY);
+
+  return subs ? JSON.parse(subs) : [...default_subscriptions];
+};
+
+export const updateSubscriptionLinkSettings = (subs, { name, link }) => {
+  const updated_subs = subs.map((sub) => {
+    if (sub.name === name) sub.link = link;
+    return sub;
+  });
+  const save_subs = JSON.stringify(updated_subs);
+  localStorage.setItem(CHECKOUT_SUBSCRIPTIONS_KEY, save_subs);
+};

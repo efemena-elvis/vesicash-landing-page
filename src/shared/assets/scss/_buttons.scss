@@ -136,6 +136,22 @@ button {
   }
 }
 
+.btn-plain {
+  background-color: getColor("neutral-10") !important;
+  border: toRem(1) solid getColor("grey-300") !important;
+  color: getColor("grey-700") !important;
+
+  &:hover {
+    background-color: getColor("green-50") !important;
+    color: getColor("grey-900") !important;
+  }
+
+  &:focus {
+    background-color: getColor("green-50") !important;
+    color: getColor("grey-900") !important;
+  }
+}
+
 .btn-alert {
   background-color: getColor("red-500") !important;
   border: none !important;

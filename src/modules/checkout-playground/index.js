@@ -4,7 +4,7 @@ export default [
     component: () =>
       import(
         /* webpackChunkName: "checkout-layout" */
-        "@/layouts/checkout-layout"
+        "@/layouts/checkout-overview-layout"
       ),
     children: [
       {
@@ -20,19 +20,6 @@ export default [
         },
       },
       {
-        name: "PlaygroundCart",
-        path: "cart",
-        component: () =>
-          import(
-            /* webpackChunkName: "checkout-layout" */
-            "@/modules/checkout-playground/pages/playground-cart"
-          ),
-        meta: {
-          name: "Cart",
-        },
-      },
-
-      {
         name: "PlaygroundHistory",
         path: "history",
         component: () =>
@@ -42,6 +29,64 @@ export default [
           ),
         meta: {
           name: "Checkout History",
+        },
+      },
+    ],
+  },
+
+  {
+    path: "/checkout-playground",
+    component: () =>
+      import(
+        /* webpackChunkName: "checkout-layout" */
+        "@/layouts/checkout-subscription-layout"
+      ),
+    children: [
+      {
+        name: "PlaygroundSubscription",
+        path: "subscription",
+        component: () =>
+          import(
+            /* webpackChunkName: "checkout-layout" */
+            "@/modules/checkout-playground/pages/checkout-subscription"
+          ),
+        meta: {
+          name: "Subscription",
+        },
+      },
+    ],
+  },
+
+  {
+    path: "/checkout-playground",
+    component: () =>
+      import(
+        /* webpackChunkName: "checkout-layout" */
+        "@/layouts/checkout-shop-layout"
+      ),
+    children: [
+      // {
+      //   name: "CheckoutShopOverview",
+      //   path: "",
+      //   component: () =>
+      //     import(
+      //       /* webpackChunkName: "checkout-layout" */
+      //       "@/modules/checkout-playground/pages/shop-overview"
+      //     ),
+      //   meta: {
+      //     name: "Overview",
+      //   },
+      // },
+      {
+        name: "PlaygroundCart",
+        path: "cart",
+        component: () =>
+          import(
+            /* webpackChunkName: "checkout-layout" */
+            "@/modules/checkout-playground/pages/playground-cart"
+          ),
+        meta: {
+          name: "Cart",
         },
       },
 
