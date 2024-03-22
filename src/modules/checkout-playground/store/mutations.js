@@ -3,7 +3,10 @@ import {
   updatePlaygroundCountry,
 } from "../../../utilities/product-categories";
 
-import { updateCheckoutSettings } from "../constants/mor-countries";
+import {
+  updateCheckoutSettings,
+  updateSubscriptionLinkSettings,
+} from "../constants/mor-countries";
 
 export default {
   ADD_PRODUCT_TO_CART: (state, product) => {
@@ -48,5 +51,9 @@ export default {
   UPDATE_CHECKOUT_SETTINGS: (state, { code, field, data }) => {
     state.checkout_settings[code][field] = data;
     updateCheckoutSettings(state.checkout_settings);
+  },
+
+  UPDATE_SUB_LINK: (state, { name, link }) => {
+    updateSubscriptionLinkSettings(state.subscriptions, { name, link });
   },
 };

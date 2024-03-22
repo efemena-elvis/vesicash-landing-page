@@ -1,141 +1,87 @@
 <template>
   <div class="overview">
-    <div class="title">New arrivals are here</div>
-    <div class="subtitle">
-      Explore the latest fashion arrivals with our handpicked collection.
+    <div class="content">
+      <div class="h3-text neutral-10 text-center">
+        MOR payment implementation
+      </div>
+      <div
+        class="tertiary-1-text neutral-10 text-center mgt-20 mgb-40 grey-200"
+      >
+        The MOR checkout implementation helps you process payment within any
+        global market
+      </div>
+      <div class="view-options">
+        <router-link to="/checkout-playground/subscription" class="option-link">
+          <MoneyIcon />
+
+          <div class="grey-800 primary-2-text text-center mgy-15">
+            Payment Link
+          </div>
+          <div class="grey-500 text-center">
+            Process payment with payment link generated with our payment module
+          </div>
+        </router-link>
+        <router-link to="/checkout-playground/arrivals" class="option-link">
+          <ApiIcon />
+          <div class="grey-800 primary-2-text text-center mgy-15">API</div>
+          <div class="grey-500 text-center">Integrate our checkout API</div>
+        </router-link>
+      </div>
     </div>
-    <div class="btn-wrapper">
-      <router-link to="/checkout-playground/arrivals" class="btn btn-lg">
-        Shop new arrivals
-      </router-link>
-    </div>
-    <!-- MODALS -->
-    <portal to="vesicash-modals">
-      <transition name="fade" v-if="show_success_modal">
-        <SuccessModal
-          main_cta_title="Continue shopping"
-          :message="checkoutMessage"
-          @done="toggleSuccessModal"
-          @closeTriggered="toggleSuccessModal"
-          class="cart-success-modal"
-        />
-      </transition>
-    </portal>
   </div>
 </template>
 
 <script>
-import { mapMutations } from "vuex";
-import SuccessModal from "../../../shared/components/success-modal";
-import CheckoutPeview from "../components/checkout-peview";
+import MoneyIcon from "../../../shared/components/icon-comps/cash-icon";
+import ApiIcon from "../../../shared/components/icon-comps/api-icon";
 
 export default {
-  name: "CheckoutOverviewPage",
+  name: "CheckoutOverview",
 
   components: {
-    SuccessModal,
-    CheckoutPeview,
-  },
-
-  computed: {
-    checkoutDescription() {
-      return this.$route?.query?.description || "";
-    },
-
-    checkoutMessage() {
-      return `Your order of <b>${this.checkoutDescription}</b> was succcessful`;
-    },
-  },
-
-  data() {
-    return {
-      show_success_modal: false,
-    };
-  },
-
-  watch: {
-    checkoutDescription: {
-      handler(desc) {
-        this.show_success_modal = !!desc;
-      },
-      immediate: true,
-    },
-  },
-
-  methods: {
-    ...mapMutations({ CLEAR_CART: "checkout/CLEAR_CART" }),
-
-    toggleSuccessModal() {
-      this.show_success_modal = !this.show_success_modal;
-
-      if (this.checkoutDescription && !this.show_success_modal) {
-        this.CLEAR_CART();
-        this.$router.replace("/checkout-playground");
-      }
-    },
+    ApiIcon,
+    MoneyIcon,
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .overview {
-  height: calc(100vh - 110px);
+  min-height: calc(100vh - 70px);
   background-color: getColor("teal-900");
-  padding: toRem(150) toRem(20);
+  padding: toRem(50) toRem(20);
 
-  .title {
-    font-size: 3.5rem;
-    text-align: center;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: #fff;
-
-    @include breakpoint-down(md) {
-      font-size: 3rem;
-    }
-  }
-
-  .subtitle {
-    width: 50%;
-    text-align: center;
-    font-size: 1.1rem;
-    color: getColor("grey-200");
-    margin: auto;
-
-    @include breakpoint-down(lg) {
-      width: 65%;
-    }
-
-    @include breakpoint-down(md) {
-      width: 85%;
-    }
-  }
-
-  .btn-wrapper {
-    @include flex-row-center-nowrap;
-    margin-top: 30px;
-  }
-
-  .btn {
-    background-color: #fff;
-    color: #000;
-    display: inline-block;
+  .content {
+    width: toRem(600);
+    max-width: 95%;
     margin: auto;
   }
 
-  .preview-container {
-    position: fixed;
-    inset: 0;
-    background-color: rgba(#000000, 0.5);
-    overflow-y: auto;
-  }
-}
-</style>
+  .view-options {
+    padding: toRem(40) toRem(20);
+    background-color: getColor("neutral-10");
+    border-radius: toRem(15);
+    margin: toRem(60) auto;
+    @include flex-row-center-wrap;
+    gap: toRem(40);
+    .option-link {
+      width: toRem(220);
+      aspect-ratio: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
-<style lang="scss">
-.cart-success-modal {
-  .modal-outer-container {
-    top: 25%;
+      border: toRem(1) solid getColor("grey-400");
+      border-radius: toRem(10);
+      background-color: transparent;
+      transition: all ease 0.2s;
+      padding: toRem(15);
+
+      &:hover {
+        background-color: rgba(#8ddca2, 0.4);
+        border-color: getColor("green-400");
+      }
+    }
   }
 }
 </style>

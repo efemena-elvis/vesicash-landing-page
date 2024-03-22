@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="border-2">
     <div class="top-nav">
       <svg
         width="30px"
@@ -114,6 +114,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.border-2 {
+  outline: 5px springgreen red;
+}
+
 .top-nav {
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -195,6 +199,7 @@ export default {
 }
 
 .sidebar.close {
+  z-index: -1;
   transform: translateX(-100%);
 }
 
@@ -208,6 +213,7 @@ export default {
 
 .overlay.close {
   background: rgba(#000, 0);
+  position: absolute;
   z-index: -1;
 }
 </style>
