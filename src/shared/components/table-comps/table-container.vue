@@ -10,15 +10,14 @@
             <!-- TABLE HEADER -->
             <thead>
               <tr>
-                <template v-for="(head, index) in table_header">
-                  <td
-                    :title="head"
-                    class="head-data"
-                    :key="index"
-                    :class="`${table_name}-${index + 1}`"
-                    v-html="head"
-                  ></td>
-                </template>
+                <td
+                  v-for="(head, index) in table_header"
+                  :title="head"
+                  class="head-data"
+                  :key="index"
+                  :class="`${table_name}-${index + 1}`"
+                  v-html="head"
+                ></td>
               </tr>
             </thead>
 
@@ -32,7 +31,7 @@
           <Pagination
             :pagination="pagination"
             v-if="show_paging && pagination.last_page > 1"
-            @goToPage="$emit('goToPage',$event)"
+            @goToPage="$emit('goToPage', $event)"
           />
         </div>
       </template>

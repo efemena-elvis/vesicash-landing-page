@@ -1,6 +1,8 @@
 <template>
   <div class="container-layout">
     <template v-if="getPaymentOptionsPage">
+      <Breadcrumb :links="getPaymentOptionsPage.breadcrumb" />
+
       <!-- HERO SECTION -->
       <PaymentOptionHero />
 
@@ -16,12 +18,20 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 import PaymentOptionHero from "@/modules/landing-v2/components/payment-option/payment-option-hero";
+import Breadcrumb from "../components/breadcrumb.vue";
 
 export default {
   name: "PaymentOption",
 
+  metaInfo() {
+    return {
+      ...this.pageMeta,
+    };
+  },
+
   components: {
     PaymentOptionHero,
+    Breadcrumb,
     PaymentOptionService: () =>
       import(
         /* webpackChunkName: "landing-module-payment-v2" */ "@/modules/landing-v2/components/payment-option/payment-option-service"
@@ -34,6 +44,36 @@ export default {
 
   computed: {
     ...mapGetters({ getPaymentOptionsPage: "cms/getPaymentOptionsPage" }),
+
+    pageMeta() {
+      if (!this.getPaymentOptionsPage) return {};
+
+      return {
+        title: "Vesicash",
+        titleTemplate: `%s | ${this.getPaymentOptionsPage?.meta?.title}`,
+
+        htmlAttrs: {
+          lang: "en-US",
+        },
+
+        meta: [
+          { charset: "utf-8" },
+          {
+            name: "description",
+            content: this.getPaymentOptionsPage?.meta?.description,
+          },
+          {
+            name: "keywords",
+            content: this.getPaymentOptionsPage?.meta?.keywords,
+          },
+          {
+            name: "tags",
+            content: this.getPaymentOptionsPage?.meta?.tags,
+          },
+          { name: "viewport", content: "width=device-width, initial-scale=1" },
+        ],
+      };
+    },
   },
 
   async mounted() {

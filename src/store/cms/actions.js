@@ -9,6 +9,8 @@ import {
   getListedBenefitsSectionSlice,
   getOnboardingSlice,
   getAlertBannerSlices,
+  getBreadcrumbSlice,
+  pageMeta,
 } from "../../utilities/prismic-utils";
 import * as prismicH from "@prismicio/helpers";
 
@@ -22,6 +24,8 @@ export default {
 
     if (response?.data) {
       const res = response.data;
+      const meta = pageMeta(res);
+      console.log({ meta, res });
 
       const home = {
         hero_title: prismicH.asText(res.title),
@@ -62,6 +66,7 @@ export default {
           contact_sales_cta_title: prismicH.asText(res.contact_sales_cta_title),
           sign_up_cta_title: prismicH.asText(res.create_account_cta_title),
         },
+        meta,
       };
 
       commit("SAVE_HOME_PAGE", home);
@@ -121,11 +126,15 @@ export default {
       const hero_section = getHeroSectionSlice(slices);
       const benefits_section = getBenefitsSectionSlice(slices);
       const onboarding_section = getOnboardingSlice(slices);
+      const breadcrumb = getBreadcrumbSlice(slices);
+      const meta = pageMeta(res);
 
       const page = {
         hero_section,
         benefits_section,
         onboarding_section,
+        breadcrumb,
+        meta,
       };
       commit("SAVE_PAYMENT_OPTIONS_PAGE", page);
     }
@@ -146,6 +155,7 @@ export default {
       const listed_benefit_section = getListedBenefitsSectionSlice(slices);
       const benefits_section = getBenefitsSectionSlice(slices);
       const onboarding_section = getOnboardingSlice(slices);
+      const breadcrumb = getBreadcrumbSlice(slices);
 
       const page = {
         hero_section,
@@ -153,6 +163,7 @@ export default {
         listed_benefit_section,
         benefits_section,
         onboarding_section,
+        breadcrumb,
       };
       commit("SAVE_FRAUD_PREVENTION_PAGE", page);
     }
@@ -170,12 +181,14 @@ export default {
       const listed_benefit_section = getListedBenefitsSectionSlice(slices);
       const benefits_section = getBenefitsSectionSlice(slices);
       const onboarding_section = getOnboardingSlice(slices);
+      const breadcrumb = getBreadcrumbSlice(slices);
 
       const page = {
         hero_section,
         listed_benefit_section,
         benefits_section,
         onboarding_section,
+        breadcrumb,
       };
       commit("SAVE_TAX_COMPLIANCE_PAGE", page);
     }
@@ -192,11 +205,13 @@ export default {
       const hero_section = getHeroSectionSlice(slices);
       const benefits_section = getBenefitsSectionSlice(slices);
       const onboarding_section = getOnboardingSlice(slices);
+      const breadcrumb = getBreadcrumbSlice(slices);
 
       const page = {
         hero_section,
         benefits_section,
         onboarding_section,
+        breadcrumb,
       };
       commit("SAVE_FUND_TRANSFERS_PAGE", page);
     }

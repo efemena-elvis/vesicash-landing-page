@@ -34,9 +34,14 @@
 
             <div class="btn-row">
               <router-link
+                :to="{ name: 'CheckoutOverview' }"
+                class="btn btn-secondary btn-lg mgr-16 roobert-500 mb-2"
+                >Launch checkout playground</router-link
+              >
+              <router-link
                 :to="{ name: 'TransactionSetup' }"
                 class="btn btn-secondary btn-lg mgr-16 roobert-500"
-                >Launch playground</router-link
+                >Launch escrow playground</router-link
               >
             </div>
           </div>

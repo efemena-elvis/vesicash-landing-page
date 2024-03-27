@@ -3,7 +3,9 @@
     <div :class="getGroupStyle">
       <!-- INPUT LABEL -->
       <template v-if="label_title">
-        <label class="form-label" :for="label_id" :class="getLabelStyle">{{ label_title }}</label>
+        <label class="form-label" :for="label_id" :class="getLabelStyle">{{
+          label_title
+        }}</label>
       </template>
 
       <!-- INPUT WRAPPER AREA -->
@@ -44,8 +46,14 @@
             @click="toggleDropdown"
           >
             <img
-              v-lazy="is_currency_type ? currency_country.flag : current_country.flag"
-              :alt="is_currency_type ? currency_country.country : current_country.country"
+              v-lazy="
+                is_currency_type ? currency_country.flag : current_country.flag
+              "
+              :alt="
+                is_currency_type
+                  ? currency_country.country
+                  : current_country.country
+              "
             />
             <div
               class="icon icon-caret-fill-down smooth-transition"
@@ -64,23 +72,37 @@
     <!-- DROP DOWN SELECT AREA -->
     <template v-if="is_phone_type">
       <template name="drop-select-area" v-if="show_dropdown">
-        <CountryDropSelect :countries="countries_data" @countrySelected="current_country = $event" />
+        <CountryDropSelect
+          :countries="countries_data"
+          @countrySelected="current_country = $event"
+        />
       </template>
     </template>
 
     <template v-if="is_currency_type">
       <template name="drop-select-area" v-if="show_dropdown">
         <CountryDropSelect
-          :allow_search="currency_options.length ? currency_options.length > 5 : countries_data.length > 5"
+          :allow_search="
+            currency_options.length
+              ? currency_options.length > 5
+              : countries_data.length > 5
+          "
           is_currency_type
-          :countries="currency_options.length ? currency_options : countries_data"
+          :countries="
+            currency_options.length ? currency_options : countries_data
+          "
           @countrySelected="currency_country = $event"
         />
       </template>
     </template>
 
     <!-- MESSAGE TEXT -->
-    <div class="error-message-text" v-if="error_message">{{ error_message }}</div>
+    <div
+      :class="['error-message-text', fixed_error ? 'position-absolute' : '']"
+      v-if="error_message"
+    >
+      {{ error_message }}
+    </div>
   </div>
 </template>
 
@@ -193,6 +215,10 @@ export default {
         message: "",
         minimum: 1,
       }),
+    },
+    fixed_error: {
+      type: Boolean,
+      default: false,
     },
   },
 
@@ -321,7 +347,15 @@ export default {
           const minimum = this.error_handler?.minimum;
           this.error_message = value.length < minimum && message;
           break;
-
+        case "url":
+          const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/;
+          this.error_message = !urlRegex.test(value) && message;
+          break;
+        case "imageurl":
+          const imageUrlRegex =
+            /^(https?|ftp):\/\/[^\s/$.?#]+\.(jpg|jpeg|png|gif|bmp)$/i;
+          this.error_message = !imageUrlRegex.test(value) && message;
+          break;
         default:
           this.error_message = "";
           break;
@@ -345,5 +379,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

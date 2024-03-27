@@ -10,6 +10,7 @@ Vue.use(VueRouter);
 import landingRoutes from "@/modules/landing";
 import landingRoutesV2 from "@/modules/landing-v2";
 import playGroundRoutes from "@/modules/transactions";
+import checkoutPlayground from "@/modules/checkout-playground";
 
 // =======================================================
 // SETTING UP A ROUTES ARRAY TO HOLD ALL ROUTE MODULES
@@ -19,6 +20,7 @@ const routes = [
   ...landingRoutesV2,
   ...landingRoutes,
   ...playGroundRoutes,
+  ...checkoutPlayground,
   {
     path: "/*",
     name: "NotFoundError",

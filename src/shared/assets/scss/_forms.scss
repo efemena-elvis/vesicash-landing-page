@@ -381,6 +381,7 @@ input[type="checkbox"],
     min-height: 5vh;
     height: auto;
     max-height: 22vh;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 
     &::-webkit-scrollbar {
       width: toRem(3.5);

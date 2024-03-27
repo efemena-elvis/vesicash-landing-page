@@ -1,5 +1,5 @@
 <template>
-  <div class="drop-select-input w-100 h-auto">
+  <div class="drop-select-input w-100 h-auto" :class="class_name">
     <!-- SELECT INPUT  -->
     <div
       class="select-input form-control"
@@ -9,7 +9,22 @@
       :class="option_select ? 'active-select-input' : null"
     >
       <!-- SELECTIONS -->
-      <div class="selections" v-if="selected_value">
+      <div class="multi-selections-wrapper" v-if="validSelection">
+        <div
+          class="selection-tag"
+          v-for="(option, index) in getMultiSelectedOptions"
+          :key="option.id + index"
+          @click.stop
+        >
+          <div class="f-size-13">{{ option.name }}</div>
+          <div
+            class="icon icon-close f-size-16"
+            @click.stop="makeMultiSelection(option.id)"
+          ></div>
+        </div>
+      </div>
+
+      <div class="selections" v-else-if="selected_value">
         <div class="select-text grey-900 tertiary-2-text text-capitalize">
           <span v-html="selected_value"></span>
         </div>
@@ -23,10 +38,7 @@
     </div>
 
     <!-- BOTTOM OPTIONS -->
-    <div
-      class="drop-option-wrapper w-100 mgt-7 smooth-animation"
-      v-if="option_select"
-    >
+    <div class="drop-option-wrapper w-100 mgt-7" v-if="option_select">
       <div class="inner-wrapper rounded-8">
         <!-- SEARCH BAR -->
         <div class="search-bar mgb-4 mgt-10" v-if="allow_search">
@@ -41,7 +53,7 @@
         </div>
 
         <!-- OPTIONS -->
-        <template v-if="options.length">
+        <template v-if="options.length && !multi">
           <div class="option-scroll-wrapper">
             <div
               class="option-row"
@@ -53,14 +65,42 @@
                 class="inner-lining wt-100"
                 :class="index + 1 === options.length && 'no-bottom-border'"
               >
-                <span v-html="option.name"></span>
+                <span v-html="extend_value ? option.value : option.name"></span>
+              </div>
+            </div>
+          </div>
+        </template>
+
+        <!-- OPTIONS -->
+        <template v-else-if="getInputOptions.length && multi">
+          <div class="option-scroll-wrapper">
+            <div
+              class="option-row"
+              v-for="(option, index) in getInputOptions"
+              :key="index"
+              @click.stop="makeMultiSelection(option.id)"
+            >
+              <div
+                class="inner-lining wt-100 check-input-row"
+                :class="
+                  index + 1 === getInputOptions.length && 'no-bottom-border'
+                "
+              >
+                <span v-html="extend_value ? option.value : option.name"></span>
+                <input
+                  type="checkbox"
+                  class="mgr-10"
+                  :checked="option.selected"
+                />
               </div>
             </div>
           </div>
         </template>
 
         <template v-else>
-          <div class="no-options text-center">No options available</div>
+          <div class="no-options text-center pdt-12 pdb-12 grey-700">
+            {{ empty_text }}
+          </div>
         </template>
       </div>
 
@@ -83,13 +123,35 @@ export default {
         },
       ],
     },
+
+    multi_options: {
+      type: Array,
+      default: () => [
+        {
+          id: 1,
+          name: "Option 1",
+        },
+      ],
+    },
+    multi: {
+      type: Boolean,
+      default: false,
+    },
     pre_select: {
       type: Object,
       default: () => {},
     },
+    pre_select_multiple: {
+      type: Array,
+      default: () => [],
+    },
     placeholder: {
       type: String,
       default: "Select One",
+    },
+    empty_text: {
+      type: String,
+      default: "No options available",
     },
     allow_search: {
       type: Boolean,
@@ -99,6 +161,35 @@ export default {
       type: Boolean,
       default: false,
     },
+    class_name: {
+      type: String,
+      default: "",
+    },
+    extend_value: {
+      type: Boolean,
+      default: false,
+    },
+  },
+
+  computed: {
+    getInputOptions() {
+      return this.allow_search
+        ? [...this.input_options].filter((option) =>
+            option.name
+              ?.toLowerCase()
+              ?.includes(this.search_value?.toLowerCase())
+          )
+        : [...this.input_options];
+    },
+
+    getMultiSelectedOptions() {
+      return [...this.input_options]?.filter((option) => option.selected);
+      // return [...this.selected_multi_options];
+    },
+
+    validSelection() {
+      return [...this.input_options]?.some((option) => option.selected);
+    },
   },
 
   data() {
@@ -106,6 +197,8 @@ export default {
       option_select: false,
       selected_value: null,
       search_value: null,
+      input_options: [],
+      selected_multi_options: [],
     };
   },
 
@@ -118,6 +211,13 @@ export default {
   },
 
   watch: {
+    multi_options: {
+      handler(options) {
+        this.input_options = [...options];
+      },
+      immediate: true,
+    },
+
     clear_selection: {
       handler(value) {
         if (value) this.selected_value = null;
@@ -135,6 +235,27 @@ export default {
       immediate: true,
       deep: true,
     },
+
+    pre_select_multiple: {
+      handler(value) {
+        if (!value?.length) return;
+        const pre_selections = [...value];
+        this.input_options = this.input_options?.map((option) => {
+          return {
+            ...option,
+            selected: pre_selections.some((item) => item.id === option.id),
+          };
+        });
+      },
+      immediate: true,
+      deep: true,
+    },
+  },
+
+  created() {
+    this.$bus.$on("preSelectMultiple", (data) =>
+      this.makeMultiSelection(data.id)
+    );
   },
 
   methods: {
@@ -156,6 +277,19 @@ export default {
       this.$emit("optionSelected", this.options[index]);
       this.forceClose();
     },
+
+    makeMultiSelection(id) {
+      this.input_options = this.input_options?.map((option) => {
+        if (option.id === id) option.selected = !option.selected;
+        return option;
+      });
+
+      // this.selected_multi_options = this.input_options.filter(
+      //   (option) => option.selected
+      // );
+
+      this.$emit("multiSelected", this.getMultiSelectedOptions);
+    },
   },
 };
 </script>
@@ -170,9 +304,60 @@ export default {
     height: auto;
     max-height: auto;
 
+    @include breakpoint-down(lg) {
+      padding: toRem(8) toRem(10);
+    }
+
     .placeholder-text {
       @include generate-font-type("tertiary-2");
       color: getColor("grey-300");
+    }
+
+    .multi-selections-wrapper {
+      @include flex-row-start-nowrap;
+      max-width: calc(100% - 20px);
+      // padding-right: toRem(30);
+      padding: 0;
+      // gap: 0 toRem(15);
+      overflow-x: auto;
+
+      &::-webkit-scrollbar {
+        height: 0;
+      }
+
+      .selection-tag {
+        @include flex-row-start-nowrap;
+        border-radius: toRem(12);
+        background: getColor("neutral-10");
+        padding: toRem(4.75) toRem(6) toRem(4.75) toRem(12);
+        border: toRem(1) solid getColor("grey-300");
+        transition: all ease-in-out 0.25s;
+        margin: toRem(2) toRem(4) toRem(2) 0;
+        width: auto;
+        min-width: fit-content;
+
+        &:hover {
+          background: getColor("red-50");
+        }
+
+        .icon {
+          position: relative;
+          top: toRem(1);
+          @include draw-shape(24);
+          @include flex-column-center;
+          border-radius: 50%;
+          background: transparent;
+          margin-left: toRem(4);
+          font-weight: 600;
+          color: getColor("grey-500");
+          transition: background ease-in-out 0.25s;
+          cursor: pointer;
+
+          &:hover {
+            background: getColor("red-50");
+          }
+        }
+      }
     }
 
     .selections {
@@ -185,7 +370,7 @@ export default {
       }
     }
 
-    .icon {
+    .icon-caret-fill-down {
       @include center-placement("y-axis");
       font-size: toRem(24);
       margin-top: toRem(1);
@@ -197,6 +382,16 @@ export default {
     box-shadow: none;
     border-color: getColor("green-500");
     background: getColor("neutral-10");
+  }
+
+  .check-input-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+
+    input[type="checkbox"] {
+      position: relative;
+      transform: scale(0.8);
+    }
   }
 }
 </style>

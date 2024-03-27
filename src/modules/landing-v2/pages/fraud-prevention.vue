@@ -1,5 +1,7 @@
 <template>
   <div class="container-layout">
+    <Breadcrumb :links="getFraudPreventionPage.breadcrumb" />
+
     <!-- FRAUD HERO SECTION -->
     <FraudHeroSection />
 
@@ -20,12 +22,14 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 import FraudHeroSection from "@/modules/landing-v2/components/fraud-prevention/fraud-hero-section";
+import Breadcrumb from "../components/breadcrumb.vue";
 
 export default {
   name: "FraudPrevention",
 
   components: {
     FraudHeroSection,
+    Breadcrumb,
     FraudPaymentSection: () =>
       import(
         /* webpackChunkName: "landing-module-fraud-v2" */ "@/modules/landing-v2/components/fraud-prevention/fraud-payment-section"
