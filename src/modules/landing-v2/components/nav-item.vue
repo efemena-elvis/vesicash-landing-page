@@ -218,7 +218,7 @@ export default {
 
     .dropdown-menu-wrapper {
       transition: display 0.4s ease-in-out;
-      background: getColor("neutral-10");
+      background: getColor("grey-10");
       border-radius: toRem(16);
       position: absolute;
       padding: toRem(4);
