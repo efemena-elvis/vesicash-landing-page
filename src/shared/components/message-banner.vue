@@ -55,11 +55,15 @@ export default {
   z-index: 99;
   transition: all ease-in-out 0.3s;
 
+  @include breakpoint-down(md) {
+    padding-top: toRem(36);
+    padding-bottom: toRem(10);
+  }
+
   .message-block {
     width: 75%;
     margin: auto;
     text-align: center;
-    // line-height: 175%;
 
     @include breakpoint-down(lg) {
       width: 85%;
@@ -76,8 +80,13 @@ export default {
     font-size: toRem(20);
     cursor: pointer;
     transition: color ease 0.25s;
+
     &:hover {
       color: getColor("red-400");
+    }
+
+    @include breakpoint-down(md) {
+      top: toRem(24);
     }
   }
 }
