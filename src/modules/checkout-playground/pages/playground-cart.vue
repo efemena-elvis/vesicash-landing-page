@@ -143,21 +143,31 @@ export default {
   },
 
   methods: {
-    ...mapActions({ initializeCheckout: "checkout/initializeCheckout" }),
+    ...mapActions({
+      initializeCheckout: "checkout/initializeCheckout",
+      initializeZambiaCheckout: "checkout/initializeZambiaCheckout",
+    }),
 
     async initialize() {
-      try {
-        this.handleClick("checkout");
-        const res = await this.initializeCheckout(this.mockPaymentModule);
-        this.handleClick("checkout", "Checkout", false);
+      if (this.getCountry.name === "Zambia") this.initiateZambiaPayment();
+      else {
+        try {
+          this.handleClick("checkout");
+          const res = await this.initializeCheckout(this.mockPaymentModule);
+          this.handleClick("checkout", "Checkout", false);
 
-        res.code === 200 && res?.data?.link
-          ? (location.href = res?.data?.link)
-          : this.pushToast(res.message, "warning");
-      } catch (err) {
-        this.pushToast("Order checkout failed", "error");
-        this.handleClick("checkout", "Checkout", false);
+          res.code === 200 && res?.data?.link
+            ? (location.href = res?.data?.link)
+            : this.pushToast(res.message, "warning");
+        } catch (err) {
+          this.pushToast("Order checkout failed", "error");
+          this.handleClick("checkout", "Checkout", false);
+        }
       }
+    },
+
+    async initiateZambiaPayment() {
+      this.initializeZambiaCheckout(this.getOrderSummary.subtotal);
     },
   },
 };
