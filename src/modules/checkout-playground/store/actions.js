@@ -43,7 +43,7 @@ export default {
     const requestOptions = {
       method: "POST",
       headers: myHeaders,
-      body: requestBody,
+      body: JSON.stringify(requestBody),
       redirect: "follow",
     };
 
