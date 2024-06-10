@@ -167,7 +167,26 @@ export default {
     },
 
     async initiateZambiaPayment() {
-      this.initializeZambiaCheckout(this.getOrderSummary.subtotal);
+      const requestPayload = {
+        currency: this.getCountry.currency,
+        customer: { email: "customer@vesicash.com" },
+        products: [
+          { name: "Clothing", price: this.getOrderSummary.subtotal * 100 },
+        ],
+      };
+
+      try {
+        this.handleClick("checkout");
+        const res = await this.initializeZambiaCheckout(requestPayload);
+        this.handleClick("checkout", "Checkout", false);
+
+        res.success === true && res?.data?.checkout_url
+          ? (location.href = res?.data?.checkout_url)
+          : this.pushToast(res?.message ?? "Order checkout failed", "warning");
+      } catch (err) {
+        this.pushToast("Order checkout failed", "error");
+        this.handleClick("checkout", "Checkout", false);
+      }
     },
   },
 };
