@@ -181,12 +181,23 @@ export default {
         this.handleClick("checkout", "Checkout", false);
 
         res.success === true && res?.data?.checkout_url
-          ? (location.href = res?.data?.checkout_url)
+          ? this.createAndClickAnchor(res?.data?.checkout_url, "_blank")
           : this.pushToast(res?.message ?? "Order checkout failed", "warning");
       } catch (err) {
         this.pushToast("Order checkout failed", "error");
         this.handleClick("checkout", "Checkout", false);
       }
+    },
+
+    createAndClickAnchor(href, target = "_self") {
+      const anchor = document.createElement("a");
+
+      anchor.href = href;
+      anchor.target = target;
+
+      document.body.appendChild(anchor);
+      anchor.click();
+      document.body.removeChild(anchor);
     },
   },
 };
